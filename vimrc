@@ -7,3 +7,6 @@ set number
 
 " Enable syntax highlighting
 syntax on
+
+" Highlight searches
+set hlsearch
