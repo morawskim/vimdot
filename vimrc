@@ -35,3 +35,6 @@ hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 
 " Show cursor location in the bottom
 set ruler
+
+" Keeps a buffer above and below line when scrolling
+set scrolloff=3
