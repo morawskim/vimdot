@@ -38,3 +38,9 @@ set ruler
 
 " Keeps a buffer above and below line when scrolling
 set scrolloff=3
+
+" Appear 'laststatus' all the time
+set laststatus=2
+
+" Set theme for vim-airline
+let g:airline_theme='luna'
