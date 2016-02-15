@@ -44,3 +44,6 @@ set laststatus=2
 
 " Set theme for vim-airline
 let g:airline_theme='luna'
+
+" Enable mouse
+set mouse=a
