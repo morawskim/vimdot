@@ -28,10 +28,10 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-" Highlight the current line and current column
-set cursorcolumn
-set cursorline
-hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+" Highlight the current line and current column - turn off due to bad perfomance
+" set cursorcolumn
+" set cursorline
+" hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 
 " Show cursor location in the bottom
 set ruler
