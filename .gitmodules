@@ -52,3 +52,6 @@
 [submodule "bundle/vim-puppet"]
 	path = bundle/vim-puppet
 	url = https://github.com/rodjek/vim-puppet.git
+[submodule "bundle/wordpress"]
+	path = bundle/wordpress
+	url = https://github.com/dsawardekar/wordpress.vim.git
