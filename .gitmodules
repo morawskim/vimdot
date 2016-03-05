@@ -55,3 +55,6 @@
 [submodule "bundle/wordpress"]
 	path = bundle/wordpress
 	url = https://github.com/dsawardekar/wordpress.vim.git
+[submodule "bundle/vim-wordpress-snippets"]
+	path = bundle/vim-wordpress-snippets
+	url = https://github.com/sudar/vim-wordpress-snippets.git
