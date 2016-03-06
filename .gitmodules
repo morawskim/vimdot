@@ -58,3 +58,6 @@
 [submodule "bundle/vim-wordpress-snippets"]
 	path = bundle/vim-wordpress-snippets
 	url = https://github.com/sudar/vim-wordpress-snippets.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
