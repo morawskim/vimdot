@@ -60,3 +60,6 @@ let g:syntastic_check_on_wq = 0
 
 " Disable spellchecking (to enable use set spell spelllang=en_us)
 set nospell
+
+" Flags Vagrantfiles as Ruby for syntax highlighting
+au BufRead,BufNewFile Vagrantfile set filetype=ruby
