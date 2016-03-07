@@ -63,3 +63,9 @@ set nospell
 
 " Flags Vagrantfiles as Ruby for syntax highlighting
 au BufRead,BufNewFile Vagrantfile set filetype=ruby
+
+" Flags Vagrantfiles as Ruby for syntax highlighting
+au BufRead,BufNewFile Vagrantfile set filetype=ruby
+
+" let g:UltiSnipsExpandTrigger="<tab>"
+autocmd FileType php UltiSnipsAddFiletypes wordpress
