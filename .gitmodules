@@ -61,3 +61,6 @@
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
+[submodule "bundle/vim-systemd-syntax"]
+	path = bundle/vim-systemd-syntax
+	url = https://github.com/Matt-Deacalion/vim-systemd-syntax.git
