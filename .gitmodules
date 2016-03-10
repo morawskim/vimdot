@@ -64,3 +64,6 @@
 [submodule "bundle/vim-systemd-syntax"]
 	path = bundle/vim-systemd-syntax
 	url = https://github.com/Matt-Deacalion/vim-systemd-syntax.git
+[submodule "bundle/vim-signature"]
+	path = bundle/vim-signature
+	url = https://github.com/kshenoy/vim-signature.git
