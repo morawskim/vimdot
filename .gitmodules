@@ -70,3 +70,6 @@
 [submodule "bundle/bash-support"]
 	path = bundle/bash-support
 	url = https://github.com/vim-scripts/bash-support.vim.git
+[submodule "bundle/vim-javascript-syntax"]
+	path = bundle/vim-javascript-syntax
+	url = https://github.com/jelera/vim-javascript-syntax.git
