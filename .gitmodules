@@ -73,3 +73,6 @@
 [submodule "bundle/vim-javascript-syntax"]
 	path = bundle/vim-javascript-syntax
 	url = https://github.com/jelera/vim-javascript-syntax.git
+[submodule "bundle/cmake-syntax"]
+	path = bundle/cmake-syntax
+	url = https://github.com/vim-scripts/cmake.vim-syntax.git
