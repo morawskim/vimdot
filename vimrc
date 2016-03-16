@@ -69,3 +69,5 @@ au BufRead,BufNewFile Vagrantfile set filetype=ruby
 
 " let g:UltiSnipsExpandTrigger="<tab>"
 autocmd FileType php UltiSnipsAddFiletypes wordpress
+
+let g:used_javascript_libs = 'jquery,angularjs,angularui,angularuirouter'
