@@ -76,3 +76,6 @@
 [submodule "bundle/cmake-syntax"]
 	path = bundle/cmake-syntax
 	url = https://github.com/vim-scripts/cmake.vim-syntax.git
+[submodule "bundle/js-libraries-syntax"]
+	path = bundle/js-libraries-syntax
+	url = https://github.com/othree/javascript-libraries-syntax.vim.git
