@@ -79,3 +79,6 @@
 [submodule "bundle/js-libraries-syntax"]
 	path = bundle/js-libraries-syntax
 	url = https://github.com/othree/javascript-libraries-syntax.vim.git
+[submodule "bundle/vim-less"]
+	path = bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
