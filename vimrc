@@ -71,3 +71,6 @@ au BufRead,BufNewFile Vagrantfile set filetype=ruby
 autocmd FileType php UltiSnipsAddFiletypes wordpress
 
 let g:used_javascript_libs = 'jquery,angularjs,angularui,angularuirouter'
+
+# Enable loading the plugin files for specific file types with
+filetype plugin on
