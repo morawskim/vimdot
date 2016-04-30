@@ -74,3 +74,8 @@ let g:used_javascript_libs = 'jquery,angularjs,angularui,angularuirouter'
 
 " Enable loading the plugin files for specific file types with
 filetype plugin on
+
+" Syntax for xdebug trace file
+augroup filetypedetect
+au BufNewFile,BufRead *.xt  setf xt
+augroup END
