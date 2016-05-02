@@ -79,3 +79,11 @@ filetype plugin on
 augroup filetypedetect
 au BufNewFile,BufRead *.xt  setf xt
 augroup END
+
+" Set changelog packager
+let g:spec_chglog_packager = 'Marcin Morawski <marcin@morawskim.pl>'
+let g:spec_chglog_revision = 0
+
+" Overwrite openSUSE SKEL_spec function declared in /etc/vimrc
+:so ~/.vim/functions/spec.vim
+
