@@ -87,3 +87,6 @@ let g:spec_chglog_revision = 0
 " Overwrite openSUSE SKEL_spec function declared in /etc/vimrc
 :so ~/.vim/functions/spec.vim
 
+" Save a file in vim without root permission using sudo. Map this command to 'SS'
+command SS :execute ':w !sudo tee %'
+
