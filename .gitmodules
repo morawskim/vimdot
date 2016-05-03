@@ -94,3 +94,6 @@
 [submodule "bundle/jsdoc-syntax.vim"]
 	path = bundle/jsdoc-syntax.vim
 	url = https://github.com/othree/jsdoc-syntax.vim
+[submodule "bundle/vim-logrotate"]
+	path = bundle/vim-logrotate
+	url = https://github.com/moon-musick/vim-logrotate.git
