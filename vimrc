@@ -90,3 +90,5 @@ let g:spec_chglog_revision = 0
 " Save a file in vim without root permission using sudo. Map this command to 'SS'
 command SS :execute ':w !sudo tee %'
 
+" Use apache syntax for files  *.template in /etc/apache2/vhosts.d directory
+autocmd BufNewFile,BufRead /etc/apache2/vhosts.d/*.template set syntax=apache
