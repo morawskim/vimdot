@@ -98,4 +98,5 @@ let g:indentLine_color_term = 250
 let g:indentLine_char = '¦'
 let g:indentLine_enabled = 1
 let g:indentLine_leadingSpaceChar = '·'
-let g:indentLine_leadingSpaceEnabled  = 1
+" See https://github.com/Yggdroot/indentLine/issues/69
+let g:indentLine_leadingSpaceEnabled  = 0
