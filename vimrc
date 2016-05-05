@@ -92,3 +92,10 @@ command SS :execute ':w !sudo tee %'
 
 " Use apache syntax for files  *.template in /etc/apache2/vhosts.d directory
 autocmd BufNewFile,BufRead /etc/apache2/vhosts.d/*.template set syntax=apache
+
+" Configuration for indentLine plugin
+let g:indentLine_color_term = 250
+let g:indentLine_char = '¦'
+let g:indentLine_enabled = 1
+let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_leadingSpaceEnabled  = 1
