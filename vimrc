@@ -100,3 +100,6 @@ let g:indentLine_enabled = 1
 let g:indentLine_leadingSpaceChar = '·'
 " See https://github.com/Yggdroot/indentLine/issues/69
 let g:indentLine_leadingSpaceEnabled  = 0
+
+" Closetag filenames like *.xml, *.html, *.xhtml, ...
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
