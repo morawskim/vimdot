@@ -103,3 +103,6 @@ let g:indentLine_leadingSpaceEnabled  = 0
 
 " Closetag filenames like *.xml, *.html, *.xhtml, ...
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
+
+" Enable rainbow parentheses plugin
+let g:rainbow_active = 1

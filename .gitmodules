@@ -103,3 +103,6 @@
 [submodule "bundle/vim-closetag"]
 	path = bundle/vim-closetag
 	url = https://github.com/alvan/vim-closetag.git
+[submodule "bundle/rainbow"]
+	path = bundle/rainbow
+	url = https://github.com/luochen1990/rainbow.git
