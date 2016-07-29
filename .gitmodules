@@ -106,3 +106,6 @@
 [submodule "bundle/rainbow"]
 	path = bundle/rainbow
 	url = https://github.com/luochen1990/rainbow.git
+[submodule "bundle/node"]
+	path = bundle/node
+	url = https://github.com/moll/vim-node.git
