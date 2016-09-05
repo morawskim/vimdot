@@ -109,3 +109,6 @@
 [submodule "bundle/node"]
 	path = bundle/node
 	url = https://github.com/moll/vim-node.git
+[submodule "bundle/rspec.vim"]
+	path = bundle/rspec.vim
+	url = https://github.com/keith/rspec.vim.git
