@@ -112,3 +112,6 @@
 [submodule "bundle/rspec.vim"]
 	path = bundle/rspec.vim
 	url = https://github.com/keith/rspec.vim.git
+[submodule "bundle/Dockerfile"]
+	path = bundle/Dockerfile
+	url = https://github.com/ekalinin/Dockerfile.vim.git
