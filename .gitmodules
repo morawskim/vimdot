@@ -115,3 +115,6 @@
 [submodule "bundle/Dockerfile"]
 	path = bundle/Dockerfile
 	url = https://github.com/ekalinin/Dockerfile.vim.git
+[submodule "bundle/zeavim"]
+	path = bundle/zeavim
+	url = https://github.com/KabbAmine/zeavim.vim.git
