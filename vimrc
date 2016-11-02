@@ -106,3 +106,7 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
 
 " Enable rainbow parentheses plugin
 let g:rainbow_active = 1
+
+" Gulpfile skeleton
+au BufNewFile gulpfile.js 0r ~/.vim/skeletons/gulpfile.js
+
