@@ -112,3 +112,8 @@ au BufNewFile gulpfile.js 0r ~/.vim/skeletons/gulpfile.js
 
 " Listing snippets with <C-Tab> doesn’t work in vim (in gvim work)
 let g:UltiSnipsListSnippets="<c-j>"
+
+" Tabularize map
+vmap <Leader>l= :Tabularize /=<CR>
+vmap <Leader>l\| :Tabularize /\|<CR>
+vmap <Leader>l: :Tabularize /:\zs<CR>
