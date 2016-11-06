@@ -117,3 +117,6 @@ let g:UltiSnipsListSnippets="<c-j>"
 vnoremap <Leader>l= :Tabularize /=<CR>
 vnoremap <Leader>l\| :Tabularize /\|<CR>
 vnoremap <Leader>l: :Tabularize /:\zs<CR>
+
+" Dir where you want to store notes
+let g:notes_directories = ['~/Dokumenty/Notes']
