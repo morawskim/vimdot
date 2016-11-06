@@ -120,3 +120,6 @@ vnoremap <Leader>l: :Tabularize /:\zs<CR>
 
 " Dir where you want to store notes
 let g:notes_directories = ['~/Dokumenty/Notes']
+
+" map <CTRL-N> to toggle nerd
+map <C-n> :NERDTreeToggle<CR>
