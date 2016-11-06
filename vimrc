@@ -114,6 +114,6 @@ au BufNewFile gulpfile.js 0r ~/.vim/skeletons/gulpfile.js
 let g:UltiSnipsListSnippets="<c-j>"
 
 " Tabularize map
-vmap <Leader>l= :Tabularize /=<CR>
-vmap <Leader>l\| :Tabularize /\|<CR>
-vmap <Leader>l: :Tabularize /:\zs<CR>
+vnoremap <Leader>l= :Tabularize /=<CR>
+vnoremap <Leader>l\| :Tabularize /\|<CR>
+vnoremap <Leader>l: :Tabularize /:\zs<CR>
