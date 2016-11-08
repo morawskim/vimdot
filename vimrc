@@ -123,3 +123,7 @@ let g:notes_directories = ['~/Dokumenty/Notes']
 
 " map <CTRL-N> to toggle nerd
 map <C-n> :NERDTreeToggle<CR>
+
+" highlight column 80
+set colorcolumn=80
+highlight ColorColumn ctermbg=233
