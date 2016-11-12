@@ -127,3 +127,6 @@ map <C-n> :NERDTreeToggle<CR>
 " highlight column 80
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
+
+" F8 key will toggle the Tagbar window
+nmap <F8> :TagbarToggle<CR>
