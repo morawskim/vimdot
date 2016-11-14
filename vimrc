@@ -135,3 +135,6 @@ nmap <F8> :TagbarToggle<CR>
 highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
 
+" The root is considered to be the first directory containing an item with
+" one of these names:
+let g:projectlocal_project_markers = ['.git', '.hg', '.idea']
