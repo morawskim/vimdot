@@ -130,3 +130,8 @@ highlight ColorColumn ctermbg=233
 
 " F8 key will toggle the Tagbar window
 nmap <F8> :TagbarToggle<CR>
+
+" Show trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\+$/
+
