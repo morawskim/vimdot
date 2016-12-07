@@ -1,0 +1,12 @@
+snippet stub "Phar stub" b
+#!/usr/bin/env php
+<?php
+
+Phar::mapPhar();
+
+include "phar://" . __FILE__ . "${0:/src/application.php}";
+
+__HALT_COMPILER();
+
+?>
+endsnippet
