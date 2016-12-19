@@ -138,3 +138,8 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 " The root is considered to be the first directory containing an item with
 " one of these names:
 let g:projectlocal_project_markers = ['.git', '.hg', '.idea']
+
+" Enable modeline
+set modeline
+set modelines=5
+
