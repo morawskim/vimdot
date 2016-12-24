@@ -130,3 +130,6 @@
 [submodule "bundle/bootstrap-snippets"]
 	path = bundle/bootstrap-snippets
 	url = https://github.com/bonsaiben/bootstrap-snippets.git
+[submodule "bundle/fzf"]
+	path = bundle/fzf
+	url = https://github.com/junegunn/fzf.vim.git
