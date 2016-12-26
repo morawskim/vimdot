@@ -143,3 +143,6 @@ let g:projectlocal_project_markers = ['.git', '.hg', '.idea']
 set modeline
 set modelines=5
 
+" vdebug require python2, but ultisnips load python3
+" We force using python2 for ultisnips
+let g:UltiSnipsUsePythonVersion = 2
