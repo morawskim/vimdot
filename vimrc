@@ -67,6 +67,9 @@ au BufRead,BufNewFile Vagrantfile set filetype=ruby
 " Flags Vagrantfiles as Ruby for syntax highlighting
 au BufRead,BufNewFile Vagrantfile set filetype=ruby
 
+" Auto apply schema to composer.json file
+autocmd BufRead,BufNewFile composer.json Vison composer.json
+
 " let g:UltiSnipsExpandTrigger="<tab>"
 autocmd FileType php UltiSnipsAddFiletypes wordpress
 
@@ -146,3 +149,6 @@ set modelines=5
 " vdebug require python2, but ultisnips load python3
 " We force using python2 for ultisnips
 let g:UltiSnipsUsePythonVersion = 2
+
+" Specify directories to store schema files.
+let g:vison_data_directory = "$HOME/.vim/vison"
