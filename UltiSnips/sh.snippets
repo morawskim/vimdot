@@ -1,0 +1,21 @@
+snippet com "completion function" b
+_${1}()
+{
+    COMPREPLY=()
+    local cur="${COMP_WORDS[COMP_CWORD]}"
+    local prev="${COMP_WORDS[COMP_CWORD-1]}"
+    local line=${COMP_LINE}
+    local cmd="${1##*/}"
+
+    local opts="-v --verbose -h --help"
+
+    if [[ ${cur} == -* ]]; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    fi
+
+    return 0
+}
+
+complete -F _$1 ${2}
+${0}
+endsnippet
