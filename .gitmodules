@@ -139,3 +139,6 @@
 [submodule "bundle/vison"]
 	path = bundle/vison
 	url = https://github.com/Quramy/vison.git
+[submodule "bundle/characterize"]
+	path = bundle/characterize
+	url = https://github.com/tpope/vim-characterize
