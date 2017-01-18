@@ -155,3 +155,6 @@ let g:UltiSnipsUsePythonVersion = 2
 
 " Specify directories to store schema files.
 let g:vison_data_directory = "$HOME/.vim/vison"
+
+" Use powerline symbols.
+let g:airline_powerline_fonts = 1
