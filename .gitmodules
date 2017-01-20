@@ -142,3 +142,6 @@
 [submodule "bundle/characterize"]
 	path = bundle/characterize
 	url = https://github.com/tpope/vim-characterize
+[submodule "bundle/vim-devicons"]
+	path = bundle/vim-devicons
+	url = https://github.com/ryanoasis/vim-devicons.git
