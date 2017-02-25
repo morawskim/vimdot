@@ -158,3 +158,7 @@ let g:vison_data_directory = "$HOME/.vim/vison"
 
 " Use powerline symbols.
 let g:airline_powerline_fonts = 1
+
+" minimum size of a file needed for it to be considered as a "LargeFile",
+" in megabytes
+let g:LargeFile = 70

@@ -148,3 +148,6 @@
 [submodule "bundle/undotree"]
 	path = bundle/undotree
 	url = https://github.com/mbbill/undotree.git
+[submodule "bundle/LargeFile"]
+	path = bundle/LargeFile
+	url = https://github.com/vim-scripts/LargeFile.git
