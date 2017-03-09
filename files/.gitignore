@@ -1,0 +1,8 @@
+/backup/*
+!/backup/.gitkeep
+/swap/*
+!/swap/.gitkeep
+/undo/*
+!/undo/.gitkeep
+/info/*
+!/info/.gitkeep
