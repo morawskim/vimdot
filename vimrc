@@ -107,7 +107,7 @@ autocmd BufNewFile,BufRead /tmp/bash-fc-* set ft=sh
 
 " Configuration for indentLine plugin
 let g:indentLine_color_term = 250
-let g:indentLine_char = '¦'
+let g:indentLine_char = '│'
 let g:indentLine_enabled = 1
 let g:indentLine_leadingSpaceChar = '·'
 " See https://github.com/Yggdroot/indentLine/issues/69
