@@ -30,8 +30,8 @@ set expandtab
 
 " Highlight the current line and current column - turn off due to bad perfomance
 " set cursorcolumn
-" set cursorline
-" hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+set cursorline
+hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 
 " Show cursor location in the bottom
 set ruler
