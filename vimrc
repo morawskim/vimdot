@@ -28,8 +28,10 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-" Highlight the current line and current column - turn off due to bad perfomance
-" set cursorcolumn
+" Highlight the current line and current column
+set cursorcolumn
+set ttyfast
+set lazyredraw
 set cursorline
 hi CursorLine   cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 
