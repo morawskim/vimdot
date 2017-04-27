@@ -22,6 +22,9 @@ set incsearch
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 set autoindent
 
+" highlight matching [{()}]
+set showmatch
+
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
 set shiftwidth=4
