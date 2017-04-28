@@ -30,6 +30,8 @@ set showmatch
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+" Load filetype-specific indent files
+filetype indent on
 
 " Highlight the current line and current column
 set cursorcolumn
