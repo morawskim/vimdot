@@ -125,6 +125,9 @@ autocmd BufNewFile,BufRead /etc/apache2/vhosts.d/*.template set syntax=apache
 " Set sh file type for files /tmp/bash-fc-*
 autocmd BufNewFile,BufRead /tmp/bash-fc-* set ft=sh
 
+" Set sql file type for files /tmp/sql*
+autocmd BufNewFile,BufRead /tmp/sql* set ft=sql
+
 " Configuration for indentLine plugin
 let g:indentLine_color_term = 250
 let g:indentLine_char = '│'
