@@ -55,6 +55,15 @@ set showmode
 " Show already typed keys when more are expected.
 set showcmd
 
+" enable folding
+set foldenable
+" open most folds by default
+set foldlevelstart=10
+" 10 nested fold max
+set foldnestmax=10
+" fold based on indent level
+set foldmethod=indent
+
 " Set theme for vim-airline
 let g:airline_theme='luna'
 
