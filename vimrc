@@ -2,6 +2,9 @@ execute pathogen#infect()
 
 colorscheme twilight256
 
+" Necesary for lots of cool vim things
+set nocompatible
+
 " Display line numbers
 set number
 
