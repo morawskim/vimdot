@@ -148,6 +148,9 @@ let g:rainbow_active = 1
 " Gulpfile skeleton
 au BufNewFile gulpfile.js 0r ~/.vim/skeletons/gulpfile.js
 
+" Puppet facter, type and provider skeletons
+au BufNewFile */lib/facter/*.rb 0r ~/.vim/skeletons/puppet_facter.rb
+
 " Listing snippets with <C-Tab> doesn’t work in vim (in gvim work)
 let g:UltiSnipsListSnippets="<c-j>"
 
