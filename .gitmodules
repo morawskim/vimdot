@@ -154,3 +154,6 @@
 [submodule "bundle/LargeFile"]
 	path = bundle/LargeFile
 	url = https://github.com/vim-scripts/LargeFile.git
+[submodule "bundle/vim-dirdiff"]
+	path = bundle/vim-dirdiff
+	url = git://github.com/will133/vim-dirdiff
