@@ -1,6 +1,6 @@
 execute pathogen#infect()
 
-colorscheme twilight256
+colorscheme Tomorrow-Night-Eighties
 
 " Necesary for lots of cool vim things
 set nocompatible
