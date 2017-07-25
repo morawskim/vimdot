@@ -200,6 +200,9 @@ let g:airline_powerline_fonts = 1
 " in megabytes
 let g:LargeFile = 70
 
+" avoid loading EditorConfig for any remote files over ssh and fugitive
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
 " Put all temporary files under the same directory.
 " https://github.com/mhinz/vim-galore#handling-backup-swap-undo-and-viminfo-files
 set backup
