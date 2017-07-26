@@ -153,6 +153,9 @@ au BufNewFile */lib/puppet/provider/*.rb 0r ~/.vim/skeletons/puppet_provider.rb
 au BufNewFile */lib/puppet/type/*.rb 0r ~/.vim/skeletons/puppet_type.rb
 au BufNewFile */lib/facter/*.rb 0r ~/.vim/skeletons/puppet_facter.rb
 
+" .editorconfig skeleton
+au BufNewFile .editorconfig 0r ~/.vim/skeletons/editorconfig
+
 " Listing snippets with <C-Tab> doesn’t work in vim (in gvim work)
 let g:UltiSnipsListSnippets="<c-j>"
 
