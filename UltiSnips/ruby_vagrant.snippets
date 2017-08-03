@@ -1,7 +1,7 @@
 snippet box "vagrant box" b
 # Every Vagrant development environment requires a box. You can search for
 # boxes at https://atlas.hashicorp.com/search.
-config.vm.box = "${1:morawskim/openSUSE-`facter lsbdistrelease`-x86_64}"
+config.vm.box = "${1:opensuse/openSUSE-`facter lsbdistrelease`-x86_64}"
 #config.vm.box_version = "${2:1.0.0}"
 ${0}
 endsnippet
