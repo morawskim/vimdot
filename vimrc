@@ -156,6 +156,9 @@ au BufNewFile */lib/facter/*.rb 0r ~/.vim/skeletons/puppet_facter.rb
 " .editorconfig skeleton
 au BufNewFile .editorconfig 0r ~/.vim/skeletons/editorconfig
 
+" Apache vhost simple skeleton
+au BufNewFile /etc/apache2/vhosts.d/*.conf 0r ~/.vim/skeletons/apache_vhost.conf
+
 " Listing snippets with <C-Tab> doesn’t work in vim (in gvim work)
 let g:UltiSnipsListSnippets="<c-j>"
 
