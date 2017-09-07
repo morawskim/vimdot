@@ -1,0 +1,11 @@
+snippet jqp "jquery basic plugin" b
+(function($) {
+    $.fn.${1:myplugin} = function(action) {
+        var args = Array.apply(null, arguments);
+        args.shift();
+
+        ${0}
+        return this;
+    };
+})(jQuery);
+endsnippet
