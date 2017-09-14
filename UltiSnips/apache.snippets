@@ -1,0 +1,10 @@
+snippet maintenance "maintenance redirection" b
+# Maintenance Redirection
+# Replace 127\.0\.0\.1 with your own IP address
+RewriteCond %{REQUEST_URI} !maintenance.html
+## If you want allow access to some files
+##RewriteCond %{REQUEST_FILENAME} !(styles|images).+$
+RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
+RewriteRule (.*) /maintenance.html [R=302,L]
+${0}
+endsnippet
