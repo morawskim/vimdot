@@ -99,6 +99,11 @@ au BufRead,BufNewFile Vagrantfile set filetype=ruby
 " Auto apply schema to composer.json file
 autocmd BufRead,BufNewFile composer.json Vison composer.json
 
+" Flags .changelog as changelog for syntax highlighting
+au BufRead,BufNewFile .changelog set filetype=changelog
+let g:changelog_username = 'Marcin Morawski <marcin@morawskim.pl>'
+let g:changelog_dateformat = '%Y-%m-%d'
+
 " let g:UltiSnipsExpandTrigger="<tab>"
 autocmd FileType php UltiSnipsAddFiletypes wordpress
 
