@@ -186,8 +186,7 @@ highlight ColorColumn ctermbg=233
 nmap <F8> :TagbarToggle<CR>
 
 " Show trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-:match ExtraWhitespace /\s\+$/
+"highlight ExtraWhitespace ctermbg=red guibg=red
 
 " The root is considered to be the first directory containing an item with
 " one of these names:
