@@ -37,3 +37,17 @@ $(function() {
     });
 });
 endsnippet
+
+snippet jQFormData "jquery FormData" b
+var fd = new FormData(document.getElementById('form'));
+$.ajax({
+    url: 'http://example.com/script.php',
+    data: fd,
+    processData: false,
+    contentType: false,
+    type: 'POST',
+    success: function(data){
+        alert(data);
+    }
+});
+endsnippet
