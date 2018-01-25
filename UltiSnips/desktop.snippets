@@ -1,0 +1,11 @@
+snippet appdesktop "desktop application entry" b
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Exec=${1:/path/to/executable}
+Name=${2:Name of Application}
+Icon=${3:/path/to/icon}
+${0}
+endsnippet
