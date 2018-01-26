@@ -1,0 +1,6 @@
+snippet regex_all_images "Find all images inside a tag with src attribute to resize" b
+// Find all image tags, ensuring that they have a src.
+$matches = array();
+preg_match_all('/((<a [^>]*>)[ ]*)?(<img[^>]*?src[ ]*=[ ]*"([^"]+)"[^>]*>)/i', $text, $matches);
+${0}
+endsnippet
