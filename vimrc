@@ -130,8 +130,8 @@ command SS :execute ':w !sudo tee %'
 " Use apache syntax for files  *.template in /etc/apache2/vhosts.d directory
 autocmd BufNewFile,BufRead /etc/apache2/vhosts.d/*.template set syntax=apache
 
-" Set sh file type for files /tmp/bash-fc-*
-autocmd BufNewFile,BufRead /tmp/bash-fc-* set ft=sh
+" Set sh file type for files /tmp/bash-fc*
+autocmd BufNewFile,BufRead /tmp/bash-fc* set ft=sh
 
 " Set sql file type for files /tmp/sql*
 autocmd BufNewFile,BufRead /tmp/sql* set ft=sql
