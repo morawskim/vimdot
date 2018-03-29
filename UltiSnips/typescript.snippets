@@ -1,0 +1,18 @@
+snippet ng-validator "angular custom validator class" b
+import { AbstractControl, ValidatorFn } from '@angular/forms'
+
+export class AppValidators {
+  static ${1:startsWith}(${2:letter} : string) : ValidatorFn {
+    return (control: AbstractControl) : {[key: string]: any} => {
+      if (control.value && !control.value.startsWith(letter)) {
+        return {
+          $1: $2
+        }
+      }
+
+     return null;
+    }
+  }
+}
+${0}
+endsnippet
