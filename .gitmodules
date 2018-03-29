@@ -166,3 +166,6 @@
 [submodule "bundle/vim-better-whitespace"]
 	path = bundle/vim-better-whitespace
 	url = https://github.com/ntpeters/vim-better-whitespace
+[submodule "bundle/yats.vim"]
+	path = bundle/yats.vim
+	url = https://github.com/HerringtonDarkholme/yats.vim.git
