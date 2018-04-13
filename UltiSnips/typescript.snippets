@@ -16,3 +16,18 @@ export class AppValidators {
 }
 ${0}
 endsnippet
+
+snippet decorator-method "typescript method decorator" b
+export function ${1}(parameter:any) {
+    return function(target: any, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
+        var originalMethod = descriptor.value;
+        descriptor.value = function() {
+            var context = this
+            var args = arguments;
+            ${0}
+            return originalMethod.apply(context, args);
+        };
+        return descriptor;
+    }
+};
+endsnippet
