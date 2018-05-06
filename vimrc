@@ -164,6 +164,9 @@ au BufNewFile .editorconfig 0r ~/.vim/skeletons/editorconfig
 " Apache vhost simple skeleton
 au BufNewFile /etc/apache2/vhosts.d/*.conf 0r ~/.vim/skeletons/apache_vhost.conf
 
+" webpack config skeleton
+au BufNewFile webpack.config.js 0r ~/.vim/skeletons/webpack.config.js
+
 " Listing snippets with <C-Tab> doesn’t work in vim (in gvim work)
 let g:UltiSnipsListSnippets="<c-j>"
 
