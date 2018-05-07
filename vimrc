@@ -91,13 +91,11 @@ let g:syntastic_check_on_wq = 0
 set nospell
 
 " Flags Vagrantfiles as Ruby for syntax highlighting
-au BufRead,BufNewFile Vagrantfile set filetype=ruby
-
-" Flags Vagrantfiles as Ruby for syntax highlighting
-au BufRead,BufNewFile Vagrantfile set filetype=ruby
+au BufRead,BufNewFile Vagrantfile set filetype=vagrant.ruby
 
 " Auto apply schema to composer.json file
 autocmd BufRead,BufNewFile composer.json Vison composer.json
+autocmd BufRead,BufNewFile composer.json set filetype=composer.json
 
 " Flags .changelog as changelog for syntax highlighting
 au BufRead,BufNewFile .changelog set filetype=changelog
