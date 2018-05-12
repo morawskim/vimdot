@@ -90,15 +90,10 @@ let g:syntastic_check_on_wq = 0
 " Disable spellchecking (to enable use set spell spelllang=en_us)
 set nospell
 
-" Flags Vagrantfiles as Ruby for syntax highlighting
-au BufRead,BufNewFile Vagrantfile set filetype=vagrant.ruby
-
 " Auto apply schema to composer.json file
 autocmd BufRead,BufNewFile composer.json Vison composer.json
-autocmd BufRead,BufNewFile composer.json set filetype=composer.json
 
-" Flags .changelog as changelog for syntax highlighting
-au BufRead,BufNewFile .changelog set filetype=changelog
+" Configure changelog
 let g:changelog_username = 'Marcin Morawski <marcin@morawskim.pl>'
 let g:changelog_dateformat = '%Y-%m-%d'
 
