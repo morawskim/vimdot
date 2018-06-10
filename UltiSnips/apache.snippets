@@ -22,3 +22,25 @@ snippet deny "deny for all" b
 </IfModule>
 ${0}
 endsnippet
+
+snippet proxy-ssl "Vhost proxy ssl" b
+<VirtualHost *:443>
+  # Required apache modules:
+  # headers proxy proxy_http ssl
+
+  ServerName ${1:example.com}
+  ServerAdmin marcin@morawskim.pl
+
+  SSLEngine on
+  SSLCertificateFile ${2:/etc/letsencrypt/live/$1}/$1.cert
+  SSLCertificateKeyFile $2/$1.key
+  RequestHeader set X-Forwarded-Proto "https"
+
+  ProxyRequests Off
+  ProxyPreserveHost On
+  # Last slash is required!
+  ProxyPass / http://${3:localhost}:80/
+  ProxyPassReverse / http://$3:80/
+</VirtualHost>
+endsnippet
+
