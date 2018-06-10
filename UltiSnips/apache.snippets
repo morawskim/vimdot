@@ -44,3 +44,9 @@ snippet proxy-ssl "Vhost proxy ssl" b
 </VirtualHost>
 endsnippet
 
+snippet recirect-to-https "Vhost redirect http to https" b
+<VirtualHost *:80>
+    ServerName ${1:example.com}
+    Redirect / https://$1/
+</VirtualHost>
+endsnippet
