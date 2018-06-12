@@ -50,3 +50,11 @@ snippet recirect-to-https "Vhost redirect http to https" b
     Redirect / https://$1/
 </VirtualHost>
 endsnippet
+
+
+snippet  cors "Apache cors - allowing everything"
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
+Header always set Access-Control-Max-Age "600"
+Header always set Access-Control-Allow-Headers "X-Custom-Header, X-Custom-OTHER"
+endsnippet
