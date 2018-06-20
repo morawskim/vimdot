@@ -19,3 +19,11 @@ _${1}()
 complete -F _$1 ${2}
 ${0}
 endsnippet
+
+
+# http://redsymbol.net/articles/unofficial-bash-strict-mode/
+snippet strict_mode "Bash Strict Mode"
+set -euo pipefail
+IFS=$'\n\t'
+${0}
+endsnippet
