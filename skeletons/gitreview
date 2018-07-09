@@ -1,0 +1,5 @@
+[gerrit]
+host=gerrit.example.com
+port=29418
+project=project.git
+defaultbranch=develop
