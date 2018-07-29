@@ -10,3 +10,16 @@ $('${1}').rules(
 );
 endsnippet
 
+snippet jvalidator_method "jQuery validator add new validator method" b
+$.validator.addMethod(
+    '${1}',
+    function (v, element) {
+        ${0}let is9Length = $.validator.methods.rangelength(v, element, [9,9]);
+        let is16Length = $.validator.methods.rangelength(v, element, [16,16]);
+        let isDigitsOnly = $.validator.methods.digits(v, element);
+
+        return (is9Length || is16Length) && isDigitsOnly;
+    }
+);
+endsnippet
+
