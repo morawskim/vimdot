@@ -1,0 +1,12 @@
+snippet jvalidator_rule "jQuery validator add new rule to element" b
+$('${1}').rules(
+    'add',
+    {
+        ${0}validateRegistryNumber: [],
+        messages: {
+            validateRegistryNumber: _('Niepoprawny numer rejestru')
+        }
+    }
+);
+endsnippet
+
