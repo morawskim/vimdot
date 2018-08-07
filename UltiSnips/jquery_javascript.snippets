@@ -23,3 +23,53 @@ $.validator.addMethod(
 );
 endsnippet
 
+snippet digitsOnly "jQuery plugin - enforce only digits in input fields" b
+#live demo http://jsfiddle.net/xpvt214o/566536/
+(function($){
+    function regexNumber(text) {
+        return text.replace(/[^0-9]/g, '');
+    }
+
+    $.fn.digitsOnly = function() {
+        return this.each(function() {
+            var $field = $(this);
+            $field.keydown(function (e) {
+                var charCode = (e.which) ? e.which : e.keyCode;
+                var acceptedKeys = [
+                    8, // Backspace,
+                    13, // Enter
+                    46, // Delete
+                    36, // Home
+                    35, // End
+                    37, 38, 39, 40, // Arrows
+                    48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, //Left digits
+                    96, 97, 98, 99, 100, 101, 102, 103, 104, 105, // Right digits
+                    116 // F5
+                ];
+
+                //if paste (ctrl+v) allow
+                if (e.ctrlKey && charCode === 86) {
+                    return true;
+                }
+
+                return (jQuery.inArray(charCode, acceptedKeys) >= 0) ? true : false;
+            }).on('paste', function (e) {
+                e.preventDefault();
+
+                var pastedText = '';
+                if (window.clipboardData && window.clipboardData.getData) {
+                    // IE
+                    pastedText = window.clipboardData.getData('Text');
+                } else if (e.clipboardData && e.clipboardData.getData) {
+                    pastedText = e.clipboardData.getData('text/plain');
+                } else {
+                    pastedText = e.originalEvent.clipboardData.getData("text");
+                }
+
+                $(this).val(regexNumber(pastedText));
+            });
+        });
+    }
+})(jQuery)
+endsnippet
+
