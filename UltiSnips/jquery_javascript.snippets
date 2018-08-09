@@ -73,3 +73,21 @@ snippet digitsOnly "jQuery plugin - enforce only digits in input fields" b
 })(jQuery)
 endsnippet
 
+snippet formReset "jQuery plugin - reset form to empty values" b
+(function($){
+    $.fn.formReset = function() {
+        return this.each(function() {
+            var $form = $(this);
+            if (!$form.is('form')) {
+                return;
+            }
+            $(':input', $form)
+                .not(':button, :submit, :reset, :hidden')
+                .val('')
+                .prop('checked', false)
+                .prop('selected', false);
+        });
+    }
+})(jQuery);
+endsnippet
+
