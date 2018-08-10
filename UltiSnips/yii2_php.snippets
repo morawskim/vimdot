@@ -1,0 +1,10 @@
+snippet prompt "dropDownList prompt" b
+<?=  $form->field($model, '${1:attribute}')->dropDownList(
+    [
+        '0' => 'no',
+        '1' => 'yes',
+    ],
+    ['prompt' => Yii::t('app', 'Select value')]
+) ?>
+$0
+endsnippet 
