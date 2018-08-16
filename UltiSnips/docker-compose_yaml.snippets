@@ -1,0 +1,15 @@
+snippet dc_service_debug "docker compose service - debug container for c/c++ packages" b
+${1:debug}:
+    image: morawskim/opensuse-debug:${2:15.0}
+    volumes:
+        - ./:/app
+    cap_add:
+        - SYS_PTRACE
+    security_opt:
+        - seccomp=unconfined
+    stdin_open: true
+    tty: true
+    working_dir: /app
+    command: /bin/bash
+${0}
+endsnippet
