@@ -29,3 +29,22 @@ ${1:mysql}:
         - "3307:3306"
 ${0}
 endsnippet
+
+snippet dc_service_registry "docker composer service - docker registry" b
+${1:registry}:
+    image: registry:2
+    ports:
+        - 5000:5000
+    environment:
+        REGISTRY_HTTP_TLS_CERTIFICATE: /registry/certs/domain.crt
+        REGISTRY_HTTP_TLS_KEY: /registry/certs/domain.key
+        REGISTRY_AUTH: htpasswd
+        REGISTRY_AUTH_HTPASSWD_PATH: /registry/auth/htpasswd
+        REGISTRY_AUTH_HTPASSWD_REALM: Registry realm
+    volumes:
+        - ./data:/var/lib/registry
+        - ./certs:/registry/certs
+        - ./auth:/registry/auth
+${0}
+endsnippet
+
