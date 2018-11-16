@@ -58,3 +58,15 @@ Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
 Header always set Access-Control-Max-Age "600"
 Header always set Access-Control-Allow-Headers "X-Custom-Header, X-Custom-OTHER"
 endsnippet
+
+snippet aliasing "Aliasing images to a remote server"
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase ${1:/images/}
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (\.gif|\.jpg|\.png)$ [NC]
+    RewriteRule ^(.*)$ %{REQUEST_SCHEME}://${2:domain.com}$1\$1 [L,R=302]
+</IfModule>
+endsnippet
