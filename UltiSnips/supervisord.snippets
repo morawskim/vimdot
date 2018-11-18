@@ -1,0 +1,26 @@
+snippet supervisor_program "example program section" b
+[program:${1:title}]
+command=${2:/command/to/run}
+user=${3:www-data}
+stdout_logfile=${4:/tmp/%(program_name)s.stdout}
+stderr_logfile=${5:/tmp/%(program_name)s.stderr}
+${0}
+endsnippet
+
+snippet log_to_stdout "Redirect stdout from child processes to supervisord " b
+stdout_logfile=/dev/stdout
+stdout_logfile_maxbytes=0
+${0}
+endsnippet
+
+snippet log_to_stderr "Redirect stderr from child processes to supervisord " b
+stderr_logfile=/dev/stderr
+stderr_logfile_maxbytes=0
+${0}
+endsnippet
+
+snippet supervisord "Main config for supervisord running in docker as entrypoint" b
+[supervisord]
+nodaemon=true
+${0}
+endsnippet
