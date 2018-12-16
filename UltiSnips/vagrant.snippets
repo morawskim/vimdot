@@ -5,3 +5,8 @@ config.vm.box = "${1:opensuse/openSUSE-`facter lsbdistrelease`-x86_64}"
 #config.vm.box_version = "${2:1.0.0}"
 ${0}
 endsnippet
+
+snippet forwarded_port "vagrant forward port from guest to host" b
+config.vm.network "forwarded_port", guest: ${1:80}, host: ${2:8080}
+${0}
+endsnippet
