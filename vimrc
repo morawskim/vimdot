@@ -100,7 +100,7 @@ let g:changelog_dateformat = '%Y-%m-%d'
 " let g:UltiSnipsExpandTrigger="<tab>"
 autocmd FileType php UltiSnipsAddFiletypes wordpress
 
-let g:used_javascript_libs = 'jquery,angularjs,angularui,angularuirouter'
+let g:used_javascript_libs = 'jquery,angularjs,angularui,angularuirouter,chai'
 
 " Enable loading the plugin files for specific file types with
 filetype plugin on
