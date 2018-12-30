@@ -163,6 +163,9 @@ au BufNewFile webpack.config.js 0r ~/.vim/skeletons/webpack.config.js
 " gitreview config skeleton
 au BufNewFile .gitreview 0r ~/.vim/skeletons/gitreview
 
+" gitlab-ci skeleton
+au BufNewFile .gitlab-ci.yml 0r ~/.vim/skeletons/gitlab-ci.yml
+
 " Listing snippets with <C-Tab> doesn’t work in vim (in gvim work)
 let g:UltiSnipsListSnippets="<c-j>"
 

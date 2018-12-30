@@ -1,0 +1,16 @@
+stages:
+  - prepare
+  - build
+  - qa
+  - testing
+  - deploy
+
+.hidden-job:
+  stage: prepare
+  image: alpine:last
+  script:
+    - echo Hello
+  artifacts:
+    paths:
+      - ./path
+
