@@ -1,0 +1,85 @@
+snippet job_composer "GitLab CI job - composer" b
+composer:
+  stage: prepare
+  image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
+  script:
+    - php -v
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+  artifacts:
+    paths:
+      - vendor/
+    expire_in: 30 days
+    when: always
+${0}
+endsnippet
+
+snippet job_codestyle "GitLab CI job - codestyle" b
+codestyle:
+  stage: qa
+  image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
+  script:
+    - ./vendor/bin/phpcs --report=junit --extensions=php ./src | tee phpcs-report.xml
+  dependencies:
+    - composer
+  artifacts:
+    when: on_failure
+    reports:
+      junit: phpcs-report.xml
+${0}
+endsnippet
+
+snippet job_security-checker "GitLab CI job - security-checker" b
+security-checker:
+  stage: security
+  image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
+  script:
+    - ./vendor/bin/security-checker security:check ./composer.lock --format text
+  allow_failure: true
+  dependencies:
+    - composer
+${0}
+endsnippet
+
+snippet job_phploc "GitLab CI job - phploc" b
+phploc:
+  stage: qa
+  image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
+  script:
+    - ./vendor/bin/phploc ./src/
+  dependencies:
+    - composer
+${0}
+endsnippet
+
+snippet job_php-lint "GitLab CI job - php-lint" b
+php-lint:
+  stage: qa
+  image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
+  script:
+    - ./vendor/bin/parallel-lint ./src/
+  dependencies:
+    - composer
+${0}
+endsnippet
+
+snippet job_phpmd "GitLab CI job - phpmd" b
+phpmd:
+  stage: qa
+  image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
+  script:
+    - ./vendor/bin/phpmd --ignore-violations-on-exit ./src text cleancode,codesize,controversial,design,naming,unusedcode
+  dependencies:
+    - composer
+${0}
+endsnippet
+
+snippet job_phpcpd "GitLab CI job - phpcpd" b
+phpcpd:
+  stage: qa
+  image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
+  script:
+    - ./vendor/bin/phpcpd --progress ./src/
+  dependencies:
+    - composer
+${0}
+endsnippet
