@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Custom" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+    <description>The custom coding standard.</description>
+
+    <file>src/</file>
+    <exclude-pattern>*/vendor/</exclude-pattern>
+
+    <arg name="basepath" value="."/>
+    <arg name="colors"/>
+    <arg name="parallel" value="75"/>
+    <arg value="np"/>
+
+    <!-- To list all standards run ./vendor/bin/phpcs -i -->
+    <!-- Include the whole PSR2 standard -->
+    <rule ref="PSR2">
+        <!-- to disable a single error -->
+        <!-- <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.SpaceAfterFunction"/> -->
+        <!-- or to disable the whole sniff -->
+        <!-- <exclude name="Squiz.Functions.MultiLineFunctionDeclaration"/> -->
+    </rule>
+
+    <!-- To list all Sniffers run ./vendor/bin/phpcs -e -->
+    <!-- Include some specific sniffs from the Generic standard -->
+    <rule ref="Generic.Commenting.Todo"/>
+
+    <!-- Include the whole YII2 standard -->
+    <!-- You can install them by run `composer require &#45;&#45;dev yiisoft/yii2-coding-standards` -->
+    <!-- <rule ref="./vendor/yiisoft/yii2-coding-standards/Yii2/ruleset.xml"></rule> -->
+</ruleset>
