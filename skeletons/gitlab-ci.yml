@@ -1,8 +1,9 @@
 stages:
   - prepare
-  - build
   - qa
+  - build
   - testing
+  - security
   - deploy
 
 .hidden-job:
