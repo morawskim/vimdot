@@ -172,3 +172,6 @@
 [submodule "bundle/vim-go"]
 	path = bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
+[submodule "bundle/vim-zoom"]
+	path = bundle/vim-zoom
+	url = https://github.com/dhruvasagar/vim-zoom.git
