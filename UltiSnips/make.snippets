@@ -5,3 +5,18 @@ include -.env
 $0
 endsnippet
 
+snippet make_multiline "Static multi line data in makefile " b
+# To display this variable use syntax \`echo "\$\$${1:LOREM}"\`
+define $1
+Similique magnam atque et maiores voluptatibus dolorem sed amet. Sint voluptatem
+enim sequi atque suscipit praesentium voluptatem. Sequi animi id laboriosam quas
+quam quidem asperiores.
+Ducimus sapiente consequatur animi praesentium dicta et qui. Dolorum similique
+nemo nisi eos.
+Repellendus consectetur tempore minima voluptatem reprehenderit porro
+voluptatem. Dignissimos totam nisi et tenetur ullam repellat unde repudiandae.
+You can use \$(VAR_NAME) or \$(shell date)
+endef
+export $1
+$0
+endsnippet
