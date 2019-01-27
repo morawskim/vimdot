@@ -1,0 +1,29 @@
+snippet traefik_terminate_ssl "Traefik simple config for SSL terminate" b
+debug = false
+logLevel = "ERROR" #DEBUG
+
+defaultEntryPoints = ["https"]
+[entryPoints]
+  [entryPoints.https]
+  address = "${1::7171}"
+      [entryPoints.https.tls]
+        [[entryPoints.https.tls.certficates]]
+        certFile = "${2:/ssl/server.crt}"
+        keyFile = "${3:/ssl/server.key}"
+
+
+[file]
+
+[backends]
+  [backends.backend1]
+    [backends.backend1.servers.server1]
+       url = "${4:http://127.0.0.1/}"
+
+[frontends]
+  [frontends.frontend1]
+      backend = "backend1"
+      passHostHeader = true
+      [frontends.frontend1.routes.example]
+          rule = "Host:${5:test.lvh.me}"
+$0
+endsnippet
