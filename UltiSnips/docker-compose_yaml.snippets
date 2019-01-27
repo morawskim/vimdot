@@ -108,3 +108,17 @@ ${1:traefik}:
 $0
 endsnippet
 
+snippet dc_service_ssl_terminate_traefik "docker composer service - terminate SSL by traefik" b
+${1:traefik}:
+    image: traefik
+    command: --web
+    network_mode: "host"
+    ports:
+        - "7171:7171"
+        - "8080:8080"
+    volumes:
+        - ./traefik.toml:/etc/traefik/traefik.toml
+        - ./${2:server.crt}:/ssl/$2
+        - ./${3:server.key}:/ssl/$3
+$0
+endsnippet
