@@ -11,3 +11,12 @@ snippet crp "repo path" b
     "url": "${1:path}"
 }${0}
 endsnippet
+
+snippet autoload "composer autoload PSR4" b
+"autoload": {
+    "psr-4": {
+        "${1:Company\\Sub}": "src/${1/[\\]+/\//g}"
+    }
+},
+$0
+endsnippet
