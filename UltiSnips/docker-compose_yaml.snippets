@@ -125,3 +125,14 @@ ${1:traefik}:
         - ./${3:server.key}:/ssl/$3
 $0
 endsnippet
+
+snippet dc_service_cli "docker compose service - cli (yarn, php)" b
+${1:cli}:
+    image: edbizarro/gitlab-ci-pipeline-php:${2:7.2}
+    volumes:
+        - ./:${3:/app}
+    user: '1000'
+    tty: true
+    working_dir: $3
+    ${0}
+endsnippet
