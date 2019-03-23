@@ -131,7 +131,7 @@ ${1:cli}:
     image: edbizarro/gitlab-ci-pipeline-php:${2:7.2}
     volumes:
         - ./:${3:/app}
-    user: '1000'
+    user: ${MY_UID:-1000}
     tty: true
     working_dir: $3
     ${0}
