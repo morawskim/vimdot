@@ -83,3 +83,14 @@ phpcpd:
     - composer
 ${0}
 endsnippet
+
+snippet job_phpstan_deprecation "GitLab CI job - phpstan deprecation rules" b
+phpstan-deprecation-rules:
+  stage: qa
+  image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
+  script:
+    - ./vendor/bin/phpstan analyse --no-progress --no-interaction ./src
+  dependencies:
+    - composer
+${0}
+endsnippet
