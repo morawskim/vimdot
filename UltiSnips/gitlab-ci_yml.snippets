@@ -109,3 +109,14 @@ phpstan-deprecation-rules:
     - composer
 ${0}
 endsnippet
+
+snippet job_phpcf "GitLab CI job - phpcf checks compatibility of your code with new interpreter versions" b
+phpcf:
+  stage: qa
+  image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
+  script:
+    - ./vendor/bin/phpcf --target 7.3 ./src
+  dependencies:
+    - composer
+${0}
+endsnippet
