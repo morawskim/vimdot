@@ -9,7 +9,22 @@ composer:
     paths:
       - vendor/
     expire_in: 30 days
-    when: always
+    when: on_success
+${0}
+endsnippet
+
+snippet job_yarn "GitLab CI job - yarn" b
+yarn:
+  stage: prepare
+  image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
+  script:
+    - yarn -v
+    - yarn
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 30 days
+    when: on_success
 ${0}
 endsnippet
 
