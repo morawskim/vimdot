@@ -120,3 +120,19 @@ phpcf:
     - composer
 ${0}
 endsnippet
+
+snippet job_assets "GitLab CI job - build assets" b
+assets:
+  stage: build
+  image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
+  script:
+    - yarn build
+  dependencies:
+    - yarn
+  artifacts:
+    paths:
+      - ${2:assets/build}
+    expire_in: 30 days
+    when: on_success
+${0}
+endsnippet
