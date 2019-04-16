@@ -15,3 +15,15 @@ RUN docker-php-ext-configure gd \
     docker-php-ext-install gd
 ${0}
 endsnippet
+
+snippet docker_php_pgsql "Install php pdo_pgsql extension in official php debian image" b
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        libpq-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Install the PHP pdo_pgsql extention
+RUN docker-php-ext-install pdo_pgsql
+${0}
+endsnippet
