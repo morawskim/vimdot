@@ -134,5 +134,16 @@ ${1:cli}:
     user: ${MY_UID:-1000}
     tty: true
     working_dir: $3
-    ${0}
+${0}
+endsnippet
+
+snippet dc_service_wordpress_scan "docker compose service - wordpress scan" b
+${1:wpscan}:
+    image: wpscanteam/wpscan
+    depends_on:
+        - ${2:blog}
+    links:
+        - $2
+    command: --url ${3:http://$2} --enumerate --plugins-detection mixed --format cli-no-colour --output /proc/self/fd/1
+${0}
 endsnippet
