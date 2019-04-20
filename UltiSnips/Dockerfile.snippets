@@ -27,3 +27,10 @@ RUN apt-get update && \
 RUN docker-php-ext-install pdo_pgsql
 ${0}
 endsnippet
+
+snippet docker_composer "Install composer" b
+RUN curl -sS https://getcomposer.org/installer | php -- \
+         --filename=composer \
+         --install-dir=/usr/local/bin
+${0}
+endsnippet
