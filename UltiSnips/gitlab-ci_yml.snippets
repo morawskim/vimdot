@@ -136,3 +136,18 @@ assets:
     when: on_success
 ${0}
 endsnippet
+
+snippet job_codeception "GitLab CI job - run unit test (codeception && yii2)" b
+codeception:
+  stage: testing
+  image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
+  services:
+    - mysql:${2:5.6}
+  script:
+    - ./init --env=CI --overwrite=All
+    - ./yii migrate/up --interactive 0
+    - cd ./common && ../vendor/bin/codecept run unit
+  dependencies:
+    - composer
+${0}
+endsnippet
