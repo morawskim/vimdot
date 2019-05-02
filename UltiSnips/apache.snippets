@@ -114,3 +114,9 @@ SetEnvIf X-Forwarded-Proto "https" HTTPS=on
 ${0}
 endsnippet
 
+snippet authorization_header_to_php "Passing Authorization header to PHP" b
+# Passing Authorization header to PHP’s $_SERVER[‘HTTP_AUTHORIZATION’]
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+${0}
+endsnippet
+
