@@ -120,3 +120,13 @@ SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
 ${0}
 endsnippet
 
+snippet no_cache "Apache disable cache for pages/files contain sensitive data" b
+<FilesMatch "${1:\.(pdf|doc|docx)$}">
+    FileETag None
+    Header unset ETag
+    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+</FilesMatch>
+${0}
+endsnippet
