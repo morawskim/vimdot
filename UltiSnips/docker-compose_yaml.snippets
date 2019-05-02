@@ -147,3 +147,16 @@ ${1:wpscan}:
     command: --url ${3:http://$2} --enumerate --plugins-detection mixed --format cli-no-colour --output /proc/self/fd/1
 ${0}
 endsnippet
+
+snippet dc_service_runner "docker compose service - runner (yarn, php)" b
+${1:cli}:
+    image: edbizarro/gitlab-ci-pipeline-php:${2:7.2}
+    volumes:
+        - ./:${3:/app}
+    user: ${MY_UID:-1000}
+    stdin_open: true
+    tty: true
+    working_dir: $3
+    command: /bin/bash
+${0}
+endsnippet
