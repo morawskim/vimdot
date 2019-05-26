@@ -19,7 +19,7 @@ yarn:
   image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
   script:
     - yarn -v
-    - yarn
+    - yarn install --frozen-lock-file
   artifacts:
     paths:
       - node_modules/
