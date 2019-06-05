@@ -160,3 +160,18 @@ ${1:cli}:
     command: /bin/bash
 ${0}
 endsnippet
+
+snippet dc_service_newman "docker compose service - newman" b
+${1:newman}:
+    image: postman/newman:alpine
+    volumes:
+        - ./${2:integration-tests}:/tests
+    depends_on:
+        - traefik
+    links:
+        - traefik
+    external_links:
+        - traefik:${3:domain.lvh.me}
+    command: run --environment ${4:/tests/environments/docker.postman_environment.json} --reporters cli ${5:/tests/tests/login/postman_collection.json}
+${0}
+endsnippet
