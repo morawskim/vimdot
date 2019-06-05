@@ -175,3 +175,20 @@ ${1:newman}:
     command: run --environment ${4:/tests/environments/docker.postman_environment.json} --reporters cli ${5:/tests/tests/login/postman_collection.json}
 ${0}
 endsnippet
+
+snippet dc_service_dnsmasq "docker compose service - dnsmasq" b
+${1:dnsmasq}:
+    image: jpillora/dnsmasq
+    volumes:
+        - ${2:./dnsmasq}:/etc/dnsmasq.conf
+    cap_add:
+        - NET_ADMIN
+    ports:
+        - "53:53/tcp"
+        - "53:53/udp"
+        - 5380:8080
+    environments:
+        - HTTP_USER=${3:foo}
+        - HTTP_PASS=${4:bar}
+${0}
+endsnippet
