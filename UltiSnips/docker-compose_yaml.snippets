@@ -192,3 +192,18 @@ ${1:dnsmasq}:
         - HTTP_PASS=${4:bar}
 ${0}
 endsnippet
+
+snippet dc_service_phpmyadmin "docker compose service - phpmyadmin" b
+${1:phpmyadmin}:
+    image: phpmyadmin/phpmyadmin:4.8
+    links:
+        - ${2:mysql}
+    environment:
+        - PMA_HOST=$2
+    labels:
+        traefik.backend: "phpmyadmin"
+        traefik.frontend.rule: "Host:phpmyadmin.lvh.me"
+        #htpasswd -nbB user password | sed -e s/\\$/\\$\\$/g
+        traefik.frontend.auth.basic: '${3}'
+${0}
+endsnippet
