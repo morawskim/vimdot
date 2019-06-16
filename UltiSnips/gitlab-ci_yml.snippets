@@ -151,3 +151,17 @@ codeception:
     - composer
 ${0}
 endsnippet
+
+snippet job_hadolint "GitLab CI job - run hadolint (Dockerfile linter)" b
+hadolint:
+  stage: qa
+  image: hadolint/hadolint:v1.16.3-debian
+  script:
+    - hadolint $1:frontend/Dockerfile}
+    - find -iname 'Dockerfile*' | xargs --max-lines=1 hadolint
+  dependencies: []
+  only:
+    changes:
+      - $1
+${0}
+endsnippet
