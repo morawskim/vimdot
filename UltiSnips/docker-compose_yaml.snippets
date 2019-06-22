@@ -207,3 +207,16 @@ ${1:phpmyadmin}:
         traefik.frontend.auth.basic: '${3}'
 ${0}
 endsnippet
+
+snippet dc_service_nodejs "docker compose service - nodejs" b
+${1:nodejs}:
+    image: node:${2:10}-alpine
+    environment:
+        - NODE_ENV=${3:production}
+    user: "node"
+    working_dir: ${4:/home/node/app}
+    volumes:
+        - ./:$4
+    command: "${5:npm start}"
+${0}
+endsnippet
