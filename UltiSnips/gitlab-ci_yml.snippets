@@ -165,3 +165,12 @@ hadolint:
       - $1
 ${0}
 endsnippet
+
+snippet cache "Gitlab CI global cache" b
+cache:
+  key: "$CI_JOB_NAME-$CI_JOB_ID"
+  paths:
+    - /home/php/.composer/cache
+    - /home/php/.cache/yarn/v1
+    - /home/php/.npm
+endsnippet
