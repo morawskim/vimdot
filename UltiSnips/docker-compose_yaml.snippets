@@ -134,6 +134,8 @@ ${1:cli}:
     user: ${MY_UID:-1000}
     tty: true
     working_dir: $3
+    environment:
+        COMPOSER_AUTH: '{"github-oauth": {"github.com": "${COMPOSER_GITHUB_OAUTH}"}}'
 ${0}
 endsnippet
 
