@@ -249,3 +249,13 @@ ${1:adminer}:
         traefik.frontend.rule: "Host:${4:adminer.lvh.me}"
 ${0}
 endsnippet
+
+snippet dc_service_php_apache "docker compose service - php-apache" b
+${1:apache}:
+    image: php:${2:7.2-apache}
+    volumes:
+        - ${3:./}:/var/www/html
+    ports:
+        - 80:80
+${0}
+endsnippet
