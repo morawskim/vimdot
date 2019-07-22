@@ -10,3 +10,18 @@ snippet forwarded_port "vagrant forward port from guest to host" b
 config.vm.network "forwarded_port", guest: ${1:80}, host: ${2:8080}
 ${0}
 endsnippet
+
+snippet sync_folder_permissions "Synced folder: permissions workarounds for Windows"
+# On windows, default synced folders get full permissions, unless explicitly called out.
+# This causes some errors. So we explicitly call out mount options.
+if (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+     config.vm.synced_folder ".", "/vagrant", mount_options: ["dmode=700,fmode=600"]
+else
+     config.vm.synced_folder ".", "/vagrant"
+end
+
+#config.vm.synced_folder "www", "/var/www-shared",
+#        group: "root", owner: "root",
+#        mount_options: ["dmode=775,fmode=664"]
+$0
+endsnippet
