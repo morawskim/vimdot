@@ -25,3 +25,11 @@ end
 #        mount_options: ["dmode=775,fmode=664"]
 $0
 endsnippet
+
+snippet vb_resources "Change guest resources (cpu & ram) for vb provider" b
+config.vm.provider "virtualbox" do |vb|
+  vb.memory = 4096
+  vb.cpus = 3
+end
+${0}
+endsnippet
