@@ -1,0 +1,23 @@
+snippet service_autostart_vb "Autostart virtual box machine" b
+[Unit]
+Description=Autostart vb machine ${1:VirtualBoxName}
+After=network.target vboxdrv.service
+Before=shutdown.target
+
+[Service]
+User=${2:username}
+Type=forking
+Restart=no
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=yes
+
+ExecStart=/usr/bin/VBoxManage startvm $1 --type headless
+ExecStop=/usr/bin/VBoxManage controlvm $1 acpipowerbutton
+
+[Install]
+WantedBy=multi-user.target
+$0
+endsnippet
