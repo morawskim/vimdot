@@ -1,0 +1,10 @@
+snippet mget "Pobranie wartosci z mapy o wielu poziomach zagniezdzeniach" b
+@function mget($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key)
+    }
+
+    @return $map;
+}
+$0
+endsnippet
