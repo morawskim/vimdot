@@ -259,3 +259,13 @@ ${1:apache}:
         - 80:80
 ${0}
 endsnippet
+
+snippet dc_service_elasticsearch "docker compose service - elasticsearch" b
+elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${1:7.2.0}
+    ports:
+        - 9200:9200
+    environment:
+        - discovery.type=single-node
+$0
+endsnippet
