@@ -269,3 +269,11 @@ elasticsearch:
         - discovery.type=single-node
 $0
 endsnippet
+
+snippet dc_service_puppeteer "docker compose service - puppeteer-core" b
+puppeteer:
+    image: morawskim/puppeteer-core
+    volumes:
+        - ./:/home/node/app
+$0
+endsnippet
