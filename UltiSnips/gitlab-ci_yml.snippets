@@ -208,3 +208,13 @@ deploy_production:
 $0
 endsnippet
 
+snippet job_npm_audit "Job to audit npm packages (check for vulnerabilities)" b
+npm-audit:
+  stage: qa
+  image: ${1:node:8.9-alpine}
+  script:
+    - npm run audit-ci
+  allow_failure: true
+  dependencies:
+    - npm
+endsnippet
