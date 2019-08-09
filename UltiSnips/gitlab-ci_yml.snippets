@@ -174,3 +174,37 @@ cache:
     - /home/php/.cache/yarn/v1
     - /home/php/.npm
 endsnippet
+
+snippet job_deploy_git "Job to deploy by git-fetch" b
+deploy_production:
+  stage: deploy
+  image: edbizarro/gitlab-ci-pipeline-php:5.6
+  environment:
+    name: production
+    url: https://ssorder.snlb.pl
+#  only:
+#    - master
+  when: manual
+  dependencies:
+    - composer
+    - assets
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    # brak obslugi bledow ssh
+    - echo $PROD_SSORDER_PATH
+    - ssh -p22 sensilabs@192.168.15.22 "rm -rf ${PROD_SSORDER_PATH}/vendor"
+    - ssh -p22 sensilabs@192.168.15.22 "rm -rf ${PROD_SSORDER_PATH}/frontend/web/assets/build"
+    - scp -P22 -r ./vendor sensilabs@192.168.15.22:${PROD_SSORDER_PATH}/
+    - scp -P22 -r ./frontend/web/assets/build sensilabs@192.168.15.22:${PROD_SSORDER_PATH}/frontend/web/assets/
+    - ssh -p22 sensilabs@192.168.15.22 "cd ${PROD_SSORDER_PATH}/ && git fetch origin && git checkout $CI_COMMIT_SHA"
+    - ssh -p22 sensilabs@192.168.15.22 "cd ${PROD_SSORDER_PATH} && ./yii migrate/up --interactive 0"
+    - >
+      curl -X POST -H 'Content-Type: application/json' --data '{"text":"Nowa wersja ssorder!"}' https://chat.sensilabs.pl/hooks/$PROD_ROCKET_CHAT_NOTIFY_TOKEN
+$0
+endsnippet
+
