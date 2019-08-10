@@ -39,3 +39,8 @@ snippet healthcheck_curl "Healthcheck with curl" b
 HEALTHCHECK --interval=30s --timeout=15s CMD curl --fail ${1:http://localhost/} || exit 1
 $0
 endsnippet
+
+snippet copy "Copy with chown" b
+COPY --chown=${1:www-data}:${2:www-data} ${3:./} ${4:/app}
+$0
+endsnippet
