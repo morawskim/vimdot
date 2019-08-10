@@ -277,3 +277,12 @@ puppeteer:
         - ./:/home/node/app
 $0
 endsnippet
+
+snippet healthcheck "docker compose healthcheck" b
+healthcheck:
+    test: curl --fail http://localhost/ || exit 1
+    interval: 30s
+    timeout: 15s
+    retries: 3
+$0
+endsnippet
