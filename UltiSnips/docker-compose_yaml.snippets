@@ -296,3 +296,11 @@ mailhog:
 $0
 endsnippet
 
+snippet dc_service_whoami "docker compose service - whoami" b
+whoami:
+    image: emilevauge/whoami:latest
+    labels:
+        traefik.backend: "whoami"
+        traefik.frontend.rule: "Host:whoami.lvh.me"
+$0
+endsnippet
