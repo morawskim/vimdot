@@ -218,3 +218,12 @@ npm-audit:
   dependencies:
     - npm
 endsnippet
+
+snippet wait_for_service  "Wait for service use curl" b
+# wait for db (retry X times)
+# Exit code 52 The server didn't reply anything, which here is considered an error
+# Exit code 56 Failure in receiving network data
+# https://github.com/yiisoft/yii2/blob/9767fa978ebe005fe54bd82209b967bb8c132930/.gitlab-ci.yml#L83
+docker-compose run --rm php bash -c 'while [ true ]; do curl ${1:postgres:5432}; if [ $? == 52 ]; then break; fi; ((c++)) && ((c==25)) && break; sleep 2; done'
+$0
+endsnippet
