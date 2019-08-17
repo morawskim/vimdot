@@ -169,6 +169,9 @@ au BufNewFile .gitlab-ci.yml 0r ~/.vim/skeletons/gitlab-ci.yml
 " phpcs skeleton
 au BufNewFile .phpcs.xml,phpcs.xml,.phpcs.xml.dist,phpcs.xml.dist 0r ~/.vim/skeletons/phpcs.xml
 
+" phpunit skeleton
+au BufNewFile phpunit.xml,phpunit.xml.dist 0r ~/.vim/skeletons/phpunit.xml.dist
+
 " Listing snippets with <C-Tab> doesn’t work in vim (in gvim work)
 let g:UltiSnipsListSnippets="<c-j>"
 
