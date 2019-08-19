@@ -3,3 +3,27 @@ function checkInternet() {
     return !!navigator.onLine;
 }
 endsnippet
+
+snippet async_error_handling_fn "error handling with async and await (returns go like responses)" b
+/**
+ * @description ### Returns Go / Lua like responses(data, err)
+ * when used with await
+ *
+ * @link https://dev.to/sobiodarlington/better-error-handling-with-async-await-2e5m
+ * @link https://www.npmjs.com/package/await-to-js
+ *
+ * @example
+ * async function userProfile() {
+ *   let [user, userErr] = await handle(getUser());
+ *
+ *   if(userErr) throw new Error('Could not fetch user details');
+ *   //....
+ * }
+ */
+const handle = (promise) => {
+  return promise
+    .then(data => ([data, undefined]))
+    .catch(error => Promise.resolve([undefined, error]));
+}
+$0
+endsnippet
