@@ -8,3 +8,25 @@ snippet mget "Pobranie wartosci z mapy o wielu poziomach zagniezdzeniach" b
 }
 $0
 endsnippet
+
+snippet z-index "Organizowanie wartości z-index"
+// https://jonsuh.com/blog/organizing-z-index-with-sass/
+// usage:
+/*
+.selector {
+  @include z-index(popper);
+}
+*/
+$z-index: (
+    popper : 200,
+);
+
+@function z-index($key) {
+    @return map-get($z-index, $key);
+}
+
+@mixin z-index($key) {
+    z-index: z-index($key);
+}
+$0
+endsnippet
