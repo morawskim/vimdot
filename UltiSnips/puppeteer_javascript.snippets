@@ -1,0 +1,46 @@
+snippet puppeteer_lunch_docker "puppeteer - lunch in docker" b
+(async () => {
+    const browser = await puppeteer.launch({
+        headless: true,
+        executablePath: '/usr/bin/google-chrome',
+        args: ['--no-sandbox', '--disable-setuid-sandbox','--disable-dev-shm-usage'],
+        defaultViewport: {width: 1920, height: 1080}
+    });
+    const page = await browser.newPage();
+    await page.goto('${1:https://google.com}');
+    browser.close();
+})();
+${0}
+endsnippet
+
+snippet evaluate "puppeteer - page evaluate" b
+const data = await page.evaluate( (arg1) => {
+    return document.querySelector(arg1).innerHTML;
+}, arg1);
+console.log(data);
+${0}
+endsnippet
+
+snippet screenshot "puppeteer - full page screenshot" b
+await page.screenshot({path: 'full.png', fullPage: true});
+${0}
+endsnippet
+
+snippet puppeteer_debug_lunch "puppeteer - lunch for debug"
+const browser = await puppeteer.launch({
+   headless: false,
+   slowMo: 1000 // slow down by 1000ms
+});
+page.on('console', msg => console.log('PAGE LOG:', msg.text()));
+$0
+endsnippet
+
+snippet viewport "puppeteer - set page viewport"
+await page.setViewport({ width: 1920, height: 1080 });
+$0
+endsnippet
+
+snippet waitForSelector "puppeteer - waits until the ELEMENT is rendered"
+await page.waitForSelector('${1:.selector}');
+$0
+endsnippet
