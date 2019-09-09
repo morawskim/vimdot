@@ -1,0 +1,33 @@
+snippet imrc "Import React and Component" b
+import React, { Component } from 'react'
+$0
+endsnippet
+
+snippet rfc "React function component with TS" b
+import React from "react";
+
+interface ${1:ExampleComponent}Props {
+    ${2}
+}
+
+const $1Component: React.FunctionComponent<$1Props> = props => {
+    return (${3:<span></span>});
+};
+
+$1Component.defaultProps = {
+};
+
+export default $1Component;
+$0
+endsnippet
+
+snippet rcc "React Component"
+import React, { Component } from 'react'
+
+export default class ${1:HelloComponent} extends Component {
+  render() {
+    return (${2:<div></div>});
+  }
+}
+$0
+endsnippet
