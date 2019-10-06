@@ -27,3 +27,22 @@ const handle = (promise) => {
 }
 $0
 endsnippet
+
+snippet onerror "window.onerror" b
+window.addEventListener('error', function(e) {
+    // prevents the firing of the default event handler.
+    e.preventDefault();
+
+    const {message, filename, lineno, colno, error} = e;
+    let stack = null;
+    if (error && error instanceof Error) {
+        stack = error.stack || null;
+        // require error-stack-parser npm package
+        //stack = ErrorStackParser.parse(error) || []
+    }
+    const userAgent = navigator.userAgent;
+    console.error('ERROR:',  message, filename, lineno, colno, stack, userAgent);
+});
+$0
+endsnippet
+
