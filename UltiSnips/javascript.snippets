@@ -55,3 +55,25 @@ const lang = locale.split('-')[0];
 $0
 endsnippet
 
+snippet replacePlaceholders "Replace placeholders in string" b
+/**
+ *
+ * @example
+ * replacePlaceholders("Hello %NAME%", {"NAME": 'marcin'});
+ * //Hello marcin
+ *
+ * @param {string} str
+ * @param {object} replacements
+ */
+function replacePlaceholders(str, replacements) {
+    if (typeof replacements !== 'object') {
+        return str;
+    }
+
+    return str.replace(/%\w+%/, (phase) => {
+        const key = phase.slice(1, -1);
+        return replacements[key] || phase;
+    });
+}
+$0
+endsnippet
