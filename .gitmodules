@@ -175,3 +175,6 @@
 [submodule "bundle/vim-zoom"]
 	path = bundle/vim-zoom
 	url = https://github.com/dhruvasagar/vim-zoom.git
+[submodule "bundle/vim-carbon-now-sh"]
+	path = bundle/vim-carbon-now-sh
+	url = https://github.com/kristijanhusak/vim-carbon-now-sh.git

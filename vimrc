@@ -232,3 +232,9 @@ set updatecount =100
 set undofile
 set undodir     =$HOME/.vim/files/undo/
 set viminfo     ='100,n$HOME/.vim/files/info/viminfo
+
+" query string that will be passed to https://carbon.now.sh (for plugin vim-carbon-now-sh)
+let g:carbon_now_sh_options =
+\ { 'ln': 'true',
+  \ 't': 'nord',
+  \ 'fm': 'Monoid' }
