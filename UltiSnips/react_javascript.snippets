@@ -3,7 +3,18 @@ import React, { Component } from 'react'
 $0
 endsnippet
 
-snippet rfc "React function component with TS" b
+snippet rfc "React functional component"
+import React from 'react';
+
+export default function ${1:Component}(props) {
+    return (
+        ${2:<h1>$1</h1>}
+    );
+}
+$0
+endsnippet
+
+snippet rfcts "React function component with TS" b
 import React from "react";
 
 interface ${1:ExampleComponent}Props {
