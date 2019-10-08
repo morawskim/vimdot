@@ -80,3 +80,17 @@ export default class ErrorBoundary extends Component {
 $0
 endsnippet
 
+snippet hoc "React typescript HoC"
+import React from 'react';
+
+const with${1:ActionColumns} = <P extends object>(Component: React.ComponentType<P>) => {
+    return class With$1 extends React.Component<P> {
+        render() {
+            return <Component {...this.props as P} />;
+        }
+    }
+};
+
+export default with$1;
+$0
+endsnippet
