@@ -178,3 +178,6 @@
 [submodule "bundle/vim-carbon-now-sh"]
 	path = bundle/vim-carbon-now-sh
 	url = https://github.com/kristijanhusak/vim-carbon-now-sh.git
+[submodule "bundle/logstash"]
+	path = bundle/logstash
+	url = https://github.com/robbles/logstash.vim.git
