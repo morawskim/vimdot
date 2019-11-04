@@ -1,4 +1,13 @@
+# We want to set the viewport's width to be equal to the actual device's screen width
+# We do not want any zoom initially
+# We do not wish to shrink the content to fit the viewport
 snippet viewport "add the responsive viewport meta tag" b
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+$0
+endsnippet
+
+# Forces the document to be rendered using the latest document rendering mode available, if viewed in Internet Explorer.
+snippet x-ua-compatible "add the responsive viewport meta tag" b
+<meta http-equiv="x-ua-compatible" content="ie=edge">
 $0
 endsnippet
