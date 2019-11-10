@@ -44,3 +44,21 @@ snippet waitForSelector "puppeteer - waits until the ELEMENT is rendered"
 await page.waitForSelector('${1:.selector}');
 $0
 endsnippet
+
+snippet puppeteerStart "puppeteer - start" b
+const puppeteer = require('puppeteer');
+
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto('${1:https://example.com}');
+  $0
+  await browser.close();
+})();
+endsnippet
+
+snippet puppeteerPermissions "puppeteer - page permissions" b
+const context = browser.defaultBrowserContext();
+context.overridePermissions("${1:https://example.com}", ["geolocation", "notifications"]);
+$0
+endsnippet
