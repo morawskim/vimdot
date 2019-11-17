@@ -1,0 +1,87 @@
+snippet js_loader "webpack loader for js files" b
+// require packages @babel/core babel-loader @babel/preset-env
+{
+  test: /\.js$/,
+  include: path.join(__dirname, 'src'),
+  use: {
+    loader: 'babel-loader',
+    options: {
+      presets: [
+        '@babel/preset-env',
+      ]
+    }
+  }
+},
+$0
+endsnippet
+
+snippet jsx_loader "webpack loader for jsx files" b
+// require packages @babel/core babel-loader @babel/preset-env @babel/preset-react
+{
+  test: /\.jsx?$/,
+  include: path.join(__dirname, 'src'),
+  use: {
+    loader: 'babel-loader',
+    options: {
+      presets: [
+        '@babel/preset-env',
+        [
+          '@babel/preset-react',
+          {development: process.env.NODE_ENV !== 'production'}
+        ]
+      ]
+    }
+  }
+},
+$0
+endsnippet
+
+snippet tsx_loader "webpack loader for tsx files" b
+// require packages typescript and ts-loader. And also tsconfig.json
+// @babel/core babel-loader @babel/preset-env @babel/preset-react
+{
+    test: /\.tsx?$/,
+    use: [
+        {
+            loader: 'babel-loader',
+            options: {
+                presets: [
+                    '@babel/preset-env',
+                    [
+                        '@babel/preset-react',
+                        {development: process.env.NODE_ENV !== 'production'}
+                    ]
+                ]
+            }
+        },
+        'ts-loader'
+    ],
+    exclude: /node_modules/
+}
+$0
+endsnippet
+
+snippet devServer "webpack devServer configuration" b
+// require package webpack-dev-server
+devServer: {
+  contentBase: "${1:./public}",
+  host: '0.0.0.0',
+  port: ${2:8080},
+  //devServerHotReloadSettings
+}
+$0
+endsnippet
+
+snippet devServerHotReloadSettings "webpack devServer configuration for hot reload" b
+hot: true, // this enables hot reload
+inline: true, // use inline method for hmr
+/**
+ * Remember to add
+ *
+ * plugins: [ 
+ *    new webpack.HotModuleReplacementPlugin()
+ * ]
+ *
+*/
+$0
+endsnippet
