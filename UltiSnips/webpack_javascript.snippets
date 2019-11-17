@@ -78,10 +78,21 @@ inline: true, // use inline method for hmr
 /**
  * Remember to add
  *
- * plugins: [ 
+ * plugins: [
  *    new webpack.HotModuleReplacementPlugin()
  * ]
  *
 */
+$0
+endsnippet
+
+snippet externals "webpack importing module from global variable" b
+// When importing a module whose path matches one of the following, just
+// assume a corresponding global variable exists and use that instead.
+// This is important because it allows us to avoid bundling all of our
+// dependencies, which allows browsers to cache those libraries between builds.
+externals: {
+    "${1:moduleName}": "${2:globalVariable}",
+}
 $0
 endsnippet
