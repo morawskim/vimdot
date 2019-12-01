@@ -96,3 +96,15 @@ externals: {
 }
 $0
 endsnippet
+
+snippet BundleAnalyzerPlugin "webpack BundleAnalyzerPlugin with CI configuration" b
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+//const path = require('path');
+new BundleAnalyzerPlugin({
+    analyzerMode: 'disabled',
+    generateStatsFile: true,
+    statsOptions: { source: false },
+    statsFilename: process.env.CI ? path.join(process.env.CI_PROJECT_DIR, 'frontend/webpack/stats.json') : 'stats.json',
+});
+$0
+endsnippet
