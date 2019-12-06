@@ -77,3 +77,9 @@ function replacePlaceholders(str, replacements) {
 }
 $0
 endsnippet
+
+snippet viewport "browser viewport" b
+const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+$0
+endsnippet
