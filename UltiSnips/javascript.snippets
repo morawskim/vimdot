@@ -105,3 +105,23 @@ function isInViewport(elem) {
 };
 $0
 endsnippet
+
+snippet sumObjectsByKey "sum of two or more objects by key" b
+/*
+ * @example
+ * const a = {"a": 12, "b": 3}
+ * const b = {"a": 3, "b": 2,c: 7}
+ * sumObjectsByKey(a,b)
+ * // result { a: 15, b: 5, c: 7 }
+ */
+function sumObjectsByKey(...objects) {
+    return objects.reduce((a, b) => {
+        for (let k in b) {
+            if (b.hasOwnProperty(k))
+                a[k] = (a[k] || 0) + b[k];
+        }
+        return a;
+    }, {});
+}
+$0
+endsnippet
