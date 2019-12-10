@@ -28,6 +28,15 @@ RUN docker-php-ext-install pdo_pgsql
 ${0}
 endsnippet
 
+snippet phpMongoDb "Install php mongodb extension in official php debian image" b
+# The SCRAM_SHA_1 authentication mechanism requires libmongoc built with ENABLE_SSL
+# This require package: libssl-dev
+# aptGetInstall
+
+RUN pecl install  mongodb && docker-php-ext-enable mongodb
+$0
+endsnippet
+
 snippet docker_composer "Install composer" b
 RUN curl -sS https://getcomposer.org/installer | php -- \
          --filename=composer \
@@ -42,5 +51,14 @@ endsnippet
 
 snippet copy "Copy with chown" b
 COPY --chown=${1:www-data}:${2:www-data} ${3:./} ${4:/app}
+$0
+endsnippet
+
+snippet aptGetInstall "install package by apt-get and clean after install" b
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        ${1:packageName} && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 $0
 endsnippet
