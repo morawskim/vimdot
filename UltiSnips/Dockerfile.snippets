@@ -1,11 +1,6 @@
-snippet docker_php_gd "Install php gd extension in official php debian image" b
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        libjpeg-dev \
-        libpng12-dev \
-        libfreetype6-dev && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+snippet phpGd "Install php gd extension in official php debian image" b
+# Required packages: libjpeg-dev libpng12-dev libfreetype6-dev
+# aptGetInstall
 
 # Install the PHP gd library
 RUN docker-php-ext-configure gd \
@@ -16,14 +11,10 @@ RUN docker-php-ext-configure gd \
 ${0}
 endsnippet
 
-snippet docker_php_pgsql "Install php pdo_pgsql extension in official php debian image" b
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        libpq-dev && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+snippet phpPgsql "Install php pdo_pgsql extension in official php debian image" b
+# Required packages: libpq-dev
+# aptGetInstall
 
-# Install the PHP pdo_pgsql extention
 RUN docker-php-ext-install pdo_pgsql
 ${0}
 endsnippet
@@ -45,14 +36,14 @@ RUN docker-php-ext-install intl
 ${0}
 endsnippet
 
-snippet docker_composer "Install composer" b
+snippet composer "Install composer" b
 RUN curl -sS https://getcomposer.org/installer | php -- \
          --filename=composer \
          --install-dir=/usr/local/bin
 ${0}
 endsnippet
 
-snippet healthcheck_curl "Healthcheck with curl" b
+snippet healthcheckCurl "Healthcheck with curl" b
 HEALTHCHECK --interval=30s --timeout=15s CMD curl --fail ${1:http://localhost/} || exit 1
 $0
 endsnippet
