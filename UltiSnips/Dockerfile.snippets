@@ -37,6 +37,14 @@ RUN pecl install  mongodb && docker-php-ext-enable mongodb
 $0
 endsnippet
 
+snippet phpIntl "Install php intl extension in official php debian image" b
+# require package libicu-dev
+# aptGetInstall
+
+RUN docker-php-ext-install intl
+${0}
+endsnippet
+
 snippet docker_composer "Install composer" b
 RUN curl -sS https://getcomposer.org/installer | php -- \
          --filename=composer \
