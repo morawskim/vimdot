@@ -43,6 +43,7 @@ $0
 endsnippet
 
 snippet composer "Install composer" b
+# require unzip or git to download packages
 RUN curl -sS https://getcomposer.org/installer | php -- \
          --filename=composer \
          --install-dir=/usr/local/bin
