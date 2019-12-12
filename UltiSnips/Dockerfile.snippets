@@ -36,6 +36,12 @@ RUN docker-php-ext-install intl
 ${0}
 endsnippet
 
+snippet phpXdebug "Install php xdebug extension in official php debian image"
+# Install xdebug
+RUN pecl install xdebug-${1:2.8.1} && docker-php-ext-enable xdebug
+$0
+endsnippet
+
 snippet composer "Install composer" b
 RUN curl -sS https://getcomposer.org/installer | php -- \
          --filename=composer \
