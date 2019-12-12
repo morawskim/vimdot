@@ -61,6 +61,7 @@ $0
 endsnippet
 
 snippet aptGetInstall "install package by apt-get and clean after install" b
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         ${1:packageName} && \
