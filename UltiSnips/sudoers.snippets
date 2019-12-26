@@ -1,0 +1,10 @@
+snippet passwordLess "password-less sudo" b
+#user $1 on any host may run any command as any user without a password
+${1:vagrant} ALL=(ALL) NOPASSWD: ALL
+$0
+endsnippet
+
+snippet sudoSyntax "documentation sudoers syntax"
+#User Host = (Runas) Command
+#Read this as “User may run Command as the Runas user on Host”.
+endsnippet
