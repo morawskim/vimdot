@@ -33,3 +33,8 @@ config.vm.provider "virtualbox" do |vb|
 end
 ${0}
 endsnippet
+
+snippet disableDefaultShare "Disabling the default /vagrant share" b
+config.vm.synced_folder ".", "/vagrant", disabled: true
+${0}
+endsnippet
