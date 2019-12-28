@@ -337,3 +337,23 @@ php:
 $0
 endsnippet
 
+snippet dc_service_redis "docker compose service- redis with persistent storage" b
+redis:
+    image: redis:5.0-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+        - ${1:./redis-data}:/data
+$0
+endsnippet
+
+snippet dc_service_redis_web "docker compose service- Redis management tool with web interface" b
+redis-web:
+    image: rediscommander/redis-commander:latest
+    environment:
+        - REDIS_HOSTS=local:${1:redis}:${2:6379}
+    labels:
+        traefik.backend: "redis-web"
+        traefik.port: "8081"
+        traefik.frontend.rule: "Host:${3:redis.lvh.me}"
+$0
+endsnippet
