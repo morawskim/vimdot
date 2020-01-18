@@ -1,0 +1,23 @@
+snippet diffObject "Create partial object with different keys between object NOT RECURSIVE" b
+import omitBy from 'lodash/omitBy';
+
+/**
+ * Diff between two object, using lodash
+ * @param  {Object} a Object compared
+ * @param  {Object} b Object to compare with
+ *
+ * @example
+ * const a = {"foo": 12, "bar": 3}
+ * const b = {"foo": 3, "bar": 3, "foofoo": 85}
+ * diffObject(a,b)
+ * // result { "foo": 12 }
+ *
+ * @return {Object} Return a new object who represent the diff
+ */
+export function diffObject<T>(a: T, b: T): Partial<T> {
+    return omitBy(a, function(v, k) {
+        return b[k] === v;
+    });
+}
+$0
+endsnippet
