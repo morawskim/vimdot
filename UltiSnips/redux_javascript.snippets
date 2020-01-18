@@ -1,0 +1,35 @@
+snippet middleware "Template for redux middleware function" b
+const middledWare = ({ dispatch, getState }) => {
+    return function(next){
+        return function(action){
+            ${1:// do your stuff}
+            return next(action);
+        }
+    }
+}
+${0}
+endsnippet
+
+snippet store "Template for create store" b
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import thunk from "redux-thunk";
+
+export const reduxStore = createStore(
+    combineReducers({
+        dict: dictReducer,
+    }),
+    applyMiddleware(thunk)
+);
+$0
+endsnippet
+
+snippet reducer "Template for redux reducer" b
+const initialState = {
+  ${1}
+};
+function ${2:rootReducer}(state = initialState, action) {
+  return state;
+};
+export default $2;
+$0
+endsnippet
