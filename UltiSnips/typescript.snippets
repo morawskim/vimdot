@@ -39,3 +39,7 @@ function is${1}(x: any): x is $1 {
 $0
 endsnippet
 
+snippet notNullableType "Typescript not nullable type" b
+type NonNullable<T> = T extends null | udefined ? never : T;
+endsnippet
+
