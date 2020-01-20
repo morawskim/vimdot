@@ -31,3 +31,11 @@ export function ${1}(parameter:any) {
     }
 };
 endsnippet
+
+snippet typeGuard "Typescript type guard" b
+function is${1}(x: any): x is $1 {
+    return (x as $1).${2:someProperty} !== undefined;
+}
+$0
+endsnippet
+
