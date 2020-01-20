@@ -43,3 +43,20 @@ snippet notNullableType "Typescript not nullable type" b
 type NonNullable<T> = T extends null | udefined ? never : T;
 endsnippet
 
+snippet declareFunc "Type definition for global JavaScript function"
+declare function greet(greeting: string): void;
+endsnippet
+
+snippet declareGlobalVar "Type definition for global JavaScript variable"
+declare const ${1:Foo}: ${2:OurGlobalObject};
+endsnippet
+
+snippet declareModule "Type definition for node module"
+// we can import it:
+// import * as URL from "path";
+declare module "path" {
+    export function normalize(p: string): string;
+    export function join(...paths: any[]): string;
+    export var sep: string;
+}
+endsnippet
