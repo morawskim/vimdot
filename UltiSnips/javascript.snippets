@@ -125,3 +125,14 @@ function sumObjectsByKey(...objects) {
 }
 $0
 endsnippet
+
+snippet getElementOffset "Get element offset using getBoundingClientRect" b
+export function getElementOffset(el: HTMLElement) {
+    const rect = el.getBoundingClientRect();
+
+    return {
+        top: rect.top + (window.pageYOffset || document.documentElement.scrollTop),
+        left: rect.left + (window.pageXOffset || document.documentElement.scrollLeft),
+    };
+}
+endsnippet
