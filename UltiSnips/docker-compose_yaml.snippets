@@ -357,3 +357,11 @@ redis-web:
         traefik.frontend.rule: "Host:${3:redis.lvh.me}"
 $0
 endsnippet
+
+snippet dc_service_tor "docker compose service - Tor SOCKS5 proxy server" b
+tor:
+     image: peterdavehello/tor-socks-proxy:latest
+     ports:
+        - ${1:9150}:9150
+$0
+endsnippet
