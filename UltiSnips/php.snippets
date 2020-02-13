@@ -63,3 +63,10 @@ final class ${1:Singleton}
 }
 $0
 endsnippet
+
+snippet flush "Flush with output buffers (only one level)" b
+if (ob_get_level() > 0){
+    ob_flush();
+}
+flush();
+endsnippet
