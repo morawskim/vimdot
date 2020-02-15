@@ -94,3 +94,13 @@ const with${1:ActionColumns} = <P extends object>(Component: React.ComponentType
 export default with$1;
 $0
 endsnippet
+
+snippet usePrevious "React hook usePrevious" b
+function usePrevious<T>(value: T): T {
+    const ref = useRef<T>();
+    useEffect(() => {
+        ref.current = value;
+    });
+    return ref.current;
+}
+endsnippet
