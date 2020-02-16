@@ -104,3 +104,36 @@ function usePrevious<T>(value: T): T {
     return ref.current;
 }
 endsnippet
+
+snippet createMuiTheme "React & custom material design theme - createMuiTheme" b
+import {createMuiTheme} from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    typography: {},
+    palette: {
+        primary: {
+            light: '#3f51b5',
+            main: '#3f51b5',
+            dark: '#142688',
+            contrastText: '#ffffff',
+        },
+        secondary: {
+            light: '#5bedcb',
+            main: '#00ba9a',
+            dark: '#00896c',
+            contrastText: '#ffffff',
+        },
+    },
+});
+
+/**
+ Usage:
+ @example
+ import {ThemeProvider} from '@material-ui/core/styles';
+ <ThemeProvider theme={theme}>
+ {children}
+ </ThemeProvider>
+ */
+export default theme;
+$0
+endsnippet
