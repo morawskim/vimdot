@@ -137,3 +137,17 @@ const theme = createMuiTheme({
 export default theme;
 $0
 endsnippet
+
+snippet makeStyles "React & material design - makeStyles" b
+import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
+const useStyles = makeStyles((theme: Theme) => createStyles({
+    root: {
+        color: theme.palette.primary.main,
+        padding: theme.spacing(1,2),
+        '&$active:hover': {},
+    },
+    active: {},
+}));
+// To function component add: "const classes = useStyles(props);"
+$0
+endsnippet
