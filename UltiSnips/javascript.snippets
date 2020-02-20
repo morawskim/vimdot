@@ -29,19 +29,21 @@ $0
 endsnippet
 
 snippet onerror "window.onerror" b
-window.addEventListener('error', function(e) {
-    // prevents the firing of the default event handler.
-    e.preventDefault();
+import ErrorStackParser from 'error-stack-parser';
 
-    const {message, filename, lineno, colno, error} = e;
+window.addEventListener('error', function(e) {
+    e.preventDefault();
+    const { message, filename, lineno, colno, error } = e;
     let stack = null;
     if (error && error instanceof Error) {
-        stack = error.stack || null;
-        // require error-stack-parser npm package
-        //stack = ErrorStackParser.parse(error) || []
+        stack = ErrorStackParser.parse(error) || [];
     }
     const userAgent = navigator.userAgent;
-    console.error('ERROR:',  message, filename, lineno, colno, stack, userAgent);
+    const errorObj = { message, filename, lineno, colno, stack, userAgent };
+    const blob = new Blob([JSON.stringify(errorObj)], {
+        type: 'application/json',
+    });
+    navigator.sendBeacon('${1:/error/reporting}', blob);
 });
 $0
 endsnippet
