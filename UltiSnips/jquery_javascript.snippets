@@ -155,3 +155,25 @@ snippet jqueryPluginSkeleton "jQuery plugin skeleton" b
 $0
 // template from https://raw.githubusercontent.com/jquery-boilerplate/jquery-boilerplate/master/src/jquery.boilerplate.js
 endsnippet
+
+snippet serializeFormJSON "jQuery serialize form to json" b
+(function ($) {
+    $.fn.serializeFormJSON = function() {
+        let o = {};
+        let a = this.serializeArray();
+        $.each(a, function () {
+            let name = this.name;
+            let value = this.value || '';
+            if (o[name]) {
+                if (!Array.isArray(o[name])) {
+                    o[name] = [o[name]];
+                }
+                o[name].push(value);
+            } else {
+                o[name] = value;
+            }
+        });
+        return o;
+    };
+})(jQuery);
+endsnippet
