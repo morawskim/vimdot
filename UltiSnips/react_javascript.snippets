@@ -114,6 +114,19 @@ export default with$1;
 $0
 endsnippet
 
+snippet AutoSizer "react virtualized usage of AutoSizer component" b
+// import { AutoSizer } from "react-virtualized";
+<AutoSizer>
+    {
+        ({width, height}) => {
+            return (
+                $0
+            );
+        }
+    }
+</AutoSizer>
+endsnippet
+
 snippet usePrevious "React hook usePrevious" b
 function usePrevious<T>(value: T): T {
     const ref = useRef<T>();
