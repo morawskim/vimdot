@@ -122,6 +122,26 @@ export default with$1;
 $0
 endsnippet
 
+# https://medium.com/@thehappybug/using-react-context-in-a-typescript-app-c4ef7504c858
+snippet hocTs "React HOC with properly type-checked in TypeScript" b
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
+export function with${1:AppContext}<
+  P extends { ${2:appContext}?: AppContextInterface },
+  R = Omit<P, '$2'>
+  >(
+  Component: React.ComponentClass<P> | React.StatelessComponent<P>
+  ): React.SFC<R> {
+  return function BoundComponent(props: R) {
+    return (
+      <$1Consumer>
+        {value => <Component {...props} $2={value} />}
+      </$1Consumer>
+    );
+  };
+}
+endsnippet
+
 snippet AutoSizer "react virtualized usage of AutoSizer component" b
 // import { AutoSizer } from "react-virtualized";
 <AutoSizer>
