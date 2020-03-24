@@ -142,6 +142,30 @@ export function with${1:AppContext}<
 }
 endsnippet
 
+snippet reactVirtualized "React virtualized list" b
+import React from 'react'
+import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from "react-virtualized";
+
+const VirtualList: React.FC<${1:void}> = (props) => {
+    const renderRow = ({index, key, style}) => {
+        //todo implement
+        return (<span>TODO</span>);
+    };
+
+    <List
+        width={rowWidth}
+        height={listHeight}
+        deferredMeasurementCache={cache}
+        rowHeight={cache.rowHeight}
+        rowRenderer={renderRow}
+        rowCount={props.list.length}
+        overscanRowCount={3}
+    />
+};
+$0
+endsnippet
+
+
 snippet AutoSizer "react virtualized usage of AutoSizer component" b
 // import { AutoSizer } from "react-virtualized";
 <AutoSizer>
