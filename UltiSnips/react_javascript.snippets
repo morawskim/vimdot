@@ -236,3 +236,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 // To function component add: "const classes = useStyles(props);"
 $0
 endsnippet
+
+snippet toast "React show toastify message" b
+import {toast} from "react-toastify";
+toast('${1:Error}', {type: 'error'});
+$0
+endsnippet
