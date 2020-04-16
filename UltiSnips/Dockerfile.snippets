@@ -37,7 +37,7 @@ ${0}
 endsnippet
 
 snippet phpXdebug "Install php xdebug extension in official php debian image"
-# Install xdebug
+# Install xdebug (https://pecl.php.net/package/xdebug)
 RUN pecl install xdebug-${1:2.8.1} && docker-php-ext-enable xdebug
 $0
 endsnippet
@@ -47,6 +47,7 @@ snippet composer "Install composer" b
 RUN curl -sS https://getcomposer.org/installer | php -- \
          --filename=composer \
          --install-dir=/usr/local/bin
+#RUN composer global require --prefer-stable --prefer-dist hirak/prestissimo fxp/composer-asset-plugin
 ${0}
 endsnippet
 
