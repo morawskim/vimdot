@@ -261,12 +261,24 @@ ${0}
 endsnippet
 
 snippet dc_service_elasticsearch "docker compose service - elasticsearch" b
+# https://www.docker.elastic.co/
+# https://gist.github.com/ilbonte/de329ff7cfd1badeefe9ce33f9dbe8ed
 elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${1:7.2.0}
-    ports:
-        - 9200:9200
+    image: docker.elastic.co/elasticsearch/elasticsearch:${1:6.5.4}
     environment:
-        - discovery.type=single-node
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      = discovery.type=single-node
+      # - "discovery.zen.ping.unicast.hosts=elasticsearch"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
 $0
 endsnippet
 
