@@ -264,3 +264,27 @@ docker:master:
     - tags
 $0
 endsnippet
+
+snippet deploy_swarm "Deploy by docker swarm" b
+deploy:
+  stage: deploy
+  image: docker:19.03-dind
+  environment:
+    name: production
+#  only:
+#    - master
+  when: manual
+  before_script:
+    - 'which ssh-agent || ( apk update && apk add openssh-client )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - TMP_PATH=$(mktemp -d)
+    - echo "$PROD_CONFIG" > ${1:deploy/.env}
+    - DOCKER_AUTH=$(echo -n $CI_DEPLOY_USER:$CI_DEPLOY_PASSWORD | base64)
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$DOCKER_AUTH\"}}}" > $TMP_PATH/config.json
+    - DOCKER_HOST=ssh://${2:deployer@192.168.15.28} docker --config $TMP_PATH stack deploy --compose-file ${3:deploy/docker-compose.yml} --with-registry-auth ${4:STACK_NAME}
+$0
+endsnippet
