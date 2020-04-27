@@ -41,6 +41,8 @@ endsnippet
 
 snippet libvirt_nested_virt "libvirt enable nested virtualization" b
 config.vm.provider :libvirt do |libvirt|
+    libvirt.cpus = 2
+    libvirt.memory = 2048
     libvirt.nested = true
     libvirt.cpu_feature :name => 'vmx', :policy => 'require'
 end
