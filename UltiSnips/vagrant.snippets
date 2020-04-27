@@ -38,3 +38,11 @@ snippet disableDefaultShare "Disabling the default /vagrant share" b
 config.vm.synced_folder ".", "/vagrant", disabled: true
 ${0}
 endsnippet
+
+snippet libvirt_nested_virt "libvirt enable nested virtualization" b
+config.vm.provider :libvirt do |libvirt|
+    libvirt.nested = true
+    libvirt.cpu_feature :name => 'vmx', :policy => 'require'
+end
+${0}
+endsnippet
