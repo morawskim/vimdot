@@ -46,3 +46,34 @@ server {
 #/usr/sbin/nginx -t
 $0
 endsnippet
+
+snippet locations "A few standard location directives for vhost" b
+# This location block will handle requests to the .well-known directory, where
+# Certbot will place a temporary file to validate that the DNS for our domain
+# resolves to our server. With this configuration in place, we will be able to
+# use Certbot’s webroot plugin to obtain certificates for our domain.
+location ~ /.well-known/acme-challenge {
+    allow all;
+    root /var/www/html;
+}
+
+# Ensures that .htaccess files will never be served to users.
+location ~ /\.ht {
+    deny all;
+}
+
+# Ensure that requests to /favicon.ico and /robots.txt will not be logged
+location = /favicon.ico {
+    log_not_found off; access_log off;
+}
+location = /robots.txt {
+    log_not_found off; access_log off; allow all;
+}
+
+# Turns off logging for static asset requests and ensures that these assets are highly cacheable
+location ~* \.(css|gif|ico|jpeg|jpg|js|png)$ {
+    expires max;
+    log_not_found off;
+}
+$0
+endsnippet
