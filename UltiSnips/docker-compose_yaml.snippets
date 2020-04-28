@@ -377,3 +377,16 @@ tor:
         - ${1:9150}:9150
 $0
 endsnippet
+
+snippet dc_service_certbot "docker compose service - certbot (use webroot plugin)" b
+certbot:
+  depends_on:
+    - ${1:webserver}
+  image: certbot/certbot
+  container_name: certbot
+  volumes:
+    - certbot:/etc/letsencrypt
+    - www:/var/www/html
+  command: certonly --webroot --webroot-path=/var/www/html --email ${2:user@your_domain} --agree-tos --no-eff-email --staging -d ${3:your_domain} -d www.$3
+$0
+endsnippet
