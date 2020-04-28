@@ -99,7 +99,7 @@ endsnippet
 
 snippet dc_service_traefik "docker composer service - traefik" b
 ${1:traefik}:
-    image: traefik
+    image: traefik:1.7
     command: --web --docker --logLevel=DEBUG
     ports:
       - "8000:80"
