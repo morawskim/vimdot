@@ -22,3 +22,12 @@ snippet lato "HTML link tag to embed a lato font" b
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
 $0
 endsnippet
+
+snippet meta-og "Open Graph Meta Tags" b
+<meta property="og:title" content="${1:The title of your page. Short without brand.}" />
+<meta property="og:url" content="${2:canonical URL}" />
+<meta property="og:description" content="${3:A brief description of the content.  Facebook recommends 2–4 sentences.}" />
+<meta property="og:image" content="${4: It should be at least 600×315 pixels, but 1200×630 or larger is preferred (up to 5MB). Stay close to a 1.91:1 aspect ratio to avoid cropping.}" />
+<meta property="og:type" content="${5:website}" />
+$0
+endsnippet
