@@ -1,0 +1,78 @@
+snippet formikYup "Yup validation schema for formik" b
+import * as Yup from 'yup';
+const validationSchema = Yup.object<Partial<Values>>({
+    email: Yup.string()
+        .required('Required')
+        .max(200, 'Invalid email address')
+        .email('Invalid email address'),
+});
+$0
+endsnippet
+
+snippet formikSubmit "Submit handler for formik" b
+import { useAsync } from 'react-async';
+const submitForm = (
+    [values, setSubmitting]: [Values, (isSubmitting: boolean) => void],
+    props,
+    { signal },
+): Promise<unknown> => {
+    const headers = {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+    };
+    return fetch('${1:/somewhere}', {
+        signal,
+        headers,
+        method: 'POST',
+        body: JSON.stringify(values),
+    })
+        .then(res => (res.ok ? res : Promise.reject(res)))
+        .then(res => res.json())
+        .finally(() => setSubmitting(false));
+};
+$0
+endsnippet
+
+snippet formikReactAsync "useAsync for formik" b
+import { toast } from 'react-toastify';
+
+const { run } = useAsync({
+        deferFn: ${1:submitForm},
+        onReject: () => toast('Error during saving', { type: 'error', autoClose: false }),
+        onResolve: () => toast('Saved!', { type: 'success' }),
+    });
+$0
+endsnippet
+
+snippet formik "React formik example" b
+import { FormikProps, Formik, Form, Field } from 'formik';
+
+<Formik
+    initialValues={${1:{}}}
+    onSubmit={(values, { setSubmitting }): void => {
+        run(values, setSubmitting);
+    }}
+    validationSchema={${2:validationSchema}}
+>
+    {(formik: FormikProps<Values>): JSX.Element => (
+        <Form>
+            <Field
+                component={${3:FormFieldText}}
+                type="email"
+                name="email"
+                placeholder="Email"
+                label="Email"
+            />
+            <button
+                disabled={formik.isSubmitting}
+                type="submit"
+                className="btn btn-primary"
+            >
+                ${4:Save}
+            </button>
+        </Form>
+    )}
+</Formik>
+$0
+endsnippet
+
