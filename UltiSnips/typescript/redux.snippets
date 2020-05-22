@@ -1,0 +1,87 @@
+snippet store "Redux - create store" b
+import { applyMiddleware, combineReducers, compose, createStore, Store } from 'redux';
+import thunk from 'redux-thunk';
+import { AppState } from './types';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const composeEnhancers = (typeof window !== 'undefined' && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+function configureStore(): Store<AppState> {
+    return createStore(
+        combineReducers<AppState>({}),
+        composeEnhancers(applyMiddleware(thunk)),
+    );
+}
+
+const store = configureStore();
+export default store;
+$0
+endsnippet
+
+snippet reducer "Redux - reducer" b
+import update from 'immutability-helper';
+import { Reducer } from 'redux';
+import { ${1:DictionaryState}, ${2:DictionaryActions} } from './types';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function,@typescript-eslint/no-unused-vars
+const neverReached = (never: never): void => {};
+
+const initialState: $1 = {
+    categories: [],
+};
+
+const reducer: Reducer<$1, $2> = (state = initialState, action) => {
+    switch (action.type) {
+    default:
+        neverReached(action);
+        break;
+    }
+};
+
+export default reducer;
+$0
+endsnippet
+
+snippet reduxReducerTypes "Redux - reducer types" b
+import { Action } from 'redux';
+
+export interface DictionaryState {
+    readonly categories: string[];
+}
+
+export interface SettingCategoriesAction extends Action<'SettingCategories'> {
+    categories: string[];
+}
+
+export type DictionaryActions =
+    | SettingCategoriesAction;
+$0
+endsnippet
+
+snippet appState "Redux - app state type" b
+import { ${1:DictionaryState} } from './dictionary/types';
+
+export interface AppState {
+    readonly dict: $1;
+}
+$0
+endsnippet
+
+snippet actionCreator "Redux - actions creator" b
+import { ActionCreator } from 'redux';
+import { ${1:SettingCategoriesAction} } from './types';
+
+export const setCategoriesActionCreator: ActionCreator<$1> = () => {
+    const action: $1 = {
+        type: '${2:SettingCategories}',
+    };
+    return action;
+};
+$0
+endsnippet
+
+snippet reactRedux "Redux-React provider" b
+import { Provider } from 'react-redux';
+<Provider store={configureStore()}>
+    {props.children}
+</Provider>
+endsnippet
