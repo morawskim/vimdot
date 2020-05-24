@@ -10,12 +10,14 @@ $0
 endsnippet
 
 snippet formikSubmit "Submit handler for formik" b
-import { useAsync } from 'react-async';
+import { useAsync, DeferFn } from 'react-async';
 const submitForm = (
-    [values, setSubmitting]: [Values, (isSubmitting: boolean) => void],
+    args,
     props,
     { signal },
 ): Promise<unknown> => {
+    // Still waiting for https://github.com/async-library/react-async/pull/247
+    const [values, setSubmitting] = args as [Values, (isSubmitting: boolean) => void];
     const headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -36,7 +38,7 @@ endsnippet
 snippet formikReactAsync "useAsync for formik" b
 import { toast } from 'react-toastify';
 
-const { run } = useAsync({
+const { run } = useAsync<void>({
         deferFn: ${1:submitForm},
         onReject: () => toast('Error during saving', { type: 'error', autoClose: false }),
         onResolve: () => toast('Saved!', { type: 'success' }),
