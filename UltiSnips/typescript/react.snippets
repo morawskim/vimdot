@@ -1,0 +1,84 @@
+snippet context "React create context" b
+import React from 'react'
+
+interface ${1:AppContextType} {
+    translate: (messageId: string) => string;
+}
+
+function ${2:factoryAppContext}(): $1 {
+    return {
+        translate: (id: string): string => id,
+    };
+}
+
+const ${3:AppContext} = React.createContext<$1|undefined>(undefined);
+
+const ${4:AppCtxProvider}: React.FC = ({ children }) => {
+    const ctx = $2();
+
+    return (
+        <$3.Provider value={ctx}>
+            {children}
+        </$3.Provider>
+    )
+};
+
+function ${5:useAppCtx}(): AppContextType {
+    const context = React.useContext($3);
+    if (context === undefined) {
+        throw new Error('$5 must be used within a $4')
+    }
+    return context;
+}
+
+export { $4, $5 };
+$0
+endsnippet
+
+snippet reb "React error boundary component"
+import React, { Component, ReactNode, ErrorInfo } from 'react';
+import ErrorStackParser from 'error-stack-parser';
+
+interface ErrorBoundaryState {
+    hasError: boolean;
+    error?: Error;
+}
+
+/**
+ * @link https://pl.reactjs.org/docs/error-boundaries.html
+ * @link https://pl.reactjs.org/docs/hooks-faq.html#do-hooks-cover-all-use-cases-for-classes
+ */
+export default class ErrorBoundary extends Component<{}, ErrorBoundaryState> {
+    state: ErrorBoundaryState = { hasError: false };
+
+    static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+        return { hasError: true, error: error };
+    }
+
+    componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+        console.error('ERROR:');
+        console.error({ error, errorInfo });
+        if (error instanceof Error) {
+            console.error(ErrorStackParser.parse(error));
+        }
+    }
+
+    render(): ReactNode {
+        if (this.state.hasError) {
+            const error = this.state.error;
+            return (
+                <div>
+                    <p>Something went wrong.</p>
+                    {error && <p>Error message: {error.message}</p>}
+                    {error && typeof error.stack === 'string' && (
+                        <pre>{error.stack}</pre>
+                    )}
+                </div>
+            );
+        }
+
+        return this.props.children;
+    }
+}
+$0
+endsnippet
