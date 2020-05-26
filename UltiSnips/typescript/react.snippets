@@ -82,3 +82,34 @@ export default class ErrorBoundary extends Component<{}, ErrorBoundaryState> {
 }
 $0
 endsnippet
+
+snippet rfcd "React function component with default props" b
+import React from 'react';
+const defaultProps = {};
+interface ComponentProps {
+    $1
+}
+
+type Props = ComponentProps & typeof defaultProps;
+const ${2:Component} = (props: Props): React.ReactElement | null => {
+    return (${3:<span>lorem</span>});
+};
+$2.defaultProps = defaultProps;
+export default $2;
+$0
+endsnippet
+
+snippet rfc "React function component" b
+import React from 'react';
+
+interface Props {
+    $1
+}
+
+const ${2:Component}: React.FC<Props> = props => {
+    return (${3:<span></span>});
+};
+
+export default $2;
+$0
+endsnippet
