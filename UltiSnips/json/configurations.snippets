@@ -1,0 +1,16 @@
+snippet tsconfig "Example configuration for TS - tsconfig.json " b
+{
+  "compilerOptions": {
+    "target": "es6",
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noImplicitAny": false
+  },
+  "include": [
+    "${1:assets/js/**/*}"
+  ]
+}
+$0
+endsnippet
