@@ -1,0 +1,124 @@
+snippet registerSW "Register Service Worker" b
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function registerSW() {
+        navigator.serviceWorker.register('/sw.js');
+    });
+}
+$0
+endsnippet
+
+snippet isStandaloneDisplayMode "Track how the PWA was launched" b
+window.addEventListener('DOMContentLoaded', () => {
+    let isStandaloneDisplayMode = false;
+    if (navigator.standalone) {
+        isStandaloneDisplayMode = true;
+    }
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        isStandaloneDisplayMode = true;
+    }
+    console.log('is standalone display mode:', isStandaloneDisplayMode);
+});
+$0
+endsnippet
+
+snippet swPushHandler "Service worker - push handler" b
+self.addEventListener('push', function onPushHandler(event: PushEvent) {
+    let body = 'Default body';
+
+    if (event.data) {
+        try {
+            const obj = event.data.json();
+            body = obj.body;
+        } catch (e) {
+            body = event.data.text();
+        }
+    }
+
+    const options: NotificationOptions = {
+        body: body,
+        icon: 'images/notification.png',
+        vibrate: [100, 50, 100],
+        data: {
+            dateOfArrival: Date.now(),
+        },
+        actions: [
+            {
+                action: 'explore',
+                title: 'Go to the site',
+                icon: 'images/checkmark.png'
+            },
+        ],
+    };
+
+    const showNotification = self.registration.showNotification('Webpush notification', options);
+    event.waitUntil(Promise.all([showNotification]));
+});
+$0
+endsnippet
+
+snippet urlBase64ToUint8Array "Convert webpush pubkey (VAPID) encoded in base64 to UInt8 Array" b
+function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding)
+        .replace(/\-/g, '+')
+        .replace(/_/g, '/');
+
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+
+    for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+}
+$0
+endsnippet
+
+snippet registerWebPushSubscription "Register web push (prompt for permissions)" b
+async function registerWebPushSubscription(vapidPubKey: string, userToken: string) {
+    if ('serviceWorker' in navigator) {
+        const registration = await navigator.serviceWorker.ready;
+        let subscription = await registration.pushManager.getSubscription();
+        if (!subscription) {
+            subscription = await subscribe2(registration, vapidPubKey, userToken);
+        }
+    }
+}
+$0
+endsnippet
+
+snippet subscribeWebPush "Subscribe to web push. Send subscription to server" b
+async function subscribeWebPush(registration: ServiceWorkerRegistration, vapidPubKey: string, userToken: string) {
+    const Uint8ArrayPublicKey = urlBase64ToUint8Array(vapidPubKey);
+    const subscription = await registration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: Uint8ArrayPublicKey,
+    });
+    await fetch('/webpush',
+        {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${userToken}`},
+            body: JSON.stringify({subscription: subscription.toJSON()})
+        }
+    );
+    return subscription;
+}
+$0
+endsnippet
+
+snippet unsubscribeWebPush "Unsubscribe to web push. Remove subscription from server" b
+async function unsubscribe(userToken: string) {
+    const registration = await navigator.serviceWorker.ready;
+    const subscription = await registration.pushManager.getSubscription();
+    if (null === subscription) {
+        return;
+    }
+    await subscription.unsubscribe();
+    await fetch("/webpush", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${userToken}` },
+        body: JSON.stringify(subscription.toJSON())
+    });
+}
+$0
+endsnippet
