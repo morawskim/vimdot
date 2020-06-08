@@ -77,3 +77,11 @@ location ~* \.(css|gif|ico|jpeg|jpg|js|png)$ {
 }
 $0
 endsnippet
+
+snippet swScope "Allow to change scope of service worker by set response header" b
+location ~* (${1:sw}\.js)$ {
+  # tells browsers the service worker scope
+  add_header 'Service-Worker-Allowed' '${2:/app}';
+}
+$0
+endsnippet
