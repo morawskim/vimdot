@@ -193,6 +193,11 @@ highlight ColorColumn ctermbg=233
 " F8 key will toggle the Tagbar window
 nmap <F8> :TagbarToggle<CR>
 
+" map <CTRL-L> in insert mode to open snippets window and filter them by both columns
+inoremap <C-l> <esc>:Snippets<CR>
+autocmd VimEnter * command! -bar -bang Snippets
+    \ call fzf#vim#snippets({'options': '-n 1,2'}, <bang>0)
+
 " Show trailing whitespace
 "highlight ExtraWhitespace ctermbg=red guibg=red
 
