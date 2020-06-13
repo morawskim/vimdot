@@ -75,3 +75,11 @@ snippet mqMouse "media-query device with a mouse or trackpad" b
 $0
 endsnippet
 
+snippet grid "CSS grid example selector" b
+.${1:wrapper} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 1rem;
+}
+$0
+endsnippet
