@@ -47,3 +47,31 @@ body {
 }
 $0
 endsnippet
+
+snippet mqReducedMotion "media-query disable animations. User has requested that the system minimize the amount of non-essential motion it uses" b
+@media (prefers-reduced-motion: reduce) {
+    body *,
+    body *::before,
+    body *::after {
+        animation: none !important;
+        transition: none !important;
+        transition-duration: none !important;
+    }
+}
+$0
+endsnippet
+
+snippet mqOnlyTouch "media-query only touch device" b
+@media (hover: none) and (pointer: coarse) {
+  ${1:/* you're on a touch-only device */}
+}
+$0
+endsnippet
+
+snippet mqMouse "media-query device with a mouse or trackpad" b
+@media (hover: hover) and (pointer: fine) {
+  ${1:/* you're on a device with a mouse or trackpad */}
+}
+$0
+endsnippet
+
