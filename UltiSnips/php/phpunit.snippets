@@ -31,3 +31,18 @@ public function test${1:Execute}(): void
     $0
 }
 endsnippet
+
+snippet guzzleMockTest "Guzzle mock handler unit test" b
+public function test${1:GuzzleClient}(): void
+{
+    $container = [];
+    $history = Middleware::history($container);
+    $mock = new MockHandler([
+        new Response(200, ['X-Foo' => 'Bar'], 'Hello, World'),
+    ]);
+    $handlerStack = HandlerStack::create($mock);
+    $handlerStack->push($history);
+    $client = new Client(['handler' => $handlerStack]);
+    $0
+}
+endsnippet
