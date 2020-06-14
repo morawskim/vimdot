@@ -46,3 +46,8 @@ public function test${1:GuzzleClient}(): void
     $0
 }
 endsnippet
+
+snippet testExtRequired "PHPUnit annotation to skip tests when installed extensions, are not met" b
+@requires extension ${1:intl}
+$0
+endsnippet
