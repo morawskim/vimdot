@@ -205,7 +205,7 @@ ${1:phpmyadmin}:
     labels:
         traefik.backend: "phpmyadmin"
         traefik.frontend.rule: "Host:phpmyadmin.lvh.me"
-        #htpasswd -nbB user password | sed -e s/\\$/\\$\\$/g
+        #htpasswd -nbB user password | sed -e 's/\\$/\\$\\$/g'
         traefik.frontend.auth.basic: '${3}'
 ${0}
 endsnippet
