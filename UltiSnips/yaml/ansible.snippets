@@ -1,0 +1,41 @@
+snippet ansibleMySQLDb "Ansiable craete MySQL Database and user" b
+- name: Crete MySQL database "${1:mydatabase}"
+  mysql_db: name=$1 state=present
+- name: Create MySQL user "$1" with all privileges
+  mysql_user: name=$1 host=localhost password=${2:mypassword} priv=${3:$1}.*:ALL
+$0
+endsnippet
+
+snippet ansibleUser "Ansiable create Linux user account" b
+- name: Ensure group "${1:app}" exists
+  group: name=$1 state=present
+- name: Create Linux account $1
+  user:
+    name: $1
+    create_home: true
+    group: $1
+    generate_ssh_key: true
+    state: present
+    home: ${2:/srv/www/$1}
+$0
+endsnippet
+
+snippet ansibleYumRepository "Ansiable add YUM repository" b
+- name: Add ${1:webtatic} repository
+  yum_repository:
+    name: $1
+    description: ${2:Webtatic Repository EL7 - \$basearch}
+    baseurl: ${3:https://repo.webtatic.com/yum/el7/\$basearch/}
+    mirrorlist: ${4:https://mirror.webtatic.com/yum/el7/\$basearch/mirrorlist}
+    failovermethod: ${5:priority}
+    enabled: 1
+    gpgcheck: 1
+    gpgkey: ${6:https://mirror.webtatic.com/yum/RPM-GPG-KEY-webtatic-el7}
+
+# Handler showing how to clean yum metadata cache
+- name: yum-clean-metadata
+  command: yum clean metadata
+  args:
+    warn: no
+$0
+endsnippet
