@@ -1,0 +1,11 @@
+snippet yupBoolean "yup bool validator (checkbox selected)" b
+${1:acceptTerms}: Yup.bool().oneOf([true], 'Accept Terms & Conditions is required'),
+$0
+endsnippet
+
+snippet yupRepeat "yup repeat validator" b
+${2:confirmPassword}: Yup.string()
+    .oneOf([Yup.ref('password')], 'Passwords must match')
+    .required('Confirm Password is required'),
+$0
+endsnippet
