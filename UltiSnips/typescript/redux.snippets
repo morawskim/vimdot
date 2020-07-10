@@ -33,7 +33,7 @@ const reducer: Reducer<$1, $2> = (state = initialState, action) => {
     switch (action.type) {
     default:
         neverReached(action);
-        break;
+        return state;
     }
 };
 
