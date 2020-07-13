@@ -10,14 +10,15 @@ $0
 endsnippet
 
 snippet formikSubmit "Submit handler for formik" b
-import { useAsync, DeferFn } from 'react-async';
+import { useAsync } from 'react-async';
+import { FormikHelpers } from 'formik';
 const submitForm = (
     args,
     props,
     { signal },
 ): Promise<unknown> => {
     // Still waiting for https://github.com/async-library/react-async/pull/247
-    const [values, setSubmitting] = args as [Values, (isSubmitting: boolean) => void];
+    const [values, formikHelpers] = args as [${2:Values}, FormikHelpers<$2>];
     const headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -51,8 +52,8 @@ import { FormikProps, Formik, Form, Field } from 'formik';
 
 <Formik
     initialValues={${1:{}}}
-    onSubmit={(values, { setSubmitting }): void => {
-        run(values, setSubmitting);
+    onSubmit={(values, formikHelpers): void => {
+        run(values, formikHelpers);
     }}
     validationSchema={${2:validationSchema}}
 >
