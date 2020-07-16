@@ -90,3 +90,18 @@ snippet bsImport "Bootstrap required imports" b
 @import '~bootstrap/scss/mixins';
 $0
 endsnippet
+
+snippet mixin "Mixin with content (webp)"
+/** Usage:
+@include webp-supported {
+  background-image: url('../img/footer.webp');
+}
+*/
+
+@mixin webp-supported {
+  .webp & {
+    @content;
+  }
+}
+$0
+endsnippet
