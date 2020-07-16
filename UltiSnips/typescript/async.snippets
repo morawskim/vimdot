@@ -1,0 +1,24 @@
+snippet asyncFn "Example callback function for useAsync hook from react-async package" b
+const asyncFn = (props: any, { signal }: AbortController) => {
+    return fetch(input, {signal})
+        .then(res => (res.ok ? res : Promise.reject(res)))
+        .then(res => res.json());
+}
+$0
+endsnippet
+
+snippet useAsync "useAsync to fetch json data" b
+import { toast } from 'react-toastify';
+import { useAsync } from 'react-async';
+
+const { data, error, isPending } = useAsync<unknown>(${1:asyncFn}, {
+    onReject: () => toast.error('Error during fetching', { autoClose: false }),
+});
+
+if (isPending) return <span>Loading...</span>;
+if (error) return <span>{\`Something went wrong: ${error.message}\`}</span>;
+if (data) return (${2:<TaskList tasks={data} />});
+
+return null;
+$0
+endsnippet
