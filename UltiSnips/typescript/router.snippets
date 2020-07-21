@@ -1,0 +1,64 @@
+snippet routerGa "Google Analytics for React Router" b
+history.listen(function (location) {
+  window.ga('set', 'page', location.pathname + location.search)
+  window.ga('send', 'pageview', location.pathname + location.search)
+});
+$0
+endsnippet
+
+snippet routerGaHook "Google Analytics for React Router Hook" b
+function usePageViews() {
+  let location = useLocation();
+  React.useEffect(() => {
+    ga.send(["pageview", location.pathname]);
+  }, [location]);
+}
+$0
+endsnippet
+
+snippet reactRouter "react-router router basic" b
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
+<Router>
+    <Switch>
+        <Route exact path="/">
+            Front page
+        </Route>
+    </Switch>
+</Router>
+$0
+endsnippet
+
+snippet route "react-router route"
+<Route exact path="${1:/}" component={${2:Home}} />
+$0
+endsnippet
+
+snippet protectedRoute "React protected router component" b
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { RouteProps } from 'react-router';
+
+const ProtectedRoute: React.FC<RouteProps> = props => {
+    const { children, ...rest } = props;
+    return (
+        <Route
+            {...rest}
+            render={({ location }) =>
+                ${1:fakeAuth.isAuthenticated} ? (
+                    children
+                ) : (
+                    <Redirect
+                        to={{
+                            pathname: '${2:/login}',
+                            state: { from: location },
+                        }}
+                    />
+                )
+            }
+        />
+    );
+};
+
+export default ProtectedRoute;
+$0
+endsnippet
