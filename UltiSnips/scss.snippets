@@ -105,3 +105,18 @@ snippet mixin "Mixin with content (webp)"
 }
 $0
 endsnippet
+
+snippet bsBtnVariant "Bootstrap custom button variant with custom font color" b
+${1:.btn-custom} {
+  @include button-variant(${2:#aa767c}, ${3:orangered});
+  color: $3;
+
+  &:hover, &:focus,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    color: $3;
+  }
+}
+$0
+endsnippet
