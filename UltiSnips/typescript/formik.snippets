@@ -90,3 +90,19 @@ import { ReactstrapInput } from 'reactstrap-formik';
 />
 $0
 endsnippet
+
+snippet formikCustomField "formik custom field component" b
+import { useField, useFormikContext } from 'formik';
+const ${1:MyField}: React.FC<{name: string}> = props => {
+    const formikContext = useFormikContext();
+    const [field, meta] = useField(props);
+
+    return (
+        <>
+            <input {...props} {...field} />
+            {meta.touched && !!meta.error && <div>{meta.error}</div>}
+        </>
+    );
+};
+$0
+endsnippet
