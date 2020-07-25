@@ -31,7 +31,7 @@ const submitForm = (
     })
         .then(res => (res.ok ? res : Promise.reject(res)))
         .then(res => res.json())
-        .finally(() => setSubmitting(false));
+        .finally(() => formikHelpers.setSubmitting(false));
 };
 $0
 endsnippet
