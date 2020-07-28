@@ -85,3 +85,8 @@ location ~* (${1:sw}\.js)$ {
 }
 $0
 endsnippet
+
+snippet tryFiles "nginx front controller pattern" b
+try_files $uri $uri/ ${1:/index.html} =404;
+$0
+endsnippet
