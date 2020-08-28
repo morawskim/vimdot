@@ -4,3 +4,13 @@ test.`!p snip.rv = t[1].lower().replace('\\', '.')`:
   public: true
 $0
 endsnippet
+
+snippet sfAppMonologHandler "Symfony - monolog handler for app channel" b
+applog:
+    type: rotating_file
+    path: "%kernel.logs_dir%/app.log"
+    level: debug
+    channels: [app]
+    max_files: 60
+$0
+endsnippet
