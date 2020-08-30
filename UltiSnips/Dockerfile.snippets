@@ -70,3 +70,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 $0
 endsnippet
+
+snippet npmInstall "npm install and clean cache" b
+RUN npm ci --production && npm cache clean --force
+$0
+endsnippet
