@@ -75,3 +75,16 @@ snippet npmInstall "npm install and clean cache" b
 RUN npm ci --production && npm cache clean --force
 $0
 endsnippet
+
+snippet xdebugInstall "Install xdebug PHP extension" b
+ARG WITH_XDEBUG=false
+RUN if [[ $WITH_XDEBUG = "true" ]]; then \
+    pecl install xdebug-2.7.0 \
+    && docker-php-ext-enable xdebug \
+    && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "error_reporting = E_ALL" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "display_startup_errors = On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "display_errors = On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; \
+  fi
+$0
+endsnippet
