@@ -401,3 +401,12 @@ traefik.frontend.passHostHeader: "true"
 $0
 endsnippet
 
+snippet build "docker-compose build directive instead of image" b
+build:
+  context: ${1:.}
+  dockerfile: ${2:Dockerfile}
+  target: ${3:intermediate}
+  args:
+    - ${4:WITH_XDEBUG=true}
+$0
+endsnippet
