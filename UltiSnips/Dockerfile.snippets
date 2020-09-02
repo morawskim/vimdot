@@ -88,3 +88,10 @@ RUN if [[ $WITH_XDEBUG = "true" ]]; then \
   fi
 $0
 endsnippet
+
+snippet rdkafkaPHP "Install rdkafka PHP extension" b
+# require librdkafka-dev package
+RUN pecl install rdkafka-4.0.3 && \
+    docker-php-ext-enable rdkafka
+$0
+endsnippet
