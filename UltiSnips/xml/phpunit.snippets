@@ -1,0 +1,9 @@
+snippet phpunitCoverage "Enable HTML code coverage" b
+<!-- The XML configuration below corresponds to invoking the TextUI test runner with the following options:
+[DASH][DASH]coverage-html $1 -->
+<logging>
+    <log type="coverage-html" target="${1:./coverage}" lowUpperBound="35"
+            highLowerBound="80"/>
+</logging>
+$0
+endsnippet
