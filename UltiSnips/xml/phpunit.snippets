@@ -7,3 +7,11 @@ snippet phpunitCoverage "Enable HTML code coverage" b
 </logging>
 $0
 endsnippet
+
+snippet doctrineExtension "Add extension to test database (dama/doctrine-test-bundle) for PHPUnit >= 7.5" b
+<!-- Require dama/doctrine-test-bundle package -->
+<extensions>
+    <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
+</extensions>
+$0
+endsnippet
