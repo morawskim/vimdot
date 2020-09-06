@@ -15,7 +15,7 @@ endsnippet
 snippet autoload "composer autoload PSR4" b
 "autoload": {
     "psr-4": {
-        "${1:Company\\Sub}": "src/${1/[\\]+/\//g}"
+        "${1:Company\\Sub}\\\\": "${2:src/}"
     }
 },
 $0
