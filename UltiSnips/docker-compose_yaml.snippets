@@ -410,3 +410,9 @@ build:
     - ${4:WITH_XDEBUG=true}
 $0
 endsnippet
+
+snippet phpXdebugEnv "ENV variables for XDEBUG" b
+XDEBUG_CONFIG: "remote_connect_back=0 remote_host=\${MY_IP:-${1:172.17.0.1}} remote_enable=1 remote_port=9000"
+PHP_IDE_CONFIG: "serverName=\${DEV_SERVER_NAME:-${2:service.lvh.me}}"
+$0
+endsnippet
