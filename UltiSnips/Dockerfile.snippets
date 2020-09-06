@@ -36,12 +36,6 @@ RUN docker-php-ext-install intl
 ${0}
 endsnippet
 
-snippet phpXdebug "Install php xdebug extension in official php debian image"
-# Install xdebug (https://pecl.php.net/package/xdebug)
-RUN pecl install xdebug-${1:2.8.1} && docker-php-ext-enable xdebug
-$0
-endsnippet
-
 snippet composer "Install composer" b
 # require unzip or git to download packages
 RUN curl -sS https://getcomposer.org/installer | php -- \
@@ -76,10 +70,12 @@ RUN npm ci --production && npm cache clean --force
 $0
 endsnippet
 
-snippet xdebugInstall "Install xdebug PHP extension" b
+snippet xdebugInstall "Install xdebug PHP extension in official php debian image" b
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ARG WITH_XDEBUG=false
 RUN if [[ $WITH_XDEBUG = "true" ]]; then \
-    pecl install xdebug-2.7.0 \
+    # Install xdebug (https://pecl.php.net/package/xdebug)
+    pecl install xdebug-${2.8.1} \
     && docker-php-ext-enable xdebug \
     && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "error_reporting = E_ALL" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
