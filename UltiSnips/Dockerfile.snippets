@@ -91,3 +91,9 @@ RUN pecl install rdkafka-4.0.3 && \
     docker-php-ext-enable rdkafka
 $0
 endsnippet
+
+snippet phpPdoMysql "Enable PHP pdo_mysql extension" b
+RUN docker-php-ext-install \
+    pdo_mysql
+$0
+endsnippet
