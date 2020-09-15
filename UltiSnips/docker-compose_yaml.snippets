@@ -416,3 +416,11 @@ XDEBUG_CONFIG: "remote_connect_back=0 remote_host=\${MY_IP:-${1:172.17.0.1}} rem
 PHP_IDE_CONFIG: "serverName=\${DEV_SERVER_NAME:-${2:service.lvh.me}}"
 $0
 endsnippet
+
+snippet dc_service_csvkit "docker compose service - csvsql-mysql" b
+csvkit:
+    image: morawskim/csvsql-mysql:${1:1.0.5}
+    volumes:
+        - ${2:./}:${3:/app}
+$0
+endsnippet
