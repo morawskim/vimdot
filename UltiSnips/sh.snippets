@@ -27,3 +27,26 @@ set -euo pipefail
 IFS=$'\n\t'
 ${0}
 endsnippet
+
+snippet confirmPrompt "Bash confirm prompt" b
+${1:echo "yes or no?"}
+read input
+case $input in
+    [yY] | [yY][eE][sS])
+        ${2:echo "confirmed"}
+        ;;
+    *)
+        ${3:echo "canceled"}
+        ;;
+esac
+$0
+endsnippet
+
+snippet array "Bash declare array variable" b
+${1:echo "Type names of friends, seperated by comma (,)"}
+IFS=','
+declare -a ${2:friends}
+read -a $2
+echo You have \${#$2[@]}
+$0
+endsnippet
