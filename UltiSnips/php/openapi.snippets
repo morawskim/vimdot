@@ -1,0 +1,61 @@
+snippet oai "OpenAPI annotations namespace import"
+use \OpenApi\Annotations as OA;
+$0
+endsnippet
+
+snippet oares "OpenAPI Response"
+@OA\Response(
+*     response=${1:200},
+*     description="${2:description}",
+*     @OA\JsonContent(
+*         ${3:type="array", @OA\Items(ref=@Model(type=EntityOrFormType::class))}
+*     )
+* )
+$0
+endsnippet
+
+snippet oarp "OpenAPI Request Parameter"
+@OA\Parameter(
+*     name="${1:id}",
+*     description="${2:description}",
+*     required=${3:true},
+*     in="${4:path}",
+*     @OA\Schema(
+*         type="${5:integer}"
+*     )
+* )
+$0
+endsnippet
+
+snippet oarb "OpenAPI RequestBody"
+@OA\RequestBody(
+*     @OA\JsonContent(ref=@Model(type=${1:EntityOrFormType}::class))
+* )
+$0
+endsnippet
+
+snippet oap "OpenAPI Property"
+@OA\Property(type="object", ref=@Model(type=${1:EntityOrFormType}::class))
+$0
+endsnippet
+
+snippet oaref "OpenAPI reference to schema"
+ref="#/components/schemas/${1:SchemaName}"
+$0
+endsnippet
+
+snippet oaschema "OpenAPI Schema"
+@OA\Schema(
+*     title="${1:title}"
+*     ${2:@OA\Property(
+*        property="type",
+*        type="string"
+*     ),
+*     @OA\Property(
+*        property="data",
+*        type="string"
+*     )},
+*     example=${3:{"type": "auth", "data": "ASD45SDF4GFDGDFGVMNY"}}
+* )
+$0
+endsnippet
