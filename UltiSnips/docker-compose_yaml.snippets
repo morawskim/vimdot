@@ -166,6 +166,7 @@ endsnippet
 snippet dc_service_newman "docker compose service - newman" b
 ${1:newman}:
     image: postman/newman:alpine
+    restart: "no"
     volumes:
         - ./${2:integration-tests}:/tests
     depends_on:
@@ -420,6 +421,7 @@ endsnippet
 snippet dc_service_csvkit "docker compose service - csvsql-mysql" b
 csvkit:
     image: morawskim/csvsql-mysql:${1:1.0.5}
+    restart: "no"
     volumes:
         - ${2:./}:${3:/app}
 $0
