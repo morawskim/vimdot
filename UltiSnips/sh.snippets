@@ -50,3 +50,8 @@ read -a $2
 echo You have \${#$2[@]}
 $0
 endsnippet
+
+snippet trap "Bash signal handler" b
+trap '${1:functionsNameToCallWhenSignalHasArrived}' ${2:signalName}
+$0
+endsnippet
