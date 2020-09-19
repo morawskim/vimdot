@@ -1,0 +1,13 @@
+# online demo https://codepen.io/morawskim/pen/GRZYymJ?editors=1010
+snippet matchMedia "JS Media Query (window.matchMedia)" b
+function $3(e: MediaQueryListEvent | MediaQueryList) {
+    if (e.matches) {
+        ${1:console.log('matches');}
+    }
+}
+
+const mediaQuery = window.matchMedia('${2:(min-width: 768px)}');
+mediaQuery.addEventListener('change', ${3:handleMediaQueryChange});
+$3(mediaQuery);
+$0
+endsnippet
