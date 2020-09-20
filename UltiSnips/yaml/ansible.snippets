@@ -39,3 +39,23 @@ snippet ansibleYumRepository "Ansiable add YUM repository" b
     warn: no
 $0
 endsnippet
+
+snippet ansibleSelinux "ansible put SELinux in permissive mode" b
+- name: Put SELinux in permissive mode, logging actions that would be blocked.
+  selinux:
+    policy: targeted
+    state: permissive
+$0
+endsnippet
+
+snippet includeOsFamilyVars "ansible Include OS specific vars" b
+- name: Include OS specific vars
+  include_vars: "os_family/{{ ansible_os_family }}.yml"
+$0
+endsnippet
+
+snippet includeWhenOsFamily "ansible Include when specific os_family" b
+- include: os_family/Debian.yml
+  when: ansible_os_family == 'Debian'
+$0
+endsnippet
