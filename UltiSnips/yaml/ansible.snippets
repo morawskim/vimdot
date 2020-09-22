@@ -59,3 +59,11 @@ snippet includeWhenOsFamily "ansible Include when specific os_family" b
   when: ansible_os_family == 'Debian'
 $0
 endsnippet
+
+snippet cmdFailedWhen "ansible Command task with a custom error condition" b
+- name: ${1:task name}
+  command: ${2:/path/to/command}
+  register: ${3:sessions}
+  failed_when: $3.rc not in(0) and $3.stderr | regex_search('${4:regex}')
+$0
+endsnippet
