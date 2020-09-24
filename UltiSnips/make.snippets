@@ -20,3 +20,10 @@ endef
 export $1
 $0
 endsnippet
+
+snippet isDefined "Makefile - check if var is defined" b
+ifndef ${1:VAR_NAME}
+	$(error $1 is undefined)
+endif
+$0
+endsnippet
