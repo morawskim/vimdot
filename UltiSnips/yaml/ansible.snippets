@@ -67,3 +67,10 @@ snippet cmdFailedWhen "ansible Command task with a custom error condition" b
   failed_when: $3.rc not in(0) and $3.stderr | regex_search('${4:regex}')
 $0
 endsnippet
+
+snippet importTask "ansible Import task from external file" b
+- import_tasks: ${1:tasks.yml}
+  vars:
+    ${2:variable}: ${3:value}
+$0
+endsnippet
