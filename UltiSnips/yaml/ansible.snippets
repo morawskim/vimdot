@@ -74,3 +74,11 @@ snippet importTask "ansible Import task from external file" b
     ${2:variable}: ${3:value}
 $0
 endsnippet
+
+snippet varPrompt "ansible prompt for variable" b
+# in vars_prompt key
+- name: ${1:username}
+  prompt: "What is your username?"
+  private: no
+$0
+endsnippet
