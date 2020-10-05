@@ -113,3 +113,29 @@ const ${2:Component}: React.FC<Props> = props => {
 export default $2;
 $0
 endsnippet
+
+snippet ErrorBoundary "ReactErrorBoundary component"
+import React from 'react';
+import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
+
+const ErrorFallback: React.FC<FallbackProps> = ({ error }) => {
+    return (
+        <div role="alert">
+            <p>Something went wrong:</p>
+            <pre>{error?.message}</pre>
+            <pre>{error?.stack}</pre>
+        </div>
+    )
+};
+
+const AppErrorBoundary: React.FC<{}> = (props) => {
+    return (
+        <ErrorBoundary FallbackComponent={ErrorFallback} onError={(error, info): void => console.error(error, info)}>
+            {props.children}
+        </ErrorBoundary>
+    );
+};
+
+export default AppErrorBoundary;
+$0
+endsnippet
