@@ -1,0 +1,13 @@
+snippet stripePaymentOff "Stripe - create payment off_session" b
+/** @link https://stripe.com/docs/payments/save-during-payment#web-create-payment-intent-off-session */
+$stripe = new \Stripe\StripeClient(${1:'stripe-api-key'});
+$stripe->paymentIntents->create([
+    'amount' => ${2:$amount},
+    'payment_method' => ${3:$paymentId},
+    'customer' => ${4:$customerId},
+    'currency' => 'pln',
+    'confirm' => true,
+    'off_session' => true,
+]);
+$0
+endsnippet
