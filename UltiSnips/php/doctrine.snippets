@@ -1,0 +1,27 @@
+snippet ormSetup "Doctrine ORM setup" b
+$config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(
+    [__DIR__ . '/Entity'],
+    true,
+    __DIR__ . '/ProxyEntity',
+    null,
+    false
+);
+//$config->setSQLLogger(new \Doctrine\DBAL\Logging\DebugStack());
+$config->setNamingStrategy(new \Doctrine\ORM\Mapping\UnderscoreNamingStrategy(CASE_LOWER, true));
+
+$connection = [
+    'driver' => 'pdo_mysql',
+    'host' => '${1:mysql}',
+    'dbname' => '${2:doctrine}',
+    'user' => '${3:user}',
+    'password' => '${4:userpassword}',
+];
+
+$em = \Doctrine\ORM\EntityManager::create($connection, $config);
+$0
+endsnippet
+
+snippet doctrineSqlite "Doctrine sqlite connection params" b
+$connection = ['url' => 'sqlite://${1:/db.sqlite}'];
+$0
+endsnippet
