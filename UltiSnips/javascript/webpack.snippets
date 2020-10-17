@@ -1,0 +1,16 @@
+snippet workbox "workbox plugin for webpack" b
+// const WorkboxPlugin = require('workbox-webpack-plugin');
+function calculateChecksum(file) {
+    return crypto.createHash('md5').update(fs.readFileSync(file)).digest('base64')
+}
+
+new WorkboxPlugin.InjectManifest({
+    swSrc: '${1:./src/sw.ts}',
+    swDest: '${2:./sw.js}',
+    maximumFileSizeToCacheInBytes: ${3:10485760}, // 80MB
+    additionalManifestEntries: [
+        { url: '/manifest.json', revision: calculateChecksum(path.resolve(__dirname, 'public/manifest.json')) },
+    ],
+}),
+$0
+endsnippet
