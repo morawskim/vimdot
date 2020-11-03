@@ -1,0 +1,32 @@
+snippet gzPost "guzzle POST request" b
+$client->post(
+    '${1:/api/endpoint}',
+    [
+        RequestOptions::HEADERS => [
+            'Content-Type' => 'application/json',
+        ],
+        RequestOptions::BODY => ${2:$body},
+    ]
+);
+$0
+endsnippet
+
+snippet gzJson "guzzle POST JSON request" b
+$client->post(
+    '${1:/api/endpoint}',
+    [
+        RequestOptions::JSON => ${2:$body},
+    ]
+);
+$0
+endsnippet
+
+snippet gzClient "guzzle client" b
+$client = new \GuzzleHttp\Client([
+    'base_uri'        => ${1:http://foo.bar},
+    'timeout'         => 5,
+    'allow_redirects' => false,
+//    'proxy'           => '192.168.10.10'
+]);
+$0
+endsnippet
