@@ -11,3 +11,8 @@ mediaQuery.addEventListener('change', ${3:handleMediaQueryChange});
 $3(mediaQuery);
 $0
 endsnippet
+
+snippet cssVar "Getting a CSS Variable's Value" b
+getComputedStyle(document.documentElement).getPropertyValue('${1:--breakpoint-lg}');
+$0
+endsnippet
