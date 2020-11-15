@@ -59,3 +59,22 @@ snippet oaschema "OpenAPI Schema"
 * )
 $0
 endsnippet
+
+snippet oaInlineNestedObject "OpenAPI inline nested object in property"
+* @OA\Property(
+*     title="${1:person}",
+*     type="object",
+*     description="${2:Full name of person}",
+*     @OA\Property(
+*         property="${3:first_name}",
+*         type="string",
+*         description="${4:First name of person}"
+*     ),
+*     @OA\Property(
+*         property="${5:last_name}",
+*         type="string",
+*         description="${6:Last name of person}"
+*     ),
+* ),
+$0
+endsnippet
