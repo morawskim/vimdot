@@ -288,3 +288,16 @@ deploy:
     - DOCKER_HOST=ssh://${2:deployer@192.168.15.28} docker --config $TMP_PATH stack deploy --compose-file ${3:deploy/docker-compose.yml} --with-registry-auth ${4:STACK_NAME}
 $0
 endsnippet
+
+snippet glChildPipeline "GitLab child pipeline trigger" b
+${1:api_pipeline}:
+  stage: ${2:qa}
+  only:
+    changes:
+      - ${3:api/*}
+  trigger:
+    include:
+      - local: $3/.gitlab-ci.yml
+    strategy: depend
+$0
+endsnippet
