@@ -426,3 +426,9 @@ csvkit:
         - ${2:./}:${3:/app}
 $0
 endsnippet
+
+snippet dcTmpfs "docker-compose mount tmpfs volume in container" b
+tmpfs:
+  - ${1:/var/www/html/var/cache}:mode=750,size=50m,uid=33,gid=33
+$0
+endsnippet
