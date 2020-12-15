@@ -31,3 +31,19 @@ snippet meta-og "Open Graph Meta Tags" b
 <meta property="og:type" content="${5:website}" />
 $0
 endsnippet
+
+snippet preloadFetch "Link - preload fetch request"
+<link rel="preload" as="fetch" href="${1:example.com/api/posts}" crossorigin>
+$0
+endsnippet
+
+snippet preloadImage "Link - preload image request"
+<link rel="preload" as="image"
+     href="${poster.jpg}"
+     imagesrcset="
+        poster_400px.jpg 400w,
+        poster_800px.jpg 800w,
+        poster_1600px.jpg 1600w"
+    imagesizes="50vw">
+$0
+endsnippet
