@@ -55,3 +55,8 @@ snippet trap "Bash signal handler" b
 trap '${1:functionsNameToCallWhenSignalHasArrived}' ${2:signalName}
 $0
 endsnippet
+
+snippet cdScript "Change the working directory to directory with script" b
+cd "$( dirname "${BASH_SOURCE[0]}" )"
+$0
+endsnippet
