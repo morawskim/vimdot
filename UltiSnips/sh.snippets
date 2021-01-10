@@ -22,8 +22,10 @@ endsnippet
 
 
 # http://redsymbol.net/articles/unofficial-bash-strict-mode/
+# https://dougrichardson.us/2018/08/03/fail-fast-bash-scripting.html
 snippet strict_mode "Bash Strict Mode"
 set -euo pipefail
+shopt -s inherit_errexit
 IFS=$'\n\t'
 ${0}
 endsnippet
