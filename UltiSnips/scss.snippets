@@ -132,3 +132,21 @@ ${1:div} {
 }
 $0
 endsnippet
+
+snippet mediaBreakpoint "Media that spans multiple breakpoint widths" b
+/**
+Example (Makes the @content apply between the min and max breakpoints):
+@include $1 {
+  flex-direction: row;
+}
+bs4: media-breakpoint-up, media-breakpoint-down
+https://github.com/twbs/bootstrap/blob/6ffb0b48e455430f8a5359ed689ad64c1143fac2/scss/mixins/_breakpoints.scss
+*/
+
+@mixin ${1:tablet} {
+  @media (min-width: ${2:#{$breakpoint-min}}) and (max-width: ${3:#{$breakpoint-max}}) {
+    @content;
+  }
+}
+$0
+endsnippet
