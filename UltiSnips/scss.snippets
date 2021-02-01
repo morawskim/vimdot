@@ -150,3 +150,11 @@ https://github.com/twbs/bootstrap/blob/6ffb0b48e455430f8a5359ed689ad64c1143fac2/
 }
 $0
 endsnippet
+
+# @see https://www.bram.us/2021/01/28/form-validation-you-want-notfocusinvalid-not-invalid/
+snippet formInvalidSelector "Apply some styles for invalid fields" b
+input:not(:focus):not(:placeholder-shown):invalid {
+    ${1}
+}
+$0
+endsnippet
