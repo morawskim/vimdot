@@ -1,0 +1,15 @@
+snippet serializeForm "Serialize form data" b
+/**
+ * Serialize form data
+ *
+ * @link https://1loc.dev/#serialize-form-data
+ *
+ * @param {HTMLFormElement} formEle
+ */
+const serialize = formEle => Array
+    .from(new FormData(formEle))
+    .reduce((p, [k, v]) => {
+        return Object.assign({}, p, { [k]: p[k] ? (Array.isArray(p[k]) ? p[k] : [p[k]]).concat(v) : v });
+    }, {});
+$0
+endsnippet
