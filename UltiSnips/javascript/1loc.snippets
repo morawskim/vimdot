@@ -13,3 +13,12 @@ const serialize = formEle => Array
     }, {});
 $0
 endsnippet
+
+snippet inputEnter "Listener for an ENTER key" b
+${1:input}.addEventListener('keydown', (e) => {
+    if (e.key === "Enter" || e.which === 13 || e.keyCode === 13) {
+        ${2}
+    }
+});
+$0
+endsnippet
