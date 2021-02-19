@@ -440,3 +440,26 @@ tmpfs:
   - ${1:/var/www/html/var/cache}:mode=750,size=50m,uid=33,gid=33
 $0
 endsnippet
+
+snippet dc_service_nginx_fpm "docker-compose services nginx and php-fpm" b
+httpd:
+    image: nginx:1.19-alpine
+    depends_on:
+        - php-fpm
+    labels:
+        traefik.backend: "httpd"
+        traefik.frontend.rule: "Host:${1:example.lvh.me}"
+    volumes:
+        - ./:/var/www/html
+        - ./provision/vhost.conf:/etc/nginx/conf.d/default.conf
+php-fpm:
+    # For symfony use "dcTmpfs" snippet to create tmpfs volume
+    # To use build directive instead of image use "build" snippet
+    image: php:7.4-fpm
+    volumes:
+        - ./:/var/www/html
+    # environment:
+        # Use snippet bellow to include xdebug3 env variables
+        # phpXdebug3Env
+$0
+endsnippet
