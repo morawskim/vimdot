@@ -1,0 +1,10 @@
+snippet cyCmdTypes "Cypress types for custom command" b
+/// <reference types="cypress" />
+
+declare namespace Cypress {
+    interface Chainable {
+        ${1:customCommand()}: Chainable<unknown>;
+    }
+}
+$0
+endsnippet
