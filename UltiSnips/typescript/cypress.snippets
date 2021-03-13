@@ -8,3 +8,19 @@ declare namespace Cypress {
 }
 $0
 endsnippet
+
+snippet cyRequest "Cypress POST request" b
+cy.request({
+    url: \`${1:/api/endpoint}\`,
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+    },
+    body: {},
+}).then((response) => {
+    expect(response.status).to.equal(200);
+    const body = response.body;
+});
+$0
+endsnippet
