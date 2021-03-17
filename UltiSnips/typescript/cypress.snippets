@@ -24,3 +24,17 @@ cy.request({
 });
 $0
 endsnippet
+
+snippet cyLog "Cypress print to the Command Log" b
+Cypress.log({
+    name: ${1:''},
+    displayName: '${2:shorter name for the Command Log}',
+    message: \`\`,
+    consoleProps: () => {
+      // return an object which will
+      // print to dev tools console on click
+      return {$0}
+    }
+});
+
+endsnippet
