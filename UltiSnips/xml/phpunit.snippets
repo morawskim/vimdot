@@ -22,3 +22,15 @@ snippet phpunitIniSet "PHPUnit - Setting PHP INI settings" b
 </php>
 $0
 endsnippet
+
+snippet phpunit9Coverage "PHPUnit9 - Enable code coverage" b
+<coverage processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+    <exclude>
+      <directory suffix=".php">src/DataFixtures</directory>
+    </exclude>
+</coverage>
+$0
+endsnippet
