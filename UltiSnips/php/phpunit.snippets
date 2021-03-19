@@ -51,3 +51,18 @@ snippet testExtRequired "PHPUnit annotation to skip tests when installed extensi
 @requires extension ${1:intl}
 $0
 endsnippet
+
+snippet sfWebClient "Symfony client for WebTest" b
+$client = static::createClient();
+$client->request(
+    'POST',
+    '/api/endpoint',
+    [],
+    [],
+    ['HTTP_ACCEPT' => 'application/json', 'CONTENT_TYPE' => 'application/json', 'HTTP_AUTHORIZATION' => sprintf('Bearer %s', $tokenJWT)],
+    json_encode($body)
+);
+
+$this->assertResponseIsSuccessful();
+$0
+endsnippet
