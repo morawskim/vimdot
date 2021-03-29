@@ -353,7 +353,7 @@ endsnippet
 
 snippet dc_service_redis "docker compose service- redis with persistent storage" b
 redis:
-    image: redis:5.0-alpine
+    image: redis:6.2.0-alpine
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
         - ${1:./redis-data}:/data
