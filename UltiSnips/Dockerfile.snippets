@@ -112,3 +112,9 @@ RUN docker-php-ext-install \
     pdo_mysql
 $0
 endsnippet
+
+snippet phpRedis "Install redis PHP extension" b
+RUN echo -e "no\nno\nno\n" | pecl install redis-5.2.1 \
+    && echo "extension=redis.so" | tee /usr/local/etc/php/conf.d/redis.ini
+$0
+endsnippet
