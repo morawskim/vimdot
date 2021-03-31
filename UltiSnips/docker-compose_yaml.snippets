@@ -465,3 +465,12 @@ php-fpm:
         # phpXdebug3Env
 $0
 endsnippet
+
+snippet dcLogging "docker-compose - logging configuration for a service" b
+logging:
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "2"
+$0
+endsnippet
