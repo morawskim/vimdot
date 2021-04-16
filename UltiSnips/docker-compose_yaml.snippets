@@ -474,3 +474,10 @@ logging:
     max-file: "2"
 $0
 endsnippet
+
+snippet dc_service_wait "docker compose service - wait" b
+# Example: docker-compose run --rm $1 -c mysql:3306 -t 15
+${1:wait}:
+    image: dokku/wait
+$0
+endsnippet
