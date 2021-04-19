@@ -66,3 +66,15 @@ $client->request(
 $this->assertResponseIsSuccessful();
 $0
 endsnippet
+
+snippet testTwigEnv "PHPUnit Twig env with array loader" b
+$templates = ['email/test/test.html.twig' => 'Hello {{ name }}',];
+$loader = new ArrayLoader($templates);
+
+$twig = new Environment($loader, [
+    'debug' => true,
+    'cache' => false,
+    'autoescape' => fn($name) => 'html',
+]);
+$0
+endsnippet
