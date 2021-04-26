@@ -14,3 +14,26 @@ applog:
     max_files: 60
 $0
 endsnippet
+
+snippet sfRoute "Symfony - Creating Routes definition" b
+${1:routerName}:
+  controller: '${2:serviceId}'
+  path: ${3:/path/to}
+  methods: ${4:GET|POST}
+$0
+endsnippet
+
+snippet sfMessengerTransport "Symfony - configure transport for messenger" b
+${1:notify}:
+    dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+    options:
+        queue_name: $1
+    retry_strategy:
+        max_retries: 3
+        # milliseconds delay (30s)
+        delay: 30000
+        # causes the delay to be higher before each retry
+        # e.g. 1 second delay, 2 seconds, 4 seconds
+        multiplier: 3
+$0
+endsnippet
