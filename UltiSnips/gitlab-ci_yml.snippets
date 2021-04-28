@@ -322,3 +322,23 @@ cypress:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
 $0
 endsnippet
+
+snippet glTriggerProject "GitLab job triggers pipeline of another project" b
+deploy:develop:
+  stage: deploy
+  trigger:
+    project: ${1:namespace}/${2:project}
+    strategy: depend
+  only:
+    - develop
+  except:
+    - api
+    - external
+    - pipelines
+    - schedules
+    - triggers
+    - web
+    - chats
+    - tags
+$0
+endsnippet
