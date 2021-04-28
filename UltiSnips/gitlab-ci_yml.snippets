@@ -301,3 +301,24 @@ ${1:api_pipeline}:
     strategy: depend
 $0
 endsnippet
+
+snippet glCypress "GitLab run cypress tests" b
+cypress:
+  image: cypress/browsers:node14.7.0-chrome84
+  stage: qa
+  dependencies: []
+  script:
+    - pushd ${1:e2e}
+    - npm ci
+    - $(npm bin)/cypress verify
+    - $(npm bin)/cypress run --headless --browser chrome --env "configFile=test" --spec "./cypress/integration/api/**/*.spec.ts"
+  artifacts:
+    expire_in: 1 week
+    when: always
+    paths:
+      - $1/cypress/screenshots
+      - $1/cypress/videos
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+$0
+endsnippet
