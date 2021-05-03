@@ -78,3 +78,9 @@ $twig = new Environment($loader, [
 ]);
 $0
 endsnippet
+
+snippet testMockCallback "PHPUnit mock - call a callback passed as argument" b
+$entityManagerMock->method('transactional')
+    ->willReturnCallback(fn (callable $callback) => $callback());
+$0
+endsnippet
