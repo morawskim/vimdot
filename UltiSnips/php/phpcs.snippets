@@ -1,3 +1,9 @@
 snippet phpcsIgnore "phpcs ignore rule" b
 // phpcs:ignore ${1:Rule1, Rule2}
 endsnippet
+
+snippet phpcsDisable "phpcs enable/disable rule" b
+// phpcs:disable ${1:Generic.Files.LineLength}
+	${0:${VISUAL:# code}}
+// phpcs:enable $1
+endsnippet
