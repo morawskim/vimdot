@@ -84,3 +84,15 @@ $entityManagerMock->method('transactional')
     ->willReturnCallback(fn (callable $callback) => $callback());
 $0
 endsnippet
+
+snippet testNormalizer "PHPUnit - create ObjectNormalizer from Symfony/Serializer component" b
+$normalizer = new ObjectNormalizer(
+    new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader())),
+    new MetadataAwareNameConverter(
+        new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader())),
+        new CamelCaseToSnakeCaseNameConverter()
+    )
+);
+$normalizer->setSerializer(new Serializer([new JsonSerializableNormalizer(), $normalizer], []));
+$0
+endsnippet
