@@ -481,3 +481,11 @@ ${1:wait}:
     image: dokku/wait
 $0
 endsnippet
+
+snippet dc_service_symfony_worker "docker compose service - symfony messenger worker" b
+${1:symfony-worker}:
+    image: ${2:php:7.4-fpm}
+    entrypoint: ["/opt/web/bin/console", "messenger:consume", "--limit=100", "--time-limit=3600", "-v", "${3:queue}"]
+    restart: unless-stopped
+$0
+endsnippet
