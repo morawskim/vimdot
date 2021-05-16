@@ -96,3 +96,26 @@ $normalizer = new ObjectNormalizer(
 $normalizer->setSerializer(new Serializer([new JsonSerializableNormalizer(), $normalizer], []));
 $0
 endsnippet
+
+snippet testGetMock "PHPUnit create mock outside a test case" b
+// in test case you must call $this->registerMockObject($mock);
+// if you want verify mock objects
+
+$generator = new Generator();
+$mock = $generator->getMock(
+    ${1:Foo::class},
+    [],
+    [],
+    '',
+    false,
+    false,
+    true,
+    false,
+    false,
+    null,
+    false
+);
+
+return $mock;
+$0
+endsnippet
