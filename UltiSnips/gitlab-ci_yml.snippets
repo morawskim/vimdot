@@ -1,10 +1,15 @@
 snippet job_composer "GitLab CI job - composer" b
 composer:
   stage: prepare
-  image: edbizarro/gitlab-ci-pipeline-php:${1:7.2}
+  image: ${1:composer:2}
+  before_script:
+    - composer config -g cache-dir "$CI_PROJECT_DIR/.composer-cache"
   script:
-    - php -v
-    - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    - composer install --ignore-platform-reqs --no-dev --optimize-autoloader --no-interaction --no-progress --no-ansi --no-scripts
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - .composer-cache
   artifacts:
     paths:
       - vendor/
