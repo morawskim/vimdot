@@ -489,3 +489,13 @@ ${1:symfony-worker}:
     restart: unless-stopped
 $0
 endsnippet
+
+snippet dc_service_ofelia "docker compose service - ofelia a docker job scheduler (aka. crontab for docker)" b
+${1:ofelia}:
+    image: 'mcuadros/ofelia:v0.3.2'
+    restart: unless-stopped
+    volumes:
+      - ./ofelia_config.ini:/etc/ofelia/config.ini
+      - /var/run/docker.sock:/var/run/docker.sock
+$0
+endsnippet

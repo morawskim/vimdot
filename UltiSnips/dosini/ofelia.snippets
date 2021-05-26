@@ -1,0 +1,9 @@
+snippet ofelia_job_exec "Ofelia job-exec example" b
+[job-exec "${1:job name}"]
+schedule = ${2:@every 1h}
+container = ${3:container_name}
+command = ${4:date}
+user = www-data
+no-overlap = true
+$0
+endsnippet
