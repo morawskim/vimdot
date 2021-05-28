@@ -1,0 +1,15 @@
+snippet macro "Twig macro to reuse template fragment" b
+{% macro ${1:name}() %}
+$0
+{% endmacro %}
+endsnippet
+
+snippet macroImport "Twig import macros from file" b
+{% import "${1:path}" as ${2:macros} %}
+$0
+endsnippet
+
+snippet macroImportOne "Twig import macro from file" b
+{% from '${1:path}' import ${2:input as input_field, textarea} %}
+$0
+endsnippet
