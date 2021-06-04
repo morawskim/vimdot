@@ -78,3 +78,13 @@ snippet oaInlineNestedObject "OpenAPI inline nested object in property"
 * ),
 $0
 endsnippet
+
+snippet oasp "OpenAPI Array property with items reference schema"
+@OA\Property(type="array", @OA\Items(ref="#/components/schemas/${1:SCHEMA_NAME}"))
+$0
+endsnippet
+
+snippet oaDynamicPropertyKeys "OpenAPI object with dynamic properties (eg Dictionaries, HashMaps and Associative Arrays)"
+@OA\Property(type="object", additionalProperties=true, description="${1:Json schema definition}")
+$0
+endsnippet
