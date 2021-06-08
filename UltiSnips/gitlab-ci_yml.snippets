@@ -355,3 +355,15 @@ deploy:develop:
     - tags
 $0
 endsnippet
+
+snippet glServiceEs "GitLab service for elasticsearch" b
+services:
+    - name: docker.elastic.co/elasticsearch/elasticsearch:7.11.1
+      alias: elasticsearch
+      command: [ "bin/elasticsearch", "-Ediscovery.type=single-node" ]
+variables:
+    ES_JAVA_OPTS: -Xms1g -Xmx1g
+script:
+    - curl "http://elasticsearch:9200/_cat/health"
+$0
+endsnippet
