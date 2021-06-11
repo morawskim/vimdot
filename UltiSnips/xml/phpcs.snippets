@@ -1,0 +1,20 @@
+snippet phpcsSymfony "PHPCS Symfony rules" b
+<rule ref="PSR2"/>
+<rule ref="PSR12"/>
+<!-- Require escapestudios/symfony2-coding-standard package -->
+<rule ref="./vendor/escapestudios/symfony2-coding-standard/Symfony/ruleset.xml">
+    <exclude name="Symfony.Commenting.FunctionComment.Missing"/>
+    <exclude name="Symfony.Commenting.ClassComment.Missing"/>
+    <exclude name="Symfony.Commenting.Annotations"/>
+    <exclude name="Symfony.Functions.Arguments"/>
+    <exclude name="Symfony.NamingConventions.ValidClassName"/>
+    <rule ref="Symfony.Formatting.BlankLineBeforeReturnSniff" />
+</rule>
+<rule ref="Squiz.Strings.ConcatenationSpacing">
+    <properties>
+        <property name="ignoreNewlines" value="true"/>
+        <property name="spacing" value="1"/>
+    </properties>
+</rule>
+$0
+endsnippet
