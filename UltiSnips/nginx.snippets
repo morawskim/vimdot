@@ -92,3 +92,15 @@ snippet tryFiles "nginx front controller pattern" b
 try_files $uri $uri/ ${1:/index.html} =404;
 $0
 endsnippet
+
+snippet proxyWS "Proxy Websocket traffic" b
+location ${1:/websocket} {
+    proxy_pass ${2:http://backend};
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_read_timeout 3600;
+    proxy_send_timeout 3600;
+}
+$0
+endsnippet
