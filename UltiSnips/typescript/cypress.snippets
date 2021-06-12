@@ -36,5 +36,12 @@ Cypress.log({
       return {$0}
     }
 });
+$0
+endsnippet
 
+snippet cyChainableTuple "Cypress append chainable result to tuple" b
+const appendChainableResultToTuple = <T extends unknown[], U extends unknown>(data: readonly [...T], cypressChainable: Chainable<U>) => {
+    return cypressChainable.then(result => [...data, result] as const)
+};
+$0
 endsnippet
