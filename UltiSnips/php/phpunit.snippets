@@ -85,6 +85,14 @@ $entityManagerMock->method('transactional')
 $0
 endsnippet
 
+snippet testMockArgCallback "PHPUnit mock - verify method args via callback" b
+$mock->expects(self::once())
+    ->method('method')
+    ->with(self::callback(fn (string $format) => checkValue($format)))
+    ->willReturnCallback(fn($path, $format) => generateUrl($path, $format));
+$0
+endsnippet
+
 snippet testNormalizer "PHPUnit - create ObjectNormalizer from Symfony/Serializer component" b
 $normalizer = new ObjectNormalizer(
     new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader())),
