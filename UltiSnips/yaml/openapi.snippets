@@ -1,0 +1,27 @@
+snippet oaPropety "OpenAPI array propety" b
+${1:objectProperty}:
+  type: array
+  items:
+    $ref: '#/components/schemas/${2:SomeSchema}'
+  $0
+endsnippet
+
+snippet oaAllOf "OpenAPI allOf (extend schema)" b
+${1:ExampleOfAllOfUsage}:
+  allOf:
+    - $ref: '#/components/schemas/${2:SchemaReference}'
+    - type: object
+        required:
+          - anotherProperty
+        properties:
+          anotherProperty:
+            type: string
+        $0
+endsnippet
+
+snippet oaOneOf "OpenAPI oneOf" b
+${1:ExampleOfOneOfUsage}:
+  oneOf:
+    - ref: "#/components/schemas/${2:FirstVariant}"
+    $0
+endsnippet
