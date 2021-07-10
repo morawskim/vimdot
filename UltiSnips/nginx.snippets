@@ -104,3 +104,46 @@ location ${1:/websocket} {
 }
 $0
 endsnippet
+
+snippet vhost-php-fpm "Vhost & PHP-FPM" b
+server {
+  listen 80 default_server;
+
+  # Directory of the PHP project
+  root /var/www/html/public;
+  index index.php;
+
+  # Serve all requests (no domain filtering)
+  server_name _;
+  client_max_body_size 11m;
+
+  # Browser security headers
+  add_header X-Content-Type-Options nosniff;
+  add_header X-XSS-Protection "1; mode=block";
+
+  location / {
+    try_files $uri @rewriteapp;
+  }
+
+  location @rewriteapp {
+    rewrite ^(.*)$ /index.php/\$1 last;
+  }
+
+  # Use "php-fpm" snippet for php-fpm configuration
+}
+$0
+endsnippet
+
+snippet php-fpm "PHP-FPM configuration" b
+# PHP-FPM configuration
+location ~ \.php(/|$) {
+    internal;
+    fastcgi_pass 127.0.0.1:9000;
+    fastcgi_split_path_info ^(.+\.php)(/.*)$;
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    fastcgi_param HTTPS off;
+    fastcgi_param HTTP_X_REQUEST_ID $request_id;
+}
+$0
+endsnippet
