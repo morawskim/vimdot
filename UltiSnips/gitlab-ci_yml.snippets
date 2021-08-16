@@ -143,6 +143,22 @@ phpunit:
     - composer
 endsnippet
 
+snippet job_phpmetrics "GitLab CI job - phpmetrics" b
+phpmetrics:
+  stage: qa
+  image: jakzal/phpqa:alpine
+  script:
+    # https://github.com/jakzal/phpqa/issues/311
+    - composer global require phpmetrics/phpmetrics
+    - /tools/.composer/vendor/bin/phpmetrics --report-html=docs/phpmetrics --exclude=tests,vendor,var,bin .
+  artifacts:
+    paths:
+      - docs/phpmetrics/
+    expire_in: 30 days
+    when: on_success
+$0
+endsnippet
+
 snippet job_assets "GitLab CI job - build assets" b
 assets:
   stage: build
