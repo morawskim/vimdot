@@ -126,6 +126,23 @@ phpcf:
 ${0}
 endsnippet
 
+snippet job_phpunit "GitLab CI job - phpunit" b
+phpunit:
+  stage: qa
+  image: edbizarro/gitlab-ci-pipeline-php:${1:7.4}
+  script:
+    - XDEBUG_MODE=coverage ./bin/phpunit --group default,integration --coverage-html docs/phpunit --log-junit docs/phpunit.xml
+  artifacts:
+    paths:
+      - docs/phpunit/
+    reports:
+      junit: docs/phpunit.xml
+    expire_in: 30 days
+    when: always
+  dependencies:
+    - composer
+endsnippet
+
 snippet job_assets "GitLab CI job - build assets" b
 assets:
   stage: build
