@@ -400,3 +400,20 @@ script:
     - curl "http://elasticsearch:9200/_cat/health"
 $0
 endsnippet
+
+snippet job_jmeter "GitLab CI job - jmeter" b
+jmeter:
+  stage: qa
+  image:
+    name: justb4/jmeter
+    entrypoint: [""]
+  script:
+    - /entrypoint.sh -Jjmeterengine.force.system.exit=true -q${1:env.properties} -n -t ${2:performance.jmx} -l ${3:performance.csv} -e -o ./${4:jmeter-html-report}
+  artifacts:
+    expire_in: 30 days
+    when: always
+    paths:
+      - $4/
+      - $3
+$0
+endsnippet
