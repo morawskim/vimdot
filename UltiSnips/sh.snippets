@@ -62,3 +62,8 @@ snippet cdScript "Change the working directory to directory with script" b
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 $0
 endsnippet
+
+snippet warning "echo warning message" b
+echo -e "\e[33m${1:WARNING}\e[0m"
+$0
+endsnippet
