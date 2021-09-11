@@ -372,6 +372,20 @@ redis-web:
 $0
 endsnippet
 
+snippet dc_service_redis_admin "docker compose service- web interface to manage Redis databases" b
+redis-admin:
+    image: erikdubbelboer/phpredisadmin
+    environment:
+      - REDIS_1_HOST=${1:redis}
+      - REDIS_1_PORT=${2:6379}
+      - REDIS_1_NAME=MyRedis
+    labels:
+      traefik.backend: "redis-admin"
+      traefik.port: "80"
+      traefik.frontend.rule: "Host:redis.lvh.me"
+$0
+endsnippet
+
 snippet dc_service_tor "docker compose service - Tor SOCKS5 proxy server" b
 tor:
      image: peterdavehello/tor-socks-proxy:latest
