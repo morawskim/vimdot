@@ -418,6 +418,7 @@ jmeter:
   image:
     name: justb4/jmeter
     entrypoint: [""]
+  dependencies: []
   script:
     - /entrypoint.sh -Jjmeterengine.force.system.exit=true -q${1:env.properties} -n -t ${2:performance.jmx} -l ${3:performance.csv} -e -o ./${4:jmeter-html-report}
   artifacts:
