@@ -82,6 +82,17 @@ php-lint:
 ${0}
 endsnippet
 
+snippet job_twig-lint "GitLab CI job - twig lint (check all the templates)" b
+twig:
+  stage: qa
+  image: edbizarro/gitlab-ci-pipeline-php:${7.4}
+  script:
+    - bin/console lint:twig templates/
+  dependencies:
+    - composer
+${0}
+endsnippet
+
 snippet job_phpmd "GitLab CI job - phpmd" b
 phpmd:
   stage: qa
