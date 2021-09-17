@@ -420,12 +420,17 @@ jmeter:
     entrypoint: [""]
   dependencies: []
   script:
-    - /entrypoint.sh -Jjmeterengine.force.system.exit=true -q${1:env.properties} -n -t ${2:performance.jmx} -l ${3:performance.csv} -e -o ./${4:jmeter-html-report}
+    #- mkdir -p /plugins
+    #- wget -O/plugins/jmeter-parallel-0.11.jar https://search.maven.org/remotecontent?filepath=com/blazemeter/jmeter-parallel/0.11/jmeter-parallel-0.11.jar
+    #- cd /opt/apache-jmeter-5.3
+    - /entrypoint.sh -Jjmeterengine.force.system.exit=true -q${1:env.properties} -n -t $CI_PROJECT_DIR/${2:performance.jmx} -l $CI_PROJECT_DIR/${3:performance.csv} -e -o $CI_PROJECT_DIR/${4:jmeter-html-report}
   artifacts:
     expire_in: 30 days
     when: always
     paths:
       - $4/
       - $3
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
 $0
 endsnippet
