@@ -386,6 +386,19 @@ redis-admin:
 $0
 endsnippet
 
+snippet dc_service_pgadmin "docker compose service - web interface to manage PostgreSQL databases" b
+pgadmin4:
+  image: dpage/pgadmin4
+  environment:
+    PGADMIN_DEFAULT_EMAIL: ${1:admin@example.com}
+    PGADMIN_DEFAULT_PASSWORD: ${2:password}
+  labels:
+    traefik.backend: "pgadmin"
+    traefik.port: "80"
+    traefik.frontend.rule: "Host:pgadmin.lvh.me"
+$0
+endsnippet
+
 snippet dc_service_tor "docker compose service - Tor SOCKS5 proxy server" b
 tor:
      image: peterdavehello/tor-socks-proxy:latest
