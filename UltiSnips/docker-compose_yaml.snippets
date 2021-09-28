@@ -509,6 +509,15 @@ ${1:wait}:
 $0
 endsnippet
 
+snippet dc_service_dozzle "docker compose service - dozzle (Log viewer for Docker)" b
+${1:dozzle}:
+    image: amir20/dozzle:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    # dozzle listen on port 8080
+$0
+endsnippet
+
 snippet dc_service_symfony_worker "docker compose service - symfony messenger worker" b
 ${1:symfony-worker}:
     image: ${2:php:7.4-fpm}
