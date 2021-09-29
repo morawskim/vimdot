@@ -420,10 +420,11 @@ certbot:
 $0
 endsnippet
 
-snippet traefik-labels "Traefik labels for service" b
+snippet traefik1-labels "Traefik1 labels for service" b
 traefik.enable: "true"
 traefik.backend: "${1:backend}"
 traefik.frontend.rule: "Host:${2:backend1.lvh.me,baclend2.lvh.me}"
+#traefik.frontend.rule: "HostRegexp: ${3:subdomain}.{domain:.+}"
 traefik.port: "${3:80}"
 traefik.docker.network: "${4:traefik}"
 traefik.frontend.passHostHeader: "true"
