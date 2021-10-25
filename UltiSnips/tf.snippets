@@ -1,0 +1,17 @@
+snippet variable "Terraform variable" b
+variable "${1:name}" {
+  description = "${2:description}"
+  type        = ${3:string}
+  default     = "${4:default_value}"
+}
+$0
+endsnippet
+
+snippet output "Terraform output" b
+output "${1:name}" {
+  description = "${2:description}"
+  value       = ${3:value_from_resource}
+  sensitive   = true
+}
+$0
+endsnippet
