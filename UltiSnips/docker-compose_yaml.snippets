@@ -536,3 +536,23 @@ ${1:ofelia}:
       - /var/run/docker.sock:/var/run/docker.sock
 $0
 endsnippet
+
+snippet dc_service_blackfire "docker compose service - blackfire agent" b
+blackfire:
+    image: blackfire/blackfire:2
+    environment:
+        # Exposes BLACKFIRE_SERVER_* environment variables from the host. Or use docker-compose.override.yaml
+        BLACKFIRE_SERVER_ID: ~
+        BLACKFIRE_SERVER_TOKEN: ~
+        #BLACKFIRE_LOG_LEVEL: 4
+$0
+endsnippet
+
+snippet dc_blackfire_client_env "docker compose enviortement for blackfire client (probe)" b
+environment:
+    # Exposes BLACKFIRE_CLIENT_* environment variables from the host. Or use docker-compose.override.yaml
+    BLACKFIRE_CLIENT_ID: ~
+    BLACKFIRE_CLIENT_TOKEN: ~
+    #BLACKFIRE_LOG_LEVEL: 4
+$0
+endsnippet
