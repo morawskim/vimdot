@@ -118,3 +118,15 @@ RUN echo -e "no\nno\nno\n" | pecl install redis-5.2.1 \
     && echo "extension=redis.so" | tee /usr/local/etc/php/conf.d/redis.ini
 $0
 endsnippet
+
+snippet phpBlackfire "Install Blackfire PHP probe extension" b
+RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
+    && architecture=$(uname -m) \
+    && curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/$architecture/$version \
+    && mkdir -p /tmp/blackfire \
+    && tar zxpf /tmp/blackfire-probe.tar.gz -C /tmp/blackfire \
+    && mv /tmp/blackfire/blackfire-*.so $(php -r "echo ini_get ('extension_dir');")/blackfire.so \
+    && printf "extension=blackfire.so\nblackfire.agent_socket=${1:tcp://blackfire:8307}\n" > $PHP_INI_DIR/conf.d/blackfire.ini \
+    && rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz
+$0
+endsnippet
