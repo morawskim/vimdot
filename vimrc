@@ -1,4 +1,32 @@
-execute pathogen#infect()
+" Restart Vim, and run the :PlugInstall statement to install your plugins.
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-characterize', { 'tag': 'v1.1' }
+Plug 'flazz/vim-colorschemes'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'editorconfig/editorconfig-vim', { 'tag': 'v1.1.1' }
+Plug 'mattn/emmet-vim'
+Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'preservim/nerdtree', { 'tag': '6.10.16' }
+Plug 'luochen1990/rainbow'
+Plug 'vim-scripts/spec.vim'
+Plug 'godlygeek/tabular'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'alvan/vim-closetag'
+Plug 'tpope/vim-endwise'
+Plug 'airblade/vim-gitgutter'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-surround'
+" Plug 'Matt-Deacalion/vim-systemd-syntax'
+Plug 'dhruvasagar/vim-zoom', { 'tag': 'v0.3.2' }
+Plug 'HerringtonDarkholme/yats.vim'
+call plug#end()
 
 colorscheme Tomorrow-Night-Eighties
 
@@ -100,7 +128,7 @@ let g:changelog_dateformat = '%Y-%m-%d'
 " let g:UltiSnipsExpandTrigger="<tab>"
 autocmd FileType php UltiSnipsAddFiletypes wordpress
 
-let g:used_javascript_libs = 'jquery,angularjs,angularui,angularuirouter,chai'
+let g:used_javascript_libs = 'jquery,chai,react'
 
 " Enable loading the plugin files for specific file types with
 filetype plugin on
@@ -181,7 +209,7 @@ vnoremap <Leader>l\| :Tabularize /\|<CR>
 vnoremap <Leader>l: :Tabularize /:\zs<CR>
 
 " Dir where you want to store notes
-let g:notes_directories = ['~/Dokumenty/Notes']
+" let g:notes_directories = ['~/Dokumenty/Notes']
 
 " map <CTRL-N> to toggle nerd
 map <C-n> :NERDTreeToggle<CR>
@@ -203,7 +231,7 @@ autocmd VimEnter * command! -bar -bang Snippets
 
 " The root is considered to be the first directory containing an item with
 " one of these names:
-let g:projectlocal_project_markers = ['.git', '.hg', '.idea']
+" let g:projectlocal_project_markers = ['.git', '.hg', '.idea']
 
 " Enable modeline
 set modeline
@@ -211,17 +239,17 @@ set modelines=5
 
 " vdebug require python2, but ultisnips load python3
 " We force using python2 for ultisnips
-let g:UltiSnipsUsePythonVersion = 2
+" let g:UltiSnipsUsePythonVersion = 2
 
 " Specify directories to store schema files.
-let g:vison_data_directory = "$HOME/.vim/vison"
+" let g:vison_data_directory = "$HOME/.vim/vison"
 
 " Use powerline symbols.
 let g:airline_powerline_fonts = 1
 
 " minimum size of a file needed for it to be considered as a "LargeFile",
 " in megabytes
-let g:LargeFile = 70
+" let g:LargeFile = 70
 
 " avoid loading EditorConfig for any remote files over ssh and fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
@@ -239,7 +267,7 @@ set undodir     =$HOME/.vim/files/undo/
 set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
 " query string that will be passed to https://carbon.now.sh (for plugin vim-carbon-now-sh)
-let g:carbon_now_sh_options =
-\ { 'ln': 'true',
-  \ 't': 'nord',
-  \ 'fm': 'Monoid' }
+"let g:carbon_now_sh_options =
+"\ { 'ln': 'true',
+"  \ 't': 'nord',
+"  \ 'fm': 'Monoid' }
