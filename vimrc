@@ -27,6 +27,7 @@ Plug 'tpope/vim-surround'
 " Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'dhruvasagar/vim-zoom', { 'tag': 'v0.3.2' }
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Important!! for colorscheme (everforest)
