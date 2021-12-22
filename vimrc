@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-characterize', { 'tag': 'v1.1' }
 Plug 'flazz/vim-colorschemes'
+Plug 'sainnhe/everforest'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'editorconfig/editorconfig-vim', { 'tag': 'v1.1.1' }
 Plug 'mattn/emmet-vim'
@@ -28,7 +29,17 @@ Plug 'dhruvasagar/vim-zoom', { 'tag': 'v0.3.2' }
 Plug 'HerringtonDarkholme/yats.vim'
 call plug#end()
 
-colorscheme Tomorrow-Night-Eighties
+" Important!! for colorscheme (everforest)
+if has('termguicolors')
+    set termguicolors
+endif
+" For dark version.
+set background=dark
+
+let g:everforest_background = 'hard'
+let g:everforest_enable_italic = 1
+let g:everforest_transparent_background = 1
+colorscheme everforest
 
 " Necesary for lots of cool vim things
 set nocompatible
@@ -96,7 +107,7 @@ set foldnestmax=10
 set foldmethod=indent
 
 " Set theme for vim-airline
-let g:airline_theme='luna'
+let g:airline_theme='everforest'
 
 " Enable mouse
 set mouse=a
