@@ -283,3 +283,5 @@ set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 "\ { 'ln': 'true',
 "  \ 't': 'nord',
 "  \ 'fm': 'Monoid' }
+
+nnoremap <F10> :NERDTreeToggle<CR>
