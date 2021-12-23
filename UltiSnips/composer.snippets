@@ -1,15 +1,10 @@
-snippet crg "repo git" b
-{
-    "type": "git",
-    "url": "${1:url}"
-}${0}
-endsnippet
-
-snippet crp "repo path" b
-{
-    "type": "path",
-    "url": "${1:path}"
-}${0}
+snippet repositories "composer custom repositories (vcs, path, composer)" b
+"repositories": [
+    {"type": "vcs", "url": "https://github.com/example/lib-example"},
+    {"type": "path", "url": "../../packages/my-package"},
+    {"type": "composer", "url": "https://gitlab.com/api/v4/group/<GROUP_ID>/-/packages/composer/packages.json"}
+]
+$0
 endsnippet
 
 snippet autoload "composer autoload PSR4" b
