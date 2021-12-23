@@ -130,9 +130,6 @@ let g:syntastic_check_on_wq = 0
 " Disable spellchecking (to enable use set spell spelllang=en_us)
 set nospell
 
-" Auto apply schema to composer.json file
-autocmd BufRead,BufNewFile composer.json Vison composer.json
-
 " Configure changelog
 let g:changelog_username = 'Marcin Morawski <marcin@morawskim.pl>'
 let g:changelog_dateformat = '%Y-%m-%d'
@@ -145,11 +142,6 @@ let g:used_javascript_libs = 'jquery,chai,react'
 " Enable loading the plugin files for specific file types with
 filetype plugin on
 
-" Syntax for xdebug trace file
-augroup filetypedetect
-au BufNewFile,BufRead *.xt  setf xt
-augroup END
-
 " Set changelog packager
 let g:spec_chglog_packager = 'Marcin Morawski <marcin@morawskim.pl>'
 let g:spec_chglog_revision = 0
@@ -159,15 +151,6 @@ let g:spec_chglog_revision = 0
 
 " Save a file in vim without root permission using sudo. Map this command to 'SS'
 command SS :execute ':w !sudo tee %'
-
-" Use apache syntax for files  *.template in /etc/apache2/vhosts.d directory
-autocmd BufNewFile,BufRead /etc/apache2/vhosts.d/*.template set syntax=apache
-
-" Set sh file type for files /tmp/bash-fc*
-autocmd BufNewFile,BufRead /tmp/bash-fc* set ft=sh
-
-" Set sql file type for files /tmp/sql*
-autocmd BufNewFile,BufRead /tmp/sql* set ft=sql
 
 " Configuration for indentLine plugin
 let g:indentLine_color_term = 250
@@ -182,35 +165,6 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.xml"
 
 " Enable rainbow parentheses plugin
 let g:rainbow_active = 1
-
-" Gulpfile skeleton
-au BufNewFile gulpfile.js 0r ~/.vim/skeletons/gulpfile.js
-
-" Puppet facter, type and provider skeletons
-au BufNewFile */lib/puppet/provider/*.rb 0r ~/.vim/skeletons/puppet_provider.rb
-au BufNewFile */lib/puppet/type/*.rb 0r ~/.vim/skeletons/puppet_type.rb
-au BufNewFile */lib/facter/*.rb 0r ~/.vim/skeletons/puppet_facter.rb
-
-" .editorconfig skeleton
-au BufNewFile .editorconfig 0r ~/.vim/skeletons/editorconfig
-
-" Apache vhost simple skeleton
-au BufNewFile /etc/apache2/vhosts.d/*.conf 0r ~/.vim/skeletons/apache_vhost.conf
-
-" webpack config skeleton
-au BufNewFile webpack.config.js 0r ~/.vim/skeletons/webpack.config.js
-
-" gitreview config skeleton
-au BufNewFile .gitreview 0r ~/.vim/skeletons/gitreview
-
-" gitlab-ci skeleton
-au BufNewFile .gitlab-ci.yml 0r ~/.vim/skeletons/gitlab-ci.yml
-
-" phpcs skeleton
-au BufNewFile .phpcs.xml,phpcs.xml,.phpcs.xml.dist,phpcs.xml.dist 0r ~/.vim/skeletons/phpcs.xml
-
-" phpunit skeleton
-au BufNewFile phpunit.xml,phpunit.xml.dist 0r ~/.vim/skeletons/phpunit.xml.dist
 
 " Listing snippets with <C-Tab> doesn’t work in vim (in gvim work)
 let g:UltiSnipsListSnippets="<c-j>"
