@@ -169,6 +169,9 @@ let g:rainbow_active = 1
 " Listing snippets with <C-Tab> doesn’t work in vim (in gvim work)
 let g:UltiSnipsListSnippets="<c-j>"
 
+" Disable quote concealing in JSON files
+let g:vim_json_conceal=0
+
 " Tabularize map
 vnoremap <Leader>l= :Tabularize /=<CR>
 vnoremap <Leader>l\| :Tabularize /\|<CR>
