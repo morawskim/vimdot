@@ -4,6 +4,9 @@ au BufRead,BufNewFile package.json set filetype=package.json
 au BufRead,BufNewFile .gitlab-ci.yml set filetype=gitlab-ci.yaml
 au BufRead,BufNewFile playbook.yml set filetype=ansible.yaml
 
+" declaration ansible playbook skeleton
+au BufNewFile playbook.yml 0r ~/.vim/skeletons/ansible.yml
+
 " Flags *.d.ts as typescript for UltiSnips
 au BufNewFile,BufRead *.d.ts set filetype=typescript
 " declaration typescript skeleton
