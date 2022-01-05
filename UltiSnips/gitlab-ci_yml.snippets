@@ -422,7 +422,7 @@ jmeter:
   script:
     #- mkdir -p /plugins
     #- wget -O/plugins/jmeter-parallel-0.11.jar https://search.maven.org/remotecontent?filepath=com/blazemeter/jmeter-parallel/0.11/jmeter-parallel-0.11.jar
-    #- cd /opt/apache-jmeter-5.3
+    #- cd /opt/apache-jmeter-*
     - /entrypoint.sh -Jjmeterengine.force.system.exit=true -q${1:env.properties} -n -t $CI_PROJECT_DIR/${2:performance.jmx} -l $CI_PROJECT_DIR/${3:performance.csv} -e -o $CI_PROJECT_DIR/${4:jmeter-html-report}
   artifacts:
     expire_in: 30 days
