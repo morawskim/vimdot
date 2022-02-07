@@ -135,3 +135,9 @@ snippet composer "Install composer" b
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 $0
 endsnippet
+
+snippet phpAmqp "Enable PHP amqp extension (RabbitMQ)" b
+# package librabbitmq-dev is required
+RUN pecl install amqp && docker-php-ext-enable amqp
+$0
+endsnippet
