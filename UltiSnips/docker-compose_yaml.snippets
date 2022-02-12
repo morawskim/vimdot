@@ -556,3 +556,23 @@ environment:
     #BLACKFIRE_LOG_LEVEL: 4
 $0
 endsnippet
+
+snippet dc_service_beanstalkd "docker compose service - beanstalkd" b
+beanstalkd:
+  image: schickling/beanstalkd
+  command: -b /beanstalkd -f0
+  volumes:
+    - beanstalkd:/beanstalkd
+$0
+endsnippet
+
+snippet dc_service_beanstalkd_ui "docker compose service - beanstalk console (admin panel) " b
+beanstalk_console:
+  image: thedavis/beanstalkd-ui:0.0.2
+  environment:
+    BEANSTALKD_HOST: beanstalkd
+    BEANSTALKD_PORT: 11300
+  ports:
+    - "80:80"
+$0
+endsnippet
