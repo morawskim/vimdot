@@ -566,7 +566,7 @@ beanstalkd:
 $0
 endsnippet
 
-snippet dc_service_beanstalkd_ui "docker compose service - beanstalk console (admin panel) " b
+snippet dc_service_beanstalkd_ui "docker compose service - beanstalk console (admin panel)" b
 beanstalk_console:
   image: thedavis/beanstalkd-ui:0.0.2
   environment:
@@ -574,5 +574,18 @@ beanstalk_console:
     BEANSTALKD_PORT: 11300
   ports:
     - "80:80"
+$0
+endsnippet
+
+snippet dc_service_soketi "docker compose service - soketi (open-source WebSockets server)" b
+soketi:
+  image: 'quay.io/soketi/soketi:0.30.2-16-alpine'
+  ports:
+    - '6001:6001'
+  environment:
+    DEBUG: '0'
+    DEFAULT_APP_ID: app_demo
+    DEFAULT_APP_KEY: app_key
+    DEFAULT_APP_SECRET: app_secret
 $0
 endsnippet
