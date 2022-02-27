@@ -45,3 +45,35 @@ const appendChainableResultToTuple = <T extends unknown[], U extends unknown>(da
 };
 $0
 endsnippet
+
+snippet cyCustomCmd "Cypress custom command" b
+Cypress.Commands.add('${1:customCommand}', () => {
+  // to add definition for typescript use snippet cyCmdTypes
+  $0
+});
+endsnippet
+
+snippet cySelectFileCmd "Cypress selectFile with dropzone" b
+cy.get('.dropzone')
+    .selectFile('cypress/fixtures/${1:picture.jpg}', {
+        action: 'drag-drop',
+    });
+$0
+endsnippet
+
+
+snippet cyComponentTestConfig "Cypress testing components" b
+# `cypress/plugins/index.js`
+
+/**
+ * @type {Cypress.PluginConfig}
+ */
+module.exports = (on, config) => {
+    if (config.testingType === 'component') {
+        require('@cypress/react/plugins/react-scripts')(on, config);
+    }
+
+    return config;
+};
+$0
+endsnippet
