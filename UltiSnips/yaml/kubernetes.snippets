@@ -1,0 +1,93 @@
+snippet k8sConfigMap "Kubernetes ConfigMap" b
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  settings.ini: |
+    [section]
+    foo=bar
+  key1: value
+$0
+endsnippet
+
+snippet k8sPodSpec "Kubernetes PodSpec" b
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ${1:app}
+spec:
+  containers:
+    - name: $1
+      image: ${2:nginx}
+      env:
+        - name: FOO
+          value: BAR
+        - name: APP_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: ${3:app-config}
+              key: key1
+      volumeMounts:
+        - mountPath: /config
+          name: ${4:config}
+          readOnly: true
+  volumes:
+    - name: $4
+      configMap:
+        name: $3
+        items:
+          - key: settings.ini
+            path: filenameInFileSystem.ini
+$0
+endsnippet
+
+snippet k8sPodSecretVolumen "Kubernetes secret volumen to mount in volumeMounts PodSpec" b
+# add to PodSpec
+volumes:
+    - name: secrets
+      secret:
+        secretName: ${1:TODO-CHANGE-TO-SECRET-NAME}
+        defaultMode: 0400
+        items:
+          - key: ${2:config}
+            path: ${3:filenameInFS}
+$0
+endsnippet
+
+snippet k8sDeployment "Kubernetes Deployment" b
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${1:app}
+  labels:
+    ${2:app: backend}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      $2
+  template:
+    metadata:
+      labels:
+        $2
+    spec:
+      # PodSpec ...
+$0
+endsnippet
+
+snippet k8sServiceClusterIP "Kubernetes Service ClusterIP" b
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${1:backend}
+spec:
+  selector:
+    ${2:app: backend}
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 80
+      protocol: TCP
+$0
+endsnippet
