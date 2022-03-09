@@ -91,3 +91,23 @@ spec:
       protocol: TCP
 $0
 endsnippet
+
+snippet k8sDynamicPvc "Kubernetes Dynamic Volume Provisioning" b
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ${1:data}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ${2:standard}
+  resources:
+    requests:
+      storage: ${3:1Gi}
+# In pod spec use code bellow. You also have to mount this volume in containers.[*].volumeMounts
+#volumes:
+#  - name: cache
+#    persistentVolumeClaim:
+#      claimName: $1
+$0
+endsnippet
