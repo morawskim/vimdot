@@ -147,3 +147,27 @@ spec:
                   number: ${4:9898}
 $0
 endsnippet
+
+snippet k8sResourceLimits "Kubernetes resource limits for container" b
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "250m"
+  limits:
+    memory: "128Mi"
+    cpu: "500m"
+$0
+endsnippet
+
+snippet k8sResourceQuota "Kubernetes resource limits for namespace" b
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: ${1:quota}
+  namespace: ${2:mynamespace}
+spec:
+  hard:
+    limits.cpu: "2"
+    limits.memory: "2Gi"
+$0
+endsnippet
