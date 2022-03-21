@@ -184,3 +184,24 @@ livenessProbe:
 $0
 endsnippet
 
+snippet k8sHpa "Kubernetes HorizontalPodAutoscaler controller" b
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ${1:app}
+spec:
+  minReplicas: 1
+  maxReplicas: 4
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ${1:backend}
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+$0
+endsnippet
