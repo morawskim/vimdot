@@ -171,3 +171,16 @@ spec:
     limits.memory: "2Gi"
 $0
 endsnippet
+
+snippet k8sHTTPLivenessProbe "Kubernetes liveness HTTP probe for container" b
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 80
+  periodSeconds: 10
+  initialDelaySeconds: 10
+  failureThreshold: 2
+  timeoutSeconds: 3
+$0
+endsnippet
+
