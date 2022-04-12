@@ -141,3 +141,10 @@ snippet phpAmqp "Enable PHP amqp extension (RabbitMQ)" b
 RUN pecl install amqp && docker-php-ext-enable amqp
 $0
 endsnippet
+
+snippet phpExtensionInstaller "Install php-extension-installer, which simplify installing extensions in official PHP images" b
+# see https://github.com/mlocati/docker-php-extension-installer
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+RUN install-php-extensions ${1:xdebug-^3.1 @composer}
+$0
+endsnippet
