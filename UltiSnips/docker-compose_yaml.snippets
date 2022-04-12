@@ -126,16 +126,18 @@ ${1:traefik}:
 $0
 endsnippet
 
-snippet dc_service_cli "docker compose service - cli (yarn, php)" b
+snippet dc_service_cli "docker compose service - cli (npm, php)" b
 ${1:cli}:
-    image: edbizarro/gitlab-ci-pipeline-php:${2:7.2}
-    volumes:
-        - ./:${3:/app}
-    user: ${MY_UID:-1000}
-    tty: true
-    working_dir: $3
-    environment:
-        COMPOSER_AUTH: '{"github-oauth": {"github.com": "${COMPOSER_GITHUB_OAUTH}"}}'
+  image: thecodingmachine/php:8.1-v4-cli-node14
+  command: bash
+  volumes:
+    - ./:${3:/app}
+  user: ${MY_UID:-1000}
+  tty: true
+  working_dir: $3
+  environment:
+    PHP_EXTENSIONS: xdebug
+    COMPOSER_AUTH: '{"github-oauth": {"github.com": "${COMPOSER_GITHUB_OAUTH}"}}'
 ${0}
 endsnippet
 
