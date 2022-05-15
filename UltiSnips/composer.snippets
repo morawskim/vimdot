@@ -23,3 +23,17 @@ snippet asset-repo "Configuration for asset repository (npm packages) " b
 }
 $0
 endsnippet
+
+snippet flexEndpoints "Configure additional symfony/flex repositories" b
+{
+    "extra": {
+        "symfony": {
+            "endpoint": [
+                "https://api.github.com/repos/${1:your-github-account-name}/${2:your-recipes-repository}/contents/index.json",
+                "flex://defaults"
+            ]
+        }
+    }
+}
+$0
+endsnippet
