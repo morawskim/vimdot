@@ -36,12 +36,8 @@ RUN docker-php-ext-install intl
 ${0}
 endsnippet
 
-snippet composer "Install composer" b
-# require unzip or git to download packages
-RUN curl -sS https://getcomposer.org/installer | php -- \
-         --filename=composer \
-         --install-dir=/usr/local/bin
-#RUN composer global require --prefer-stable --prefer-dist hirak/prestissimo fxp/composer-asset-plugin
+snippet composer "Copy composer from official image" b
+COPY --from=composer:${1:2.3} /usr/bin/composer /usr/bin/composer
 ${0}
 endsnippet
 
