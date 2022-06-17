@@ -27,3 +27,23 @@ ifndef ${1:VAR_NAME}
 endif
 $0
 endsnippet
+
+snippet defaultValue "Makefile - variable default value" b
+@$(eval ${1:VARIABLE} ?= '${2:defaultValue}')
+@echo \$($1)
+$0
+endsnippet
+
+snippet doctrineLoadFixtures "Makefile - doctrine load fixtures" b
+SYMFONY = bin/console
+
+## Build the DB, control the schema validity, load fixtures and check the migration status
+load-fixtures:
+	@$(SYMFONY) doctrine:cache:clear-metadata
+	@$(SYMFONY) doctrine:database:create --if-not-exists
+	@$(SYMFONY) doctrine:schema:drop --force
+	@$(SYMFONY) doctrine:schema:create
+	@$(SYMFONY) doctrine:schema:validate
+	@$(SYMFONY) doctrine:fixtures:load --no-interaction
+$0
+endsnippet
