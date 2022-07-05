@@ -144,3 +144,10 @@ COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr
 RUN install-php-extensions ${1:xdebug-^3.1 @composer}
 $0
 endsnippet
+
+snippet echoMultiline "Dockerfile create multilines file" b
+RUN echo 'First line\n\
+Second line\n\
+Last line' > ${1:/etc/example.conf}
+$0
+endsnippet
