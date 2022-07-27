@@ -591,3 +591,13 @@ soketi:
     DEFAULT_APP_SECRET: app_secret
 $0
 endsnippet
+
+# see https://github.com/docker/compose/issues/4336
+snippet default_subnet "docker compose - Set subnet for default network" b
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: ${1:172.33.0.0/16}
+$0
+endsnippet
