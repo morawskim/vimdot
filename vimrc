@@ -113,6 +113,9 @@ let g:airline_theme='everforest'
 " Enable mouse
 set mouse=a
 
+" Use automatically the system clipboard
+set clipboard=unnamedplus
+
 " Syntastic recommended settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
