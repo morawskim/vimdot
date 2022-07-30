@@ -263,25 +263,52 @@ ${1:apache}:
 ${0}
 endsnippet
 
-snippet dc_service_elasticsearch "docker compose service - elasticsearch" b
+snippet dc_service_elasticsearch "docker compose service - elasticsearch7" b
 # https://www.docker.elastic.co/
-# https://gist.github.com/ilbonte/de329ff7cfd1badeefe9ce33f9dbe8ed
 elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${1:6.5.4}
+    image: docker.elastic.co/elasticsearch/elasticsearch:${1:7.17.5}
     environment:
       - cluster.name=docker-cluster
+      - node.name=es01
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      = discovery.type=single-node
-      # - "discovery.zen.ping.unicast.hosts=elasticsearch"
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - discovery.type=single-node
     ulimits:
       memlock:
         soft: -1
         hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
     volumes:
       - esdata1:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+$0
+endsnippet
+
+snippet dc_service_elasticsearch8 "docker compose service - elasticsearch8" b
+# To setup elasticsearch version 8 we need to disable xpack.security
+# Use snippet dc_service_elasticsearch and set the env xpack.security.enabled to value of false
+# Otherwise we need to set env ELASTIC_PASSWORD=elastic (min 6 chars). The username is elastic.
+# We will have problems with SSL certs (Stored in /usr/share/elasticsearch/config/certs/http_ca.crt).
+# And we need to setup kibana.
+# More info:
+# https://levelup.gitconnected.com/how-to-run-elasticsearch-8-on-docker-for-local-development-401fd3fff829
+# https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-stack-docker.html#get-started-docker-tls
+$0
+endsnippet
+
+snippet dc_service_kibana "docker compose service - kibana7" b
+kibana:
+    image: docker.elastic.co/kibana/kibana:${1:7.17.5}
+    environment:
+        SERVER_NAME: ${2:kibana.lvh.me}
+        ELASTICSEARCH_HOSTS: ${3:http://elasticsearch:9200}
+      depends_on:
+        - elasticsearch
+      ports:
+        - 5601:5601
 $0
 endsnippet
 
