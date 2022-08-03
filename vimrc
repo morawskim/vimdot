@@ -114,7 +114,13 @@ let g:airline_theme='everforest'
 set mouse=a
 
 " Use automatically the system clipboard
-set clipboard=unnamedplus
+" Uncomment line below to ALWAYS use system clipboard (dd will store line
+" in clipboard). Otherwise use upper case Y to copy to clipboard.
+" See https://stackoverflow.com/a/67890119
+" set clipboard=unnamedplus
+nnoremap Y "+y
+vnoremap Y "+y
+nnoremap yY ^"+y$
 
 " Syntastic recommended settings
 set statusline+=%#warningmsg#
