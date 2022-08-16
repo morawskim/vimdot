@@ -1,0 +1,16 @@
+snippet staticJob "Prometheus config - static scrape job" b
+# The job name assigned to scraped metrics by default.
+- job_name: ${1:jobName}
+  # How frequently to scrape targets from this job.
+  scrape_interval: 30s
+  # Per-scrape timeout when scraping this job.
+  scrape_timeout: 10s
+  # The HTTP resource path on which to fetch metrics from targets.
+  metrics_path: /metrics
+  # Configures the protocol scheme used for requests.
+  scheme: https
+  # List of labeled statically configured targets for this job.
+  static_configs:
+    - targets: ["${2:example.com}"]
+$0
+endsnippet
