@@ -48,6 +48,11 @@ set nocompatible
 " Display line numbers
 set number
 
+" Control the left edge of the window
+set numberwidth=3
+set splitbelow
+set splitright
+
 " Enable syntax highlighting
 syntax on
 
@@ -70,9 +75,11 @@ set showmatch
 
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set smartindent
 " Load filetype-specific indent files
 filetype indent on
 
@@ -192,8 +199,8 @@ vnoremap <Leader>l: :Tabularize /:\zs<CR>
 " map <CTRL-N> to toggle nerd
 map <C-n> :NERDTreeToggle<CR>
 
-" highlight column 80
-set colorcolumn=80
+" highlight column 81 and 121
+set colorcolumn=81,121
 highlight ColorColumn ctermbg=233
 
 " F8 key will toggle the Tagbar window
