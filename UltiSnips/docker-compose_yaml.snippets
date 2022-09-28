@@ -480,7 +480,6 @@ snippet phpXdebug3Env "ENV variables for XDEBUG3" b
 XDEBUG_MODE: develop,debug
 XDEBUG_CONFIG: "client_host=\${MY_IP:-${1:172.17.0.1}} discover_client_host=0 client_port=9003"
 XDEBUG_TRIGGER: "default_no_matter"
-XDEBUG_SESSION: xdebug
 PHP_IDE_CONFIG: "serverName=\${DEV_SERVER_NAME:-${2:service.lvh.me}}"
 $0
 endsnippet
