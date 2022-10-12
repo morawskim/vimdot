@@ -55,6 +55,15 @@ volumes:
 $0
 endsnippet
 
+snippet k8sPodHostVolumen "Kubernetes host path volumen to mount in volumeMounts PodSpec" b
+# add to PodSpec
+volumes:
+  - name: ${1:example}
+    hostPath:
+      path: ${2:/path/from/host/to/mount}
+$0
+endsnippet
+
 snippet k8sDeployment "Kubernetes Deployment" b
 apiVersion: apps/v1
 kind: Deployment
