@@ -627,3 +627,11 @@ networks:
         - subnet: ${1:172.33.0.0/16}
 $0
 endsnippet
+
+snippet dc_service_rabbitmq "docker compose service - rabbitmq" b
+rabbitmq:
+  image: rabbitmq:3.9.5-management
+  ports:
+    - "15672:15672"
+$0
+endsnippet
