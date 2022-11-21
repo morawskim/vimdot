@@ -1,0 +1,9 @@
+snippet pprof "golang - start CPU profile" b
+pprofFile, pprofErr := os.Create("cpu.pprof")
+if pprofErr != nil {
+    log.Fatal(pprofErr)
+}
+pprof.StartCPUProfile(pprofFile)
+defer pprof.StopCPUProfile()
+$0
+endsnippet
