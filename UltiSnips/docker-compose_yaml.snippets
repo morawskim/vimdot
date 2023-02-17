@@ -635,3 +635,19 @@ rabbitmq:
     - "15672:15672"
 $0
 endsnippet
+
+snippet dc_service_tproxy "docker compose service - tproxy" b
+tproxy:
+  image: kevinwan/tproxy:v1
+  command:
+    - tproxy
+    - -l
+    - 0.0.0.0
+    - -p
+    - "8080"
+    - -r
+    - ${1:rabbitmq:5672}
+    - -d
+    - "500ms"
+$0
+endsnippet
