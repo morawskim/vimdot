@@ -330,12 +330,12 @@ healthcheck:
 $0
 endsnippet
 
-snippet dc_service_mailhog "docker compose service - mailhog" b
-mailhog:
-    image: mailhog/mailhog
+snippet dc_service_mailpit "docker compose service - mailpit. Alternative for mailhog" b
+mailpit:
+    image: axllent/mailpit
     labels:
         traefik.port: "8025"
-        traefik.frontend.rule: "Host:mailhog.lvh.me"
+        traefik.frontend.rule: "Host:mailpit.lvh.me"
 $0
 endsnippet
 
