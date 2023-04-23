@@ -651,3 +651,11 @@ tproxy:
     - "500ms"
 $0
 endsnippet
+
+snippet dc_service_httpbin "docker compose service - httpbin" b
+httpbin:
+  image: kennethreitz/httpbin
+  ports:
+    - "8080:80"
+$0
+endsnippet
