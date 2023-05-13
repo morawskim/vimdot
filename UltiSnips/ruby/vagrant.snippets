@@ -57,15 +57,17 @@ ${0}
 endsnippet
 
 snippet win10 "Edge on Windows 10" b
+#config.vm.box = "StefanScherer/windows_10"
 config.vm.box = "Microsoft/EdgeOnWindows10"
 config.vm.guest = :windows
 config.vm.provider "virtualbox" do |vb|
   # Display the VirtualBox GUI when booting the machine
   vb.gui = true
 
-  # Customize the amount of memory on the VM and Video RAM
+  # Customize the amount of memory on the VM, Video RAM and number of CPU
   vb.customize ["modifyvm", :id, "--vram", "128"]
   vb.memory = "3072"
+  vb.cpus = 2
 end
 $0
 endsnippet
