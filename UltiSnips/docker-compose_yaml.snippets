@@ -659,3 +659,22 @@ httpbin:
     - "8080:80"
 $0
 endsnippet
+
+snippet dc_service_keycloak "docker compose service - keycloak" b
+keycloak:
+  image: quay.io/keycloak/keycloak:24.0
+  ports:
+    - 8443:8443
+  environment:
+    KEYCLOAK_ADMIN: ${1:admin}
+    KEYCLOAK_ADMIN_PASSWORD: "${2:secretpassword}"
+  volumes:
+    #to create SSL certificate use mkcert
+    - ./ssl:/ssl/
+  command:
+  - start
+  - --hostname=${3:keycloak.lvh.me}
+  - --https-certificate-file=/ssl/$3.pem
+  - --https-certificate-key-file=/ssl/$3-key.pem
+$0
+endsnippet
