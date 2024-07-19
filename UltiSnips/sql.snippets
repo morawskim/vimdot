@@ -1,0 +1,6 @@
+snippet user "mysql create user and grant privileges" b
+CREATE USER '$1'@'${2:%}' IDENTIFIED WITH mysql_native_password BY '${3:secretpassword}';
+GRANT ALL PRIVILEGES ON $1.* TO '$1'@'$2';
+FLUSH PRIVILEGES;
+${0}
+endsnippet
