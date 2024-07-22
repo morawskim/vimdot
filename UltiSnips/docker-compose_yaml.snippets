@@ -16,9 +16,11 @@ endsnippet
 
 snippet dc_service_mysql "docker compose service - mysql" b
 ${1:mysql}:
-    image: mysql:${2:5.6}
+    image: mysql:${2:8.0}
+    # 'mysql_native_password' is deprecated and will be removed in a future release. Please use caching_sha2_password instead
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
-        - ./mysqldata:/var/lib/mysql
+        - mysql:/var/lib/mysql
     environment:
         MYSQL_ROOT_PASSWORD: ${3:password}
         MYSQL_DATABASE: ${4:dbname}
