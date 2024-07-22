@@ -136,14 +136,24 @@ endsnippet
 
 snippet php-fpm "PHP-FPM configuration" b
 # PHP-FPM configuration
-location ~ \.php(/|$) {
+location ~ ^/(index|app|app_dev|config|adminer)\.php(/|$) {
     internal;
     fastcgi_pass 127.0.0.1:9000;
     fastcgi_split_path_info ^(.+\.php)(/.*)$;
     include fastcgi_params;
+    fastcgi_param REQUEST_METHOD $request_method;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     fastcgi_param HTTPS off;
     fastcgi_param HTTP_X_REQUEST_ID $request_id;
 }
+
+location ~ ^/status$ {
+    allow 127.0.0.1/32;
+    deny all;
+    include fastcgi_params;
+    fastcgi_param REQUEST_METHOD $request_method;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    fastcgi_pass 127.0.0.1:9000;
+  }
 $0
 endsnippet
