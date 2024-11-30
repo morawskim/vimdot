@@ -6,6 +6,7 @@ Plug 'sainnhe/everforest'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'editorconfig/editorconfig-vim', { 'tag': 'v1.1.1' }
 Plug 'mattn/emmet-vim'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'othree/javascript-libraries-syntax.vim'
