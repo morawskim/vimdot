@@ -1,0 +1,4 @@
+snippet cuda_device "Setup device-agnostic code" b
+device = "cuda" if torch.cuda.is_available() else "cpu"
+$0
+endsnippet
