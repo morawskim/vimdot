@@ -1,0 +1,1 @@
+:UltiSnipsAddFiletypes pytorch_python
