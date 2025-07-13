@@ -28,6 +28,13 @@ endif
 $0
 endsnippet
 
+snippet envVariableDefined "Makefile If only one target use the environment variable" b
+mytarget:
+	if [ -z $(${1:VAR_NAME}) ]; then echo '$1 not defined'; false; fi
+	# .....
+$0
+endsnippet
+
 snippet defaultValue "Makefile - variable default value" b
 @$(eval ${1:VARIABLE} ?= '${2:defaultValue}')
 @echo \$($1)
@@ -45,5 +52,12 @@ load-fixtures:
 	@$(SYMFONY) doctrine:schema:create
 	@$(SYMFONY) doctrine:schema:validate
 	@$(SYMFONY) doctrine:fixtures:load --no-interaction
+$0
+endsnippet
+
+snippet strict "Makefile - strict (default shell and flags for bash and make)" b
+MAKEFLAGS += --warn-undefined-variables
+SHELL := bash
+.SHELLFLAGS := -eu -o pipefail -c
 $0
 endsnippet
