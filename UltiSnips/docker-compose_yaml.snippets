@@ -705,3 +705,15 @@ zookeeper:
     ZOOKEEPER_CLIENT_PORT: 2181
 $0
 endsnippet
+
+snippet dc_service_mitmproxy "docker compose service - mitmproxy" b
+mitmproxy:
+  image: mitmproxy/mitmproxy
+  ports:
+    - "8080:8080"
+    - "8081:8081"
+  #volumes:
+  #  - ./mitmproxy:/home/mitmproxy/.mitmproxy
+  command: mitmweb --web-host 0.0.0.0
+$0
+endsnippet
