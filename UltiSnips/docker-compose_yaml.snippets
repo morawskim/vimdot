@@ -559,11 +559,26 @@ endsnippet
 
 snippet dc_service_ofelia "docker compose service - ofelia a docker job scheduler (aka. crontab for docker)" b
 ${1:ofelia}:
-    image: 'mcuadros/ofelia:v0.3.2'
+    image: 'mcuadros/ofelia:v0.3.22'
     restart: unless-stopped
+    command: daemon --docker -f label=com.docker.compose.project=${COMPOSE_PROJECT_NAME}
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./ofelia_config.ini:/etc/ofelia/config.ini
-      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      TZ: Europe/Warsaw
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+$0
+endsnippet
+
+snippet dc_ofelia_job_labels "docker compose - labels for ofelia job" b
+ofelia.enabled: "true"
+ofelia.job-exec.${1:console-foo-bar}.schedule: "@every 15m"
+ofelia.job-exec.$1.command: "php /var/www/app/bin/console foo:bar"
 $0
 endsnippet
 
