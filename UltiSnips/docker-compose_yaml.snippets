@@ -732,3 +732,24 @@ mitmproxy:
   command: mitmweb --web-host 0.0.0.0
 $0
 endsnippet
+
+snippet dc_service_mitmweb_reverse "docker compose service - mitmproxy/mitmweb reverse" b
+mitmweb:
+  # 8.1, 12.2
+  image: mitmproxy/mitmproxy:12.2
+  ports:
+    - "8080:8080"
+    - "127.0.0.1:8081:8081"
+  volumes:
+    - ~/.local/mitmproxy:/home/mitmproxy/.mitmproxy
+  tty: true
+  command:
+  - mitmweb
+  - --web-host
+  - 0.0.0.0
+  - --set
+  - web_password=${1:secretpassword}
+  - --mode
+  - reverse:${2:https://example.com}
+$0
+endsnippet
