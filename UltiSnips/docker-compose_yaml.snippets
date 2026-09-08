@@ -753,3 +753,20 @@ mitmweb:
   - reverse:${2:https://example.com}
 $0
 endsnippet
+
+snippet dc_service_seaweedfs "docker compose service - seaweedfs, minio/s3 replacement" b
+# AWS_ACCESS_KEY_ID=$1 AWS_SECRET_ACCESS_KEY=$2 \
+# aws --endpoint-url http://localhost:8333 s3 cp README.md s3://$3/
+seaweedfs:
+  image: chrislusf/seaweedfs
+  volumes:
+    - weed-data:/data
+  ports:
+    - 8333:8333
+    - 23646:23646 # admin ui
+  environment:
+    AWS_ACCESS_KEY_ID: ${1:admin}
+    AWS_SECRET_ACCESS_KEY: ${2:secret}
+    S3_BUCKET: ${3:my-bucket}
+$0
+endsnippet
